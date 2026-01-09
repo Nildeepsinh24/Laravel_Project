@@ -16,9 +16,16 @@
     <section id="card-section">
         <div class="container">
             @if(request('q'))
-            <div class="row mb-3">
+            <div class="row mb-4">
                 <div class="col">
-                    <p class="text-muted">Search results for "{{ request('q') }}" ({{ $products->count() }})</p>
+                    <div class="alert alert-success d-flex align-items-center justify-content-between" style="border-left: 4px solid #28a745; background: #f0f9f4;">
+                        <div>
+                            <i class="bi bi-search me-2"></i>
+                            <strong>Search Results:</strong> 
+                            <span class="ms-2">Found {{ $products->count() }} {{ Str::plural('product', $products->count()) }} for "{{ request('q') }}"</span>
+                        </div>
+                        <a href="{{ route('shop') }}" class="btn btn-sm btn-outline-success">Clear Search</a>
+                    </div>
                 </div>
             </div>
             @endif

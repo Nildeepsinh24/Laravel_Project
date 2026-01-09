@@ -14,7 +14,7 @@ class PortfolioSeeder extends Seeder
             [
                 'title' => 'Green & Tasty Lemon',
                 'category' => 'Fruits',
-                'image' => 'img-mn-p-sngl-onemnm.png',
+                'image' => 'lemonbg-one-1.png',
                 'excerpt' => 'Fresh organic lemons grown sustainably.',
                 'description' => '<p>Our lemons are grown on small family farms using sustainable practices. They are packed with vitamin C and perfect for drinks, desserts, and everyday cooking.</p>',
                 'client' => 'Nature Foods Co.',
@@ -23,7 +23,7 @@ class PortfolioSeeder extends Seeder
             [
                 'title' => 'Organic Carrot',
                 'category' => 'Farmer',
-                'image' => 'img-mn-p-sngl-onemnm.png',
+                'image' => 'crop-img-one.png',
                 'excerpt' => 'Crunchy carrots rich in beta-carotene.',
                 'description' => '<p>Sweet and crisp, our carrots add color and nutrition to salads, soups, and roasts. No synthetic fertilizers or pesticides used.</p>',
                 'client' => 'Green Valley',
@@ -32,7 +32,7 @@ class PortfolioSeeder extends Seeder
             [
                 'title' => 'Organic Betel Leaf',
                 'category' => 'Leaf',
-                'image' => 'img-mn-p-sngl-onemnm.png',
+                'image' => 'crop-img-two.png',
                 'excerpt' => 'Handpicked aromatic leaves.',
                 'description' => '<p>Carefully handpicked betel leaves known for their aroma and cultural significance. Grown using natural, eco-friendly methods.</p>',
                 'client' => 'Leaf & Herb Co.',
@@ -41,7 +41,7 @@ class PortfolioSeeder extends Seeder
             [
                 'title' => 'Natural Tomato',
                 'category' => 'Fruits',
-                'image' => 'img-mn-p-sngl-onemnm.png',
+                'image' => 'totmaors-img-portfoliyto.png',
                 'excerpt' => 'Vine-ripened, juicy tomatoes.',
                 'description' => '<p>Juicy tomatoes ripened on the vine for peak flavor. Ideal for sauces, salads, and sandwiches.</p>',
                 'client' => 'Sun Farm',
@@ -50,7 +50,7 @@ class PortfolioSeeder extends Seeder
             [
                 'title' => 'Black Raspberry',
                 'category' => 'Farmer',
-                'image' => 'img-mn-p-sngl-onemnm.png',
+                'image' => 'five-fiveth-img.png',
                 'excerpt' => 'Deep flavor, rich antioxidants.',
                 'description' => '<p>Rich, dark berries bursting with flavor and antioxidants. Excellent for desserts or healthy snacking.</p>',
                 'client' => 'Berry Fields',
@@ -59,7 +59,7 @@ class PortfolioSeeder extends Seeder
             [
                 'title' => 'Honey Orange',
                 'category' => 'Farmer',
-                'image' => 'img-mn-p-sngl-onemnm.png',
+                'image' => 'honer-orenge-six.png',
                 'excerpt' => 'Sweet citrus with floral notes.',
                 'description' => '<p>Fragrant oranges with a natural sweetness. Great for fresh juice and zesting.</p>',
                 'client' => 'Citrus Grove',

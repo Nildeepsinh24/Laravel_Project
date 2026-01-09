@@ -2,10 +2,21 @@
 
 @section('title', $item->title)
 
-@php $asset = asset('assets'); @endphp
+@php 
+    $asset = asset('assets');
+    
+    // Map categories to background images
+    $categoryBackgrounds = [
+        'Fruits' => 'portfolio-single-main-rowimg.png',
+        'Farmer' => 'hiro-service-single-main-one.jpg',
+        'Leaf' => 'clean-video-bg-main.png',
+    ];
+    
+    $bgImage = $categoryBackgrounds[$item->category] ?? 'portfolio-single-main-rowimg.png';
+@endphp
 
 @section('content')
-    <section id="about-hiro-section">
+    <section id="about-hiro-section" style="background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('{{ $asset }}/{{ $bgImage }}') center/cover no-repeat;">
         <div class="container-fluid p-0">
             <div class="row portfolio-single-main-row">
                 <h1 class="portfolio-single-hiro-head">{{ $item->title }}</h1>
@@ -41,15 +52,27 @@
     </div>
 
     <div class="container ps-c-two-mnctr">
-        <div class="img-mn-full mb-3">
-            <img src="{{ $asset }}/{{ $item->image }}" class="img-fluid" data-aos="fade-up" data-aos-duration="1000" alt="{{ $item->title }}">
-            <p class="i-pera-top">{{ $item->service ?? 'Portfolio' }}</p>
+        <div class="row justify-content-center">
+            <div class="col-lg-10">
+                <div class="portfolio-image-wrapper mb-4 text-center" data-aos="fade-up" data-aos-duration="1000">
+                    <img src="{{ $asset }}/{{ $item->image }}" class="img-fluid rounded shadow-sm" alt="{{ $item->title }}" style="max-height: 500px; object-fit: cover; width: 100%;">
+                    <div class="mt-3 p-3 bg-light rounded">
+                        <h5 class="text-success mb-2">{{ $item->service ?? 'Portfolio' }}</h5>
+                        @if($item->excerpt)
+                            <p class="text-muted mb-0">{{ $item->excerpt }}</p>
+                        @endif
+                    </div>
+                </div>
+                
+                @if($item->description)
+                    <div class="portfolio-description" style="line-height: 1.8; color: #555;">
+                        {!! $item->description !!}
+                    </div>
+                @else
+                    <p class="portfolio-single-pera-first-cnct-one-1-pera mt-2">Details coming soon.</p>
+                @endif
+            </div>
         </div>
-        @if($item->description)
-            {!! $item->description !!}
-        @else
-            <p class="portfolio-single-pera-first-cnct-one-1-pera mt-2">Details coming soon.</p>
-        @endif
     </div>
 
     <div class="container mt-4">
