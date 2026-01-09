@@ -97,4 +97,44 @@ class CartController extends Controller
         $request->session()->forget('cart');
         return redirect()->route('cart.index')->with('status', 'Cart cleared');
     }
+
+    public function checkout(Request $request)
+    {
+        $cart = $request->session()->get('cart', ['items' => [], 'total_qty' => 0, 'total_price' => 0]);
+        return view('pages.checkout', compact('cart'));
+    }
+
+    public function processCheckout(Request $request)
+    {
+        $validated = $request->validate([
+            'first_name' => 'required|string|max:255',
+            'last_name' => 'required|string|max:255',
+            'email' => 'required|email',
+            'phone' => 'required|string',
+            'address' => 'required|string',
+            'city' => 'required|string',
+            'state' => 'required|string',
+            'zip' => 'required|string',
+            'country' => 'required|string',
+            'notes' => 'nullable|string',
+            'payment_method' => 'required|in:cod,card',
+        ]);
+
+        $cart = $request->session()->get('cart', ['items' => [], 'total_qty' => 0, 'total_price' => 0]);
+
+        if (empty($cart['items'])) {
+            return redirect()->route('cart.index')->with('status', 'Your cart is empty');
+        }
+
+        // In a real application, you would:
+        // 1. Create an order record in the database
+        // 2. Process payment if needed
+        // 3. Send confirmation email
+        // 4. Update inventory
+        
+        // For now, we'll just clear the cart and show success
+        $request->session()->forget('cart');
+        
+        return redirect()->route('shop')->with('success', 'Order placed successfully! Order confirmation has been sent to ' . $validated['email']);
+    }
 }

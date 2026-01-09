@@ -82,9 +82,13 @@
             <div class="row clean-service-page-main-row">
                 <div class="clean-video-main">
                     <h2 class="ctcgry-head-abt-t-m" data-aos="fade-up" data-aos-duration="1000">Organic Only</h2>
-                    <h2 class="oupd-abt-h-one-team" data-aos="fade-up" data-aos-duration="1000">Everyday Fresh &amp; Clean</h2>
-                    <p class="clean-video-pera-tm mt-3">Simply dummy text of the printing and typesetting industry. Lorem had ceased to been the industry's standard dummy text ever since the</p>
-                    <div class="video-icom-clean btnefct-1" data-aos="flip-left" data-aos-easing="ease-out-cubic" data-aos-duration="2000"><a href="#"><i class="bi bi-play-fill"></i></a></div>
+                    <h2 class="oupd-abt-h-one-team" data-aos="fade-up" data-aos-duration="1100">Everyday Fresh &amp; Clean</h2>
+                    <p class="clean-video-pera-tm mt-4 mb-4" style="max-width: 700px; margin-left: auto; margin-right: auto; font-size: 18px; line-height: 1.8;" data-aos="fade-up" data-aos-duration="1200">
+                        We are committed to providing 100% organic products that are fresh, clean, and sustainable. Our farm-to-table approach ensures that every product meets the highest quality standards while supporting local farmers and protecting the environment.
+                    </p>
+                    <a href="{{ route('shop') }}" class="btn btn-lg btn-success mt-3" data-aos="fade-up" data-aos-duration="1300" style="padding: 15px 40px; border-radius: 50px; font-weight: 600;">
+                        Shop Organic Products &nbsp;<i class="bi bi-arrow-right-circle-fill"></i>
+                    </a>
                 </div>
             </div>
         </div>

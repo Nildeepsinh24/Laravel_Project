@@ -20,7 +20,14 @@
         @endif
 
         @if(empty($cart['items']))
-            <p>Your cart is empty. <a href="{{ route('shop') }}">Go shopping</a>.</p>
+            <div class="text-center py-5">
+                <i class="bi bi-cart-x" style="font-size: 80px; color: #ccc;"></i>
+                <h3 class="mt-3">Your cart is empty</h3>
+                <p class="text-muted">Start shopping to add items to your cart!</p>
+                <a href="{{ route('shop') }}" class="btn btn-success btn-lg mt-3" style="padding: 12px 40px; border-radius: 50px;">
+                    Browse Products &nbsp;<i class="bi bi-arrow-right-circle-fill"></i>
+                </a>
+            </div>
         @else
             <div class="table-responsive">
                 <table class="table align-middle">
@@ -64,14 +71,21 @@
                 </table>
             </div>
 
-            <div class="d-flex justify-content-between align-items-center mt-3">
+            <div class="d-flex justify-content-between align-items-center mt-4 pt-3 border-top">
                 <form method="POST" action="{{ route('cart.clear') }}">
                     @csrf
                     <button class="btn btn-outline-secondary" type="submit">Clear Cart</button>
                 </form>
-                <div>
-                    <strong>Total ({{ $cart['total_qty'] }} items):</strong>
-                    <span class="ms-2">${{ number_format($cart['total_price'], 2) }}</span>
+                <div class="cart-summary">
+                    <div class="d-flex align-items-center gap-4">
+                        <div>
+                            <strong>Total ({{ $cart['total_qty'] }} items):</strong>
+                            <h3 class="text-success mb-0 d-inline ms-2">${{ number_format($cart['total_price'], 2) }}</h3>
+                        </div>
+                        <a href="{{ route('checkout') }}" class="btn btn-success btn-lg" style="padding: 12px 40px; border-radius: 50px; font-weight: 600;">
+                            Proceed to Checkout &nbsp;<i class="bi bi-arrow-right-circle-fill"></i>
+                        </a>
+                    </div>
                 </div>
             </div>
         @endif
