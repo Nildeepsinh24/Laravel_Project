@@ -72,7 +72,7 @@
             </div>
 
             <p class="text-center servisecespbtns5-s8no">
-                <button type="button" class="btn btn-md shops8-btns8-s8-none btnefct-1"><a href="{{ route('services.single') }}">Explore More &nbsp;<i class="bi bi-arrow-right-circle-fill"></i></a></button>
+                <a href="{{ route('services.single') }}" class="btn btn-md shops8-btns8-s8-none btnefct-1 text-decoration-none">Explore More &nbsp;<i class="bi bi-arrow-right-circle-fill"></i></a>
             </p>
         </div>
     </div>
