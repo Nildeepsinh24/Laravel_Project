@@ -277,8 +277,10 @@
         }
 
         .blog-badge.bg-success {
-            background: linear-gradient(135deg, rgba(104, 164, 127, 0.9), rgba(104, 164, 127, 0.7)) !important;
-            border-color: rgba(255, 255, 255, 0.4);
+            background: linear-gradient(135deg, #FF6B6B 0%, #FFA500 100%) !important;
+            color: #ffffff;
+            border-color: rgba(255, 255, 255, 0.5);
+            box-shadow: 0 10px 24px rgba(255, 107, 107, 0.35);
         }
 
         .blog-hero-title {

@@ -70,6 +70,5 @@
     </div>
 </div>
 <div class="footer-copy-right">
-    Copyright © <span class="blt-ftr">Organick</span> | Designed by <span class="blt-ftr">VictorFlow</span>
-    Templates - Powered by <span class="blt-ftr">Webflow</span>
+    Copyright © <span class="blt-ftr">{{ date('Y') }} Agri-Sites</span> | Organic Agricultural Products & Services
 </div>

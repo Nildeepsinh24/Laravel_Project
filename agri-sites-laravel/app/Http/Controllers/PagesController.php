@@ -70,7 +70,18 @@ class PagesController extends Controller
 
     public function blogSingle(): View
     {
-        return view('pages.blog-single');
+        $blog = Blog::where('published_at', '<=', now())
+            ->latest('published_at')
+            ->firstOrFail();
+
+        $relatedBlogs = Blog::where('id', '!=', $blog->id)
+            ->where('category', $blog->category)
+            ->where('published_at', '<=', now())
+            ->latest('published_at')
+            ->limit(3)
+            ->get();
+
+        return view('pages.blog-single', compact('blog', 'relatedBlogs'));
     }
 
     public function blogShow($slug): View

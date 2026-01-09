@@ -100,7 +100,7 @@
                             </div>
                             <div class="col-md-6">
                                 <label for="country" class="form-label">Country *</label>
-                                <input type="text" class="form-control" id="country" name="country" value="United States" required>
+                                <input type="text" class="form-control" id="country" name="country" required>
                             </div>
                             <div class="col-12">
                                 <label for="notes" class="form-label">Order Notes (Optional)</label>
