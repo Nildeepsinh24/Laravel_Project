@@ -14,6 +14,7 @@ class Product extends Model
         'sale_price',
         'rating',
         'description',
+        'additional_info',
         'slug',
     ];
 }

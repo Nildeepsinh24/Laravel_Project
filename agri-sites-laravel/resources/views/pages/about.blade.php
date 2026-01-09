@@ -49,7 +49,7 @@
                                 </div>
                             </div>
                         </div>
-                        <button type="button" class="btn btn-md shop-btn mt-4 btnefct-2" data-hover="Click me!"><a href="#">Explore More &nbsp;<i class="bi bi-arrow-right-circle-fill"></i></a></button>
+                        <button type="button" class="btn btn-md shop-btn mt-4 btnefct-2" data-hover="Click me!"><a href="{{ route('services') }}">Explore More &nbsp;<i class="bi bi-arrow-right-circle-fill"></i></a></button>
                     </div>
                 </div>
             </div>

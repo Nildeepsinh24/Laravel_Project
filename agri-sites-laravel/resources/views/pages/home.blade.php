@@ -12,7 +12,7 @@
                     <div class="hiro-cnct-btn">
                         <h6 class="hiro-headsix">100% Natural Food</h6>
                         <h1 class="hiro-head-one">Choose the best healthier way of life</h1>
-                        <button type="button" class="btn btn-md hiro-btn btnefct"><a href="#">Explore Now &nbsp;<i class="bi bi-arrow-right-circle-fill"></i></a></button>
+                        <button type="button" class="btn btn-md hiro-btn btnefct"><a href="{{ route('shop') }}">Explore Now &nbsp;<i class="bi bi-arrow-right-circle-fill"></i></a></button>
                     </div>
                 </div>
                 <div class="col-md-6 hiro-bgimg">
@@ -86,7 +86,7 @@
                                 </div>
                             </div>
                         </div>
-                        <button type="button" class="btn btn-md shop-btn btnefct-2" data-hover="Click me!"><a href="{{ route('shop.single') }}">Shop Now &nbsp;<i class="bi bi-arrow-right-circle-fill"></i></a></button>
+                        <button type="button" class="btn btn-md shop-btn btnefct-2" data-hover="Click me!"><a href="{{ route('shop') }}">Shop Now &nbsp;<i class="bi bi-arrow-right-circle-fill"></i></a></button>
                     </div>
                 </div>
             </div>
@@ -98,206 +98,31 @@
             <div class="row card-row-section">
                 <h2 class="ctcgry-head" data-aos="fade-up" data-aos-duration="1000">Categories</h2>
                 <h1 class="oupd" data-aos="fade-up" data-aos-duration="2000">Our Products</h1>
+                @foreach($products as $product)
                 <div class="col-md-3 card-cl-one card-cl-mt" data-aos="fade-up" data-aos-duration="1000">
-                    <a href="{{ route('shop.single') }}">
+                    <a href="{{ route('shop.single', $product->slug) }}">
                         <div class="card section-3-card-main">
                             <div class="card-body">
-                                <span class="card-title ctone">Vegetable</span>
-                                <img src="{{ $asset }}/card-7.png" class="img-fluid c-i-7" alt="Calabrese Broccoli">
-                                <h6 class="card-text crd-hsix">Calabrese Broccoli</h6>
+                                <span class="card-title ctone">{{ $product->category }}</span>
+                                <img src="{{ $asset }}/{{ $product->image }}" class="img-fluid c-i-7" alt="{{ $product->name }}">
+                                <h6 class="card-text crd-hsix">{{ $product->name }}</h6>
                                 <hr class="hr hrsprt" />
                                 <div class="ftr-dv">
                                     <div class="cf-h">
-                                        <h6 class="card-text d-text"><del>$20.00</del></h6>
-                                        <h6 class="card-text r-text">$13.00</h6>
+                                        <h6 class="card-text d-text"><del>${{ number_format($product->original_price, 2) }}</del></h6>
+                                        <h6 class="card-text r-text">${{ number_format($product->sale_price, 2) }}</h6>
                                     </div>
                                     <div class="star">
+                                        @for($i = 0; $i < $product->rating; $i++)
                                         <i class="bi bi-star-fill"></i>
-                                        <i class="bi bi-star-fill"></i>
-                                        <i class="bi bi-star-fill"></i>
-                                        <i class="bi bi-star-fill"></i>
-                                        <i class="bi bi-star-fill"></i>
+                                        @endfor
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </a>
                 </div>
-                <div class="col-md-3 card-cl-two card-cl-mt" data-aos="fade-up" data-aos-duration="1000">
-                    <a href="{{ route('shop.single') }}">
-                        <div class="card section-3-card-main">
-                            <div class="card-body">
-                                <span class="card-title ctone">Fresh</span>
-                                <img src="{{ $asset }}/card-6.png" class="img-fluid" alt="Fresh Banana">
-                                <h6 class="card-text crd-hsix">Fresh Banana Fruites</h6>
-                                <hr class="hr hrsprt" />
-                                <div class="ftr-dv">
-                                    <div class="cf-h">
-                                        <h6 class="card-text d-text"><del>$20.00</del></h6>
-                                        <h6 class="card-text r-text">$14.00</h6>
-                                    </div>
-                                    <div class="star">
-                                        <i class="bi bi-star-fill"></i>
-                                        <i class="bi bi-star-fill"></i>
-                                        <i class="bi bi-star-fill"></i>
-                                        <i class="bi bi-star-fill"></i>
-                                        <i class="bi bi-star-fill"></i>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-                <div class="col-md-3 card-cl-three card-cl-mt" data-aos="fade-up" data-aos-duration="1000">
-                    <a href="{{ route('shop.single') }}">
-                        <div class="card section-3-card-main">
-                            <div class="card-body">
-                                <span class="card-title ctone">Millets</span>
-                                <img src="{{ $asset }}/card-5.png" class="img-fluid c-5-r" alt="White Nuts">
-                                <h6 class="card-text crd-hsix">White Nuts</h6>
-                                <hr class="hr hrsprt" />
-                                <div class="ftr-dv">
-                                    <div class="cf-h">
-                                        <h6 class="card-text d-text"><del>$20.00</del></h6>
-                                        <h6 class="card-text r-text">$15.00</h6>
-                                    </div>
-                                    <div class="star">
-                                        <i class="bi bi-star-fill"></i>
-                                        <i class="bi bi-star-fill"></i>
-                                        <i class="bi bi-star-fill"></i>
-                                        <i class="bi bi-star-fill"></i>
-                                        <i class="bi bi-star-fill"></i>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-                <div class="col-md-3 card-cl-four card-cl-mt" data-aos="fade-up" data-aos-duration="1000">
-                    <a href="{{ route('shop.single') }}">
-                        <div class="card section-3-card-main">
-                            <div class="card-body">
-                                <span class="card-title ctone">Vegetable</span>
-                                <img src="{{ $asset }}/card-4.png" class="img-fluid ottre" alt="Tomato">
-                                <h6 class="card-text crd-hsix">Vegan Red Tomato</h6>
-                                <hr class="hr hrsprt" />
-                                <div class="ftr-dv">
-                                    <div class="cf-h">
-                                        <h6 class="card-text d-text"><del>$20.00</del></h6>
-                                        <h6 class="card-text r-text">$17.00</h6>
-                                    </div>
-                                    <div class="star">
-                                        <i class="bi bi-star-fill"></i>
-                                        <i class="bi bi-star-fill"></i>
-                                        <i class="bi bi-star-fill"></i>
-                                        <i class="bi bi-star-fill"></i>
-                                        <i class="bi bi-star-fill"></i>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-                <div class="col-md-3 card-cl-four card-cl-mt" data-aos="fade-up" data-aos-duration="1000">
-                    <a href="{{ route('shop.single') }}">
-                        <div class="card section-3-card-main">
-                            <div class="card-body">
-                                <span class="card-title ctone">Health</span>
-                                <img src="{{ $asset }}/card-8.png" class="img-fluid c-8mtmb" alt="Mung Bean">
-                                <h6 class="card-text crd-hsix">Mung Bean</h6>
-                                <hr class="hr hrsprt" />
-                                <div class="ftr-dv">
-                                    <div class="cf-h">
-                                        <h6 class="card-text d-text"><del>$20.00</del></h6>
-                                        <h6 class="card-text r-text">$11.00</h6>
-                                    </div>
-                                    <div class="star">
-                                        <i class="bi bi-star-fill"></i>
-                                        <i class="bi bi-star-fill"></i>
-                                        <i class="bi bi-star-fill"></i>
-                                        <i class="bi bi-star-fill"></i>
-                                        <i class="bi bi-star-fill"></i>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-                <div class="col-md-3 card-cl-four card-cl-mt" data-aos="fade-up" data-aos-duration="1000">
-                    <a href="{{ route('shop.single') }}">
-                        <div class="card section-3-card-main">
-                            <div class="card-body">
-                                <span class="card-title ctone">Nuts</span>
-                                <img src="{{ $asset }}/Photo__2_-removebg-preview.png" class="img-fluid c-8" alt="Brown Hazelnut">
-                                <h6 class="card-text crd-hsix">Brown Hazelnut</h6>
-                                <hr class="hr hrsprt" />
-                                <div class="ftr-dv">
-                                    <div class="cf-h">
-                                        <h6 class="card-text d-text"><del>$20.00</del></h6>
-                                        <h6 class="card-text r-text">$12.00</h6>
-                                    </div>
-                                    <div class="star">
-                                        <i class="bi bi-star-fill"></i>
-                                        <i class="bi bi-star-fill"></i>
-                                        <i class="bi bi-star-fill"></i>
-                                        <i class="bi bi-star-fill"></i>
-                                        <i class="bi bi-star-fill"></i>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-                <div class="col-md-3 card-cl-four card-cl-mt" data-aos="fade-up" data-aos-duration="1000">
-                    <a href="{{ route('shop.single') }}">
-                        <div class="card section-3-card-main">
-                            <div class="card-body">
-                                <span class="card-title ctone">Fresh</span>
-                                <img src="{{ $asset }}/Photo-removebg-preview.png" class="img-fluid c-7" alt="Eggs">
-                                <h6 class="card-text crd-hsix">Eggs</h6>
-                                <hr class="hr hrsprt" />
-                                <div class="ftr-dv">
-                                    <div class="cf-h">
-                                        <h6 class="card-text d-text"><del>$20.00</del></h6>
-                                        <h6 class="card-text r-text">$17.00</h6>
-                                    </div>
-                                    <div class="star">
-                                        <i class="bi bi-star-fill"></i>
-                                        <i class="bi bi-star-fill"></i>
-                                        <i class="bi bi-star-fill"></i>
-                                        <i class="bi bi-star-fill"></i>
-                                        <i class="bi bi-star-fill"></i>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-                <div class="col-md-3 card-cl-four card-cl-mt" data-aos="fade-up" data-aos-duration="1000">
-                    <a href="{{ route('shop.single') }}">
-                        <div class="card section-3-card-main">
-                            <div class="card-body">
-                                <span class="card-title ctone">Fresh</span>
-                                <img src="{{ $asset }}/Photo__1_-removebg-preview.png" class="img-fluid crd-8" alt="Rusk">
-                                <h6 class="card-text crd-hsix">Zelco Suji Elaichi Rusk</h6>
-                                <hr class="hr hrsprt" />
-                                <div class="ftr-dv">
-                                    <div class="cf-h">
-                                        <h6 class="card-text d-text"><del>$20.00</del></h6>
-                                        <h6 class="card-text r-text">$15.00</h6>
-                                    </div>
-                                    <div class="star">
-                                        <i class="bi bi-star-fill"></i>
-                                        <i class="bi bi-star-fill"></i>
-                                        <i class="bi bi-star-fill"></i>
-                                        <i class="bi bi-star-fill"></i>
-                                        <i class="bi bi-star-fill"></i>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </a>
-                </div>
+                @endforeach
                 <p class="text-center mt-3">
                     <button type="button" class="btn btn-md shop-btn btnefct-2" data-hover="Click me!"><a href="{{ route('shop') }}">Load More &nbsp;<i class="bi bi-arrow-right-circle-fill"></i></a></button>
                 </p>
@@ -377,106 +202,31 @@
                     </p>
                 </div>
             </div>
+            @foreach($products->take(4) as $product)
             <div class="col-md-3 set-cl-1" data-aos="fade-up" data-aos-duration="1000">
-                <a href="{{ route('shop.single') }}">
+                <a href="{{ route('shop.single', $product->slug) }}">
                     <div class="card section-3-card-main">
                         <div class="card-body">
-                            <span class="card-title ctone">Vegetable</span>
-                            <img src="{{ $asset }}/sec-c-2.png" class="img-fluid crd-8-1" alt="Mung Bean">
-                            <h6 class="card-text crd-hsix">Mung Bean</h6>
+                            <span class="card-title ctone">{{ $product->category }}</span>
+                            <img src="{{ $asset }}/{{ $product->image }}" class="img-fluid crd-8-1" alt="{{ $product->name }}">
+                            <h6 class="card-text crd-hsix">{{ $product->name }}</h6>
                             <hr class="hr hrsprt" />
                             <div class="ftr-dv">
                                 <div class="cf-h">
-                                    <h6 class="card-text d-text"><del>$20.00</del></h6>
-                                    <h6 class="card-text r-text">$11.00</h6>
+                                    <h6 class="card-text d-text"><del>${{ number_format($product->original_price, 2) }}</del></h6>
+                                    <h6 class="card-text r-text">${{ number_format($product->sale_price, 2) }}</h6>
                                 </div>
                                 <div class="star">
+                                    @for($i = 0; $i < $product->rating; $i++)
                                     <i class="bi bi-star-fill"></i>
-                                    <i class="bi bi-star-fill"></i>
-                                    <i class="bi bi-star-fill"></i>
-                                    <i class="bi bi-star-fill"></i>
-                                    <i class="bi bi-star-fill"></i>
+                                    @endfor
                                 </div>
                             </div>
                         </div>
                     </div>
                 </a>
             </div>
-            <div class="col-md-3 set-cl-1" data-aos="fade-up" data-aos-duration="1000">
-                <a href="{{ route('shop.single') }}">
-                    <div class="card section-3-card-main">
-                        <div class="card-body">
-                            <span class="card-title ctone">Vegetable</span>
-                            <img src="{{ $asset }}/sec-c-1.png" class="img-fluid crd-8-2" alt="Brown Hazelnut">
-                            <h6 class="card-text crd-hsix">Brown Hazelnut</h6>
-                            <hr class="hr hrsprt" />
-                            <div class="ftr-dv">
-                                <div class="cf-h">
-                                    <h6 class="card-text d-text"><del>$20.00</del></h6>
-                                    <h6 class="card-text r-text">$12.00</h6>
-                                </div>
-                                <div class="star">
-                                    <i class="bi bi-star-fill"></i>
-                                    <i class="bi bi-star-fill"></i>
-                                    <i class="bi bi-star-fill"></i>
-                                    <i class="bi bi-star-fill"></i>
-                                    <i class="bi bi-star-fill"></i>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </a>
-            </div>
-            <div class="col-md-3 set-cl-1" data-aos="fade-up" data-aos-duration="1000">
-                <a href="{{ route('shop.single') }}">
-                    <div class="card section-3-card-main">
-                        <div class="card-body">
-                            <span class="card-title ctone">Vegetable</span>
-                            <img src="{{ $asset }}/sec-c-3.png" class="img-fluid crd-8" alt="Onion">
-                            <h6 class="card-text crd-hsix">Onion</h6>
-                            <hr class="hr hrsprt" />
-                            <div class="ftr-dv">
-                                <div class="cf-h">
-                                    <h6 class="card-text d-text"><del>$20.00</del></h6>
-                                    <h6 class="card-text r-text">$17.00</h6>
-                                </div>
-                                <div class="star">
-                                    <i class="bi bi-star-fill"></i>
-                                    <i class="bi bi-star-fill"></i>
-                                    <i class="bi bi-star-fill"></i>
-                                    <i class="bi bi-star-fill"></i>
-                                    <i class="bi bi-star-fill"></i>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </a>
-            </div>
-            <div class="col-md-3 set-cl-1" data-aos="fade-up" data-aos-duration="1000">
-                <a href="{{ route('shop.single') }}">
-                    <div class="card section-3-card-main">
-                        <div class="card-body">
-                            <span class="card-title ctone">Vegetable</span>
-                            <img src="{{ $asset }}/sec-c-4.png" class="img-fluid crd-8" alt="Cabbage">
-                            <h6 class="card-text crd-hsix">Cabbage</h6>
-                            <hr class="hr hrsprt" />
-                            <div class="ftr-dv">
-                                <div class="cf-h">
-                                    <h6 class="card-text d-text"><del>$20.00</del></h6>
-                                    <h6 class="card-text r-text">$17.00</h6>
-                                </div>
-                                <div class="star">
-                                    <i class="bi bi-star-fill"></i>
-                                    <i class="bi bi-star-fill"></i>
-                                    <i class="bi bi-star-fill"></i>
-                                    <i class="bi bi-star-fill"></i>
-                                    <i class="bi bi-star-fill"></i>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </a>
-            </div>
+            @endforeach
             <p class="text-center spbtns5 spbtns5-dn mt-4">
                 <button type="button" class="btn btn-md shop-btn-s5 btnefct"><a href="{{ route('shop') }}">View All Product &nbsp;<i class="bi bi-arrow-right-circle-fill"></i></a></button>
             </p>
@@ -514,17 +264,17 @@
             <div class="row s7-row">
                 <div class="col-md-4 cl-s7-one">
                     <div class="s7-bg-1" data-aos="fade-up" data-aos-duration="1000">
-                        <button type="button" class="btn btn-md s7-btn"><a href="#">Organic Juice</a></button>
+                        <button type="button" class="btn btn-md s7-btn"><a href="{{ route('shop') }}">Organic Juice</a></button>
                     </div>
                 </div>
                 <div class="col-md-4 cl-s7-two">
                     <div class="s7-bg-2" data-aos="fade-up" data-aos-duration="1500">
-                        <button type="button" class="btn btn-md s7-btn"><a href="#">Organic Food</a></button>
+                        <button type="button" class="btn btn-md s7-btn"><a href="{{ route('shop') }}">Organic Food</a></button>
                     </div>
                 </div>
                 <div class="col-md-4 cl-s7-three">
                     <div class="s7-bg-3" data-aos="fade-up" data-aos-duration="2000">
-                        <button type="button" class="btn btn-md s7-btn"><a href="#">Nuts Cookis</a></button>
+                        <button type="button" class="btn btn-md s7-btn"><a href="{{ route('shop') }}">Nuts Cookis</a></button>
                     </div>
                 </div>
             </div>
@@ -554,7 +304,7 @@
                         <div class="s8-pcnct">
                             <p class="s8-pm-pera"><span class="people-s8icn"><i class="bi bi-person-fill"></i></span> &nbsp; By Rachi Card</p>
                             <div class="sec-8-cnct-one-pss8">
-                                <h5 class="cnct-one-h">The Benefits of Vitamin D & How to Get It</h5>
+                                <h5 class="cnct-one-h"><a href="{{ route('blog.single') }}" class="text-decoration-none text-dark">The Benefits of Vitamin D & How to Get It</a></h5>
                                 <p class="cnct-one-pss8">Simply dummy text of the printing and typesetting industry. Lorem Ipsum</p>
                             </div>
                             <button type="button" class="btn btn-md shop-btn-s5 btnefct"><a href="{{ route('blog.single') }}">Read More &nbsp;<i class="bi bi-arrow-right-circle-fill"></i></a></button>
@@ -570,7 +320,7 @@
                         <div class="s8-pcnct">
                             <p class="s8-pm-pera"><span class="people-s8icn"><i class="bi bi-person-fill"></i></span> &nbsp; By Rachi Card</p>
                             <div class="sec-8-cnct-one-pss8">
-                                <h5 class="cnct-one-h">Our Favourite Summertime Tommeto</h5>
+                                <h5 class="cnct-one-h"><a href="{{ route('blog.single') }}" class="text-decoration-none text-dark">Our Favourite Summertime Tommeto</a></h5>
                                 <p class="cnct-one-pss8">Simply dummy text of the printing and typesetting industry. Lorem Ipsum</p>
                             </div>
                             <button type="button" class="btn btn-md shop-btn-s5 btnefct"><a href="{{ route('blog.single') }}">Read More &nbsp;<i class="bi bi-arrow-right-circle-fill"></i></a></button>

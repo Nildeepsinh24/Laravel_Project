@@ -4,10 +4,14 @@
             <h1 class="s-9-h-one">Subscribe to our Newsletter</h1>
         </div>
         <div class="col-md-6 s-9-itp-main">
-            <div class="input-group i-b-hendle">
-                <input type="text" placeholder="Your Email Address" class="form-control f-hendle" required>
+            @if(session('newsletter_status'))
+                <div class="alert alert-success mb-2">{{ session('newsletter_status') }}</div>
+            @endif
+            <form method="POST" action="{{ route('newsletter.subscribe') }}" class="input-group i-b-hendle">
+                @csrf
+                <input type="email" name="email" placeholder="Your Email Address" class="form-control f-hendle" required>
                 <button type="submit" class="btn btn-lg s-9btn">Subscribe</button>
-            </div>
+            </form>
         </div>
     </div>
 </div>

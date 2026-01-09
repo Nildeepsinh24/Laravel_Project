@@ -20,6 +20,7 @@ return new class extends Migration
             $table->decimal('sale_price', 10, 2);
             $table->integer('rating')->default(5);
             $table->text('description')->nullable();
+            $table->text('additional_info')->nullable();
             $table->string('slug')->unique();
             $table->timestamps();
         });

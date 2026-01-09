@@ -3,13 +3,15 @@
 namespace App\Http\Controllers;
 
 use App\Models\Product;
+use Illuminate\Http\Request;
 use Illuminate\View\View;
 
 class PagesController extends Controller
 {
     public function home(): View
     {
-        return view('pages.home');
+        $products = Product::take(8)->get();
+        return view('pages.home', compact('products'));
     }
 
     public function about(): View
@@ -37,16 +39,27 @@ class PagesController extends Controller
         return view('pages.service-single');
     }
 
-    public function shop(): View
+    public function shop(Request $request): View
     {
-        $products = Product::all();
+        $q = trim((string) $request->input('q', ''));
+        $query = Product::query();
+        if ($q !== '') {
+            $query->where(function ($sub) use ($q) {
+                $sub->where('name', 'like', "%$q%")
+                    ->orWhere('category', 'like', "%$q%")
+                    ->orWhere('description', 'like', "%$q%")
+                    ->orWhere('additional_info', 'like', "%$q%");
+            });
+        }
+        $products = $query->get();
         return view('pages.shop', compact('products'));
     }
 
     public function shopSingle($slug): View
     {
         $product = Product::where('slug', $slug)->firstOrFail();
-        return view('pages.shop-single', compact('product'));
+        $relatedProducts = Product::where('id', '!=', $product->id)->take(4)->get();
+        return view('pages.shop-single', compact('product', 'relatedProducts'));
     }
 
     public function contact(): View
@@ -84,6 +97,12 @@ class PagesController extends Controller
         return view('pages.password-protect');
     }
 
+    public function passwordSubmit(Request $request)
+    {
+        $request->validate(['password' => 'required|string']);
+        return redirect()->route('password')->with('status', 'Password submitted (demo)');
+    }
+
     public function licenses(): View
     {
         return view('pages.licenses');
@@ -92,5 +111,12 @@ class PagesController extends Controller
     public function changelog(): View
     {
         return view('pages.changelog');
+    }
+
+    public function newsletterSubscribe(Request $request)
+    {
+        $data = $request->validate(['email' => 'required|email']);
+        // In a real app, store $data['email'] or send to a provider.
+        return back()->with('newsletter_status', 'Thanks for subscribing!');
     }
 }

@@ -15,9 +15,21 @@
 
     <section id="card-section">
         <div class="container">
+            @if(request('q'))
+            <div class="row mb-3">
+                <div class="col">
+                    <p class="text-muted">Search results for "{{ request('q') }}" ({{ $products->count() }})</p>
+                </div>
+            </div>
+            @endif
             <div class="row card-row-section">
-                @foreach($products as $product)
-                <div class="col-md-3 card-cl-four card-cl-mt" data-aos="fade-up" data-aos-duration="1000">
+                @forelse($products as $index => $product)
+                <div class="col-md-3 @switch($index % 4)
+                    @case(0)card-cl-one@break
+                    @case(1)card-cl-two@break
+                    @case(2)card-cl-three@break
+                    @case(3)card-cl-four@break
+                @endswitch card-cl-mt" data-aos="fade-up" data-aos-duration="1000">
                     <a href="{{ route('shop.single', $product->slug) }}">
                         <div class="card section-3-card-main">
                             <div class="card-body">
@@ -40,7 +52,11 @@
                         </div>
                     </a>
                 </div>
-                @endforeach
+                @empty
+                <div class="col-12">
+                    <p class="text-muted">No products found.</p>
+                </div>
+                @endforelse
             </div>
         </div>
     </section>

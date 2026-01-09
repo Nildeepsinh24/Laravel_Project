@@ -20,10 +20,14 @@
             </div>
 
             <div class="col-md-9 cl-nine" data-aos="fade-up" data-aos-duration="1000">
-                <form action="#">
+                <form method="POST" action="{{ route('password.submit') }}">
+                    @csrf
+                    @if(session('status'))
+                        <div class="alert alert-success">{{ session('status') }}</div>
+                    @endif
                     <label class="lable-text">Password</label>
-                    <input type="password" placeholder="Enter Your Password" class="form-control allbt-none" required />
-                    <button type="submit" class="btn btn-md shop-btn btnefct-2" data-hover="Click me!"><a href="#">Send Now &nbsp;<i class="bi bi-arrow-right-circle-fill"></i></a></button>
+                    <input type="password" name="password" placeholder="Enter Your Password" class="form-control allbt-none" required />
+                    <button type="submit" class="btn btn-md shop-btn btnefct-2" data-hover="Click me!">Send Now &nbsp;<i class="bi bi-arrow-right-circle-fill"></i></button>
                 </form>
             </div>
         </div>

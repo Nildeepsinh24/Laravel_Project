@@ -26,7 +26,7 @@
                             <div class="s8-pcnct">
                                 <p class="s8-pm-pera"><span class="people-s8icn"><i class="bi bi-person-fill"></i></span> &nbsp; By Rachi Card</p>
                                 <div class="sec-8-cnct-one-pss8">
-                                    <h5 class="cnct-one-h">The Benefits of Vitamin D &amp; How to Get It</h5>
+                                    <h5 class="cnct-one-h"><a href="{{ route('blog.single') }}" class="text-decoration-none text-dark">The Benefits of Vitamin D &amp; How to Get It</a></h5>
                                     <p class="cnct-one-pss8">Simply dummy text of the printing and typesetting industry. Lorem Ipsum</p>
                                 </div>
                                 <button type="button" class="btn btn-md shop-btn-s5 rcnt-btn-smpl"><a href="{{ route('blog.single') }}">Read More &nbsp;<i class="bi bi-arrow-right-circle-fill"></i></a></button>
@@ -43,7 +43,7 @@
                             <div class="s8-pcnct">
                                 <p class="s8-pm-pera"><span class="people-s8icn"><i class="bi bi-person-fill"></i></span> &nbsp; By Rachi Card</p>
                                 <div class="sec-8-cnct-one-pss8">
-                                    <h5 class="cnct-one-h">Our Favourite Summertime Tommeto</h5>
+                                    <h5 class="cnct-one-h"><a href="{{ route('blog.single') }}" class="text-decoration-none text-dark">Our Favourite Summertime Tommeto</a></h5>
                                     <p class="cnct-one-pss8">Simply dummy text of the printing and typesetting industry. Lorem Ipsum</p>
                                 </div>
                                 <button type="button" class="btn btn-md shop-btn-s5 rcnt-btn-smpl"><a href="{{ route('blog.single') }}">Read More &nbsp;<i class="bi bi-arrow-right-circle-fill"></i></a></button>
@@ -60,7 +60,7 @@
                             <div class="s8-pcnct">
                                 <p class="s8-pm-pera"><span class="people-s8icn"><i class="bi bi-person-fill"></i></span> &nbsp; By Rachi Card</p>
                                 <div class="sec-8-cnct-one-pss8">
-                                    <h5 class="cnct-one-h">The Benefits of Vitamin C &amp; How to Get It</h5>
+                                    <h5 class="cnct-one-h"><a href="{{ route('blog.single') }}" class="text-decoration-none text-dark">The Benefits of Vitamin C &amp; How to Get It</a></h5>
                                     <p class="cnct-one-pss8">Simply dummy text of the printing and typesetting industry. Lorem Ipsum</p>
                                 </div>
                                 <button type="button" class="btn btn-md shop-btn-s5 rcnt-btn-smpl"><a href="{{ route('blog.single') }}">Read More &nbsp;<i class="bi bi-arrow-right-circle-fill"></i></a></button>
@@ -77,7 +77,7 @@
                             <div class="s8-pcnct">
                                 <p class="s8-pm-pera"><span class="people-s8icn"><i class="bi bi-person-fill"></i></span> &nbsp; By Rachi Card</p>
                                 <div class="sec-8-cnct-one-pss8">
-                                    <h5 class="cnct-one-h">Research More Organic Foods</h5>
+                                    <h5 class="cnct-one-h"><a href="{{ route('blog.single') }}" class="text-decoration-none text-dark">Research More Organic Foods</a></h5>
                                     <p class="cnct-one-pss8">Simply dummy text of the printing and typesetting industry. Lorem Ipsum</p>
                                 </div>
                                 <button type="button" class="btn btn-md shop-btn-s5 rcnt-btn-smpl"><a href="{{ route('blog.single') }}">Read More &nbsp;<i class="bi bi-arrow-right-circle-fill"></i></a></button>
@@ -94,7 +94,7 @@
                             <div class="s8-pcnct">
                                 <p class="s8-pm-pera"><span class="people-s8icn"><i class="bi bi-person-fill"></i></span> &nbsp; By Rachi Card</p>
                                 <div class="sec-8-cnct-one-pss8">
-                                    <h5 class="cnct-one-h">Everyday Fresh Fruites</h5>
+                                    <h5 class="cnct-one-h"><a href="{{ route('blog.single') }}" class="text-decoration-none text-dark">Everyday Fresh Fruites</a></h5>
                                     <p class="cnct-one-pss8">Simply dummy text of the printing and typesetting industry. Lorem Ipsum</p>
                                 </div>
                                 <button type="button" class="btn btn-md shop-btn-s5 rcnt-btn-smpl"><a href="{{ route('blog.single') }}">Read More &nbsp;<i class="bi bi-arrow-right-circle-fill"></i></a></button>
@@ -111,7 +111,7 @@
                             <div class="s8-pcnct">
                                 <p class="s8-pm-pera"><span class="people-s8icn"><i class="bi bi-person-fill"></i></span> &nbsp; By Rachi Card</p>
                                 <div class="sec-8-cnct-one-pss8">
-                                    <h5 class="cnct-one-h">Don’t Use Plastic Product! it’s Kill Nature</h5>
+                                    <h5 class="cnct-one-h"><a href="{{ route('blog.single') }}" class="text-decoration-none text-dark">Don’t Use Plastic Product! it’s Kill Nature</a></h5>
                                     <p class="cnct-one-pss8">Simply dummy text of the printing and typesetting industry. Lorem Ipsum</p>
                                 </div>
                                 <button type="button" class="btn btn-md shop-btn-s5 rcnt-btn-smpl"><a href="{{ route('blog.single') }}">Read More &nbsp;<i class="bi bi-arrow-right-circle-fill"></i></a></button>

@@ -14,100 +14,36 @@
     </section>
 
     <div class="container portfolio-content-main">
-        <div class="row prtflo-row mt-5">
-            <div class="col-md-4 prtofl-clm-cnct-one">
-                <a href="{{ route('portfolio.single') }}">
-                    <div class="card portcard">
-                        <div class="hvrefcimg">
-                            <div class="wht-bg-mn">
-                                <div class="brs-hvr"><i class="bi bi-chevron-right"></i></div>
-                            </div>
-                        </div>
-                        <div class="card-body prtflo-c-bdy">
-                            <p class="p-c-s-one">Green &amp; Tasty Lemon</p>
-                            <p class="p-c-s-two">Fruits</p>
-                        </div>
-                    </div>
-                </a>
-            </div>
-            <div class="col-md-4 prtofl-clm-cnct-two">
-                <a href="{{ route('portfolio.single') }}">
-                    <div class="card portcard">
-                        <div class="hvrefcimg pimg-two-sec">
-                            <div class="wht-bg-mn">
-                                <div class="brs-hvr"><i class="bi bi-chevron-right"></i></div>
-                            </div>
-                        </div>
-                        <div class="card-body prtflo-c-bdy">
-                            <p class="p-c-s-one">Organic Carrot</p>
-                            <p class="p-c-s-two">Farmer</p>
-                        </div>
-                    </div>
-                </a>
-            </div>
-            <div class="col-md-4 prtofl-clm-cnct-three">
-                <a href="{{ route('portfolio.single') }}">
-                    <div class="card portcard">
-                        <div class="hvrefcimg pimg-three-thrd">
-                            <div class="wht-bg-mn">
-                                <div class="brs-hvr"><i class="bi bi-chevron-right"></i></div>
-                            </div>
-                        </div>
-                        <div class="card-body prtflo-c-bdy">
-                            <p class="p-c-s-one">Organic Betel Leaf</p>
-                            <p class="p-c-s-two">Leaf</p>
-                        </div>
-                    </div>
-                </a>
+        <div class="row mt-4">
+            <div class="col d-flex gap-2 align-items-center flex-wrap">
+                <a href="{{ route('portfolio') }}" class="btn btn-sm {{ empty($category) ? 'btn-success' : 'btn-outline-success' }}">All</a>
+                @foreach($categories as $cat)
+                    <a href="{{ route('portfolio', ['category' => $cat]) }}" class="btn btn-sm {{ $category === $cat ? 'btn-success' : 'btn-outline-success' }}">{{ $cat }}</a>
+                @endforeach
             </div>
         </div>
 
-        <div class="row prtflo-row">
-            <div class="col-md-4 prtofl-clm-cnct-one">
-                <a href="{{ route('portfolio.single') }}">
-                    <div class="card portcard">
-                        <div class="hvrefcimg pimg-four-fourth">
-                            <div class="wht-bg-mn">
-                                <div class="brs-hvr"><i class="bi bi-chevron-right"></i></div>
-                            </div>
-                        </div>
+        <div class="row prtflo-row mt-4">
+            @forelse($items as $idx => $item)
+            <div class="col-md-4 mb-4">
+                <a href="{{ route('portfolio.show', $item->slug) }}">
+                    <div class="card portcard h-100">
+                        <img src="{{ $asset }}/{{ $item->image }}" class="card-img-top" alt="{{ $item->title }}">
                         <div class="card-body prtflo-c-bdy">
-                            <p class="p-c-s-one">Natural Tommato</p>
-                            <p class="p-c-s-two">Fruits</p>
+                            <p class="p-c-s-one">{{ $item->title }}</p>
+                            <p class="p-c-s-two">{{ $item->category }}</p>
+                            @if($item->excerpt)
+                            <p class="text-muted small mb-0">{{ $item->excerpt }}</p>
+                            @endif
                         </div>
                     </div>
                 </a>
             </div>
-            <div class="col-md-4 prtofl-clm-cnct-two">
-                <a href="{{ route('portfolio.single') }}">
-                    <div class="card portcard">
-                        <div class="hvrefcimg pimg-five-fiveth">
-                            <div class="wht-bg-mn">
-                                <div class="brs-hvr"><i class="bi bi-chevron-right"></i></div>
-                            </div>
-                        </div>
-                        <div class="card-body prtflo-c-bdy">
-                            <p class="p-c-s-one">Black Raspberry</p>
-                            <p class="p-c-s-two">Farmer</p>
-                        </div>
-                    </div>
-                </a>
+            @empty
+            <div class="col-12">
+                <p class="text-muted">No portfolio items found.</p>
             </div>
-            <div class="col-md-4 prtofl-clm-cnct-three">
-                <a href="{{ route('portfolio.single') }}">
-                    <div class="card portcard">
-                        <div class="hvrefcimg pimg-six-sixth-img">
-                            <div class="wht-bg-mn">
-                                <div class="brs-hvr"><i class="bi bi-chevron-right"></i></div>
-                            </div>
-                        </div>
-                        <div class="card-body prtflo-c-bdy">
-                            <p class="p-c-s-one">Honey Orange</p>
-                            <p class="p-c-s-two">Farmer</p>
-                        </div>
-                    </div>
-                </a>
-            </div>
+            @endforelse
         </div>
     </div>
 

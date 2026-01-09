@@ -37,15 +37,15 @@
                 </li>
             </ul>
             <div class="df-media">
-                <div class="input-group flex-nowrap header-inpt-cntrl">
-                    <input type="text" class="form-control brds-impt" placeholder="">
-                    <span class="input-group-text search-bar-head" id="addon-wrapping"><i class="bi bi-search"></i></span>
-                </div>
+                <form method="GET" action="{{ route('shop') }}" class="input-group flex-nowrap header-inpt-cntrl">
+                    <input type="text" name="q" value="{{ request('q') }}" class="form-control brds-impt" placeholder="Search products">
+                    <button class="input-group-text search-bar-head" id="addon-wrapping" type="submit"><i class="bi bi-search"></i></button>
+                </form>
 
-                <div class="cart">
+                <a href="{{ route('cart.index') }}" class="cart text-decoration-none ms-3">
                     <div class="icn-crt"><i class="bi bi-cart3"></i></div>
-                    <div class="cart-head">Cart(0)</div>
-                </div>
+                    <div class="cart-head">Cart({{ session('cart.total_qty', session('cart.total_qty') ?? (session('cart.items') ? collect(session('cart.items'))->sum('qty') : 0)) }})</div>
+                </a>
             </div>
         </div>
     </div>
