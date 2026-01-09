@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Product;
+use App\Models\Blog;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
 
@@ -72,9 +73,16 @@ class PagesController extends Controller
         return view('pages.blog-single');
     }
 
+    public function blogShow($slug): View
+    {
+        $blog = Blog::where('slug', $slug)->firstOrFail();
+        return view('pages.blog-show', compact('blog'));
+    }
+
     public function news(): View
     {
-        return view('pages.recent');
+        $blogs = Blog::where('published_at', '<=', now())->latest('published_at')->get();
+        return view('pages.news', compact('blogs'));
     }
 
     public function team(): View

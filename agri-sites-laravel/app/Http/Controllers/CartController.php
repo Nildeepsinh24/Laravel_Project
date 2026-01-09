@@ -17,35 +17,60 @@ class CartController extends Controller
 
     public function add(Request $request, string $slug)
     {
-        $product = Product::where('slug', $slug)->firstOrFail();
-        $qty = max(1, (int) $request->input('quantity', 1));
+        try {
+            $product = Product::where('slug', $slug)->firstOrFail();
+            $qty = max(1, (int) $request->input('quantity', 1));
 
-        $cart = $request->session()->get('cart', ['items' => [], 'total_qty' => 0, 'total_price' => 0]);
+            $cart = $request->session()->get('cart', ['items' => [], 'total_qty' => 0, 'total_price' => 0]);
 
-        $key = (string) $product->id;
-        if (!isset($cart['items'][$key])) {
-            $cart['items'][$key] = [
-                'id' => $product->id,
-                'name' => $product->name,
-                'slug' => $product->slug,
-                'image' => $product->image,
-                'price' => (float) $product->sale_price,
-                'qty' => 0,
-            ];
+            $key = (string) $product->id;
+            if (!isset($cart['items'][$key])) {
+                $cart['items'][$key] = [
+                    'id' => $product->id,
+                    'name' => $product->name,
+                    'slug' => $product->slug,
+                    'image' => $product->image,
+                    'price' => (float) $product->sale_price,
+                    'qty' => 0,
+                ];
+            }
+
+            $cart['items'][$key]['qty'] += $qty;
+
+            // Recompute totals
+            $cart['total_qty'] = 0;
+            $cart['total_price'] = 0;
+            foreach ($cart['items'] as $item) {
+                $cart['total_qty'] += $item['qty'];
+                $cart['total_price'] += $item['qty'] * $item['price'];
+            }
+
+            $request->session()->put('cart', $cart);
+            
+            // Return JSON for AJAX requests
+            if ($request->wantsJson() || $request->header('X-Requested-With') === 'XMLHttpRequest') {
+                return response()->json([
+                    'success' => true,
+                    'product_name' => $product->name,
+                    'cart_count' => $cart['total_qty'],
+                    'cart_total' => number_format($cart['total_price'], 2),
+                    'message' => 'Added to cart successfully'
+                ]);
+            }
+            
+            return redirect()->route('cart.index')->with('status', 'Added to cart');
+        } catch (\Exception $e) {
+            \Log::error('Error adding to cart: ' . $e->getMessage());
+            
+            if ($request->wantsJson() || $request->header('X-Requested-With') === 'XMLHttpRequest') {
+                return response()->json([
+                    'success' => false,
+                    'message' => 'Error adding product to cart'
+                ], 500);
+            }
+            
+            return redirect()->back()->with('error', 'Error adding to cart');
         }
-
-        $cart['items'][$key]['qty'] += $qty;
-
-        // Recompute totals
-        $cart['total_qty'] = 0;
-        $cart['total_price'] = 0;
-        foreach ($cart['items'] as $item) {
-            $cart['total_qty'] += $item['qty'];
-            $cart['total_price'] += $item['qty'] * $item['price'];
-        }
-
-        $request->session()->put('cart', $cart);
-        return redirect()->route('cart.index')->with('status', 'Added to cart');
     }
 
     public function update(Request $request, string $slug)

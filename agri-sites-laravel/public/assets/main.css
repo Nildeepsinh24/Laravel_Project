@@ -354,6 +354,32 @@
     line-height: 0 !important;
     margin-top: 4%;
     border-radius: 10px !important;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 4px 15px rgba(39, 76, 91, 0.2);
+    position: relative;
+    overflow: hidden;
+    display: inline-block;
+}
+
+.shop-btn::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: left 0.6s ease;
+}
+
+.shop-btn:hover {
+    background: #68A47F !important;
+    transform: translateY(-4px);
+    box-shadow: 0 12px 30px rgba(104, 164, 127, 0.35), 0 6px 15px rgba(39, 76, 91, 0.25);
+}
+
+.shop-btn:hover::before {
+    left: 100%;
 }
 
 .shop-btn a {
@@ -362,6 +388,20 @@
     font-family: "Roboto", sans-serif;
     font-weight: 500;
     font-size: 12px;
+    position: relative;
+    z-index: 2;
+    display: flex;
+    align-items: center;
+}
+
+.shop-btn i {
+    display: inline-block;
+    margin-left: 8px;
+    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.shop-btn:hover i {
+    transform: translateX(4px) scale(1.1);
 }
 
 /* ===== content section2 End ===== */
@@ -3453,75 +3493,122 @@
 
 /* ==== btn-one =====  */
 
+/* ==== btn-one - Elegant Shadow & Scale ===== */
+
+.btnefct {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+}
+
 .btnefct:hover {
-    box-shadow: 8px 8px #68A47F;
-    transition: .3s;
+    transform: translateY(-3px);
+    box-shadow: 0 12px 24px rgba(39, 76, 91, 0.35), 0 6px 12px rgba(104, 164, 127, 0.25);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .btnefct a:hover {
-    color: #274C5B;
+    color: white;
 }
 
-/* ==== btn two ===== */
+/* ==== btn-two - Smooth Elevation & Glow ===== */
 
 .btnefct-1 {
-    box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
-    transition: all300ms ease;
+    box-shadow: 0 4px 15px rgba(39, 76, 91, 0.15);
+    transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+    position: relative;
+    overflow: hidden;
+}
+
+.btnefct-1::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    transition: width 0.6s, height 0.6s;
 }
 
 .btnefct-1:hover {
-    box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset,
-        rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset;
+    transform: translateY(-5px) scale(1.02);
+    box-shadow: 0 15px 35px rgba(39, 76, 91, 0.25), 0 8px 16px rgba(104, 164, 127, 0.2);
+}
+
+.btnefct-1:hover::before {
+    width: 300px;
+    height: 300px;
 }
 
 .btnefct-1 a:hover {
-    color: #274C5B;
+    color: white;
 }
 
-/* ==== btn three ====  */
+/* ==== btn-three - Smooth Slide with Icon Animation ===== */
 
 .btnefct-2 {
     position: relative;
     overflow: hidden;
+    background: #274C5B !important;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 4px 15px rgba(39, 76, 91, 0.2);
+}
 
-    &::before {
-        width: 0;
-        height: 4.5px;
-        position: absolute;
-        bottom: 0;
-        left: 0;
-        background-color: #274C5B;
-        transition: all 0.35s;
-        content: "";
-        z-index: 2;
-    }
+.btnefct-2::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+    transition: left 0.6s ease;
+    z-index: 1;
+}
 
-    &::after {
-        padding-top: 16%;
-        width: 100%;
-        height: 100%;
-        position: absolute;
-        top: 0;
-        left: 0;
-        color: #274C5B;
-        background-color: white;
-        transform: translate(0, -100%);
-        transition: all 0.35s;
-        content: attr(data-hover);
-        z-index: 1;
-        font-weight: 600;
-        font-size: 14px;
-    }
+.btnefct-2::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #68A47F;
+    transform: scaleX(0);
+    transform-origin: right;
+    transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    z-index: -1;
+}
 
-    &:hover {
-        &::before {
-            width: 100%;
-        }
+.btnefct-2:hover::before {
+    left: 100%;
+}
 
-        &::after {
-            transform: translate(0, 0);
-        }
-    }
+.btnefct-2:hover::after {
+    transform: scaleX(1);
+    transform-origin: left;
+}
+
+.btnefct-2:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 30px rgba(104, 164, 127, 0.35), 0 6px 15px rgba(39, 76, 91, 0.2);
+}
+
+.btnefct-2 a {
+    position: relative;
+    z-index: 2;
+}
+
+.btnefct-2 i {
+    display: inline-block;
+    margin-left: 8px;
+    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.btnefct-2:hover i {
+    transform: translateX(3px);
 }
 
 /* ==== btn four ====  */

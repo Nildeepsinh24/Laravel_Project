@@ -15,6 +15,7 @@ Route::controller(PagesController::class)->group(function () {
 	Route::get('/shop/{slug}', 'shopSingle')->name('shop.single');
 	Route::get('/contact', 'contact')->name('contact');
 	Route::get('/blog/single', 'blogSingle')->name('blog.single');
+	Route::get('/blog/{slug}', 'blogShow')->name('blog.show');
 	Route::get('/news', 'news')->name('news');
 	Route::get('/team', 'team')->name('team');
 	Route::get('/style-guide', 'styleGuide')->name('style-guide');

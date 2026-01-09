@@ -12,7 +12,7 @@
                     <div class="hiro-cnct-btn">
                         <h6 class="hiro-headsix">100% Natural Food</h6>
                         <h1 class="hiro-head-one">Choose the best healthier way of life</h1>
-                        <button type="button" class="btn btn-md hiro-btn btnefct"><a href="{{ route('shop') }}">Explore Now &nbsp;<i class="bi bi-arrow-right-circle-fill"></i></a></button>
+                        <a href="{{ route('shop') }}" class="btn btn-md hiro-btn btnefct">Explore Now &nbsp;<i class="bi bi-arrow-right-circle-fill"></i></a>
                     </div>
                 </div>
                 <div class="col-md-6 hiro-bgimg">
@@ -86,7 +86,7 @@
                                 </div>
                             </div>
                         </div>
-                        <button type="button" class="btn btn-md shop-btn btnefct-2" data-hover="Click me!"><a href="{{ route('shop') }}">Shop Now &nbsp;<i class="bi bi-arrow-right-circle-fill"></i></a></button>
+                        <a href="{{ route('shop') }}" class="btn btn-md shop-btn btnefct-2">Shop Now &nbsp;<i class="bi bi-arrow-right-circle-fill"></i></a>
                     </div>
                 </div>
             </div>
@@ -118,13 +118,16 @@
                                         @endfor
                                     </div>
                                 </div>
+                                <button type="button" class="btn btn-sm btn-success w-100 mt-2" onclick="addToCart(event, '{{ $product->slug }}')">
+                                    <i class="bi bi-cart-plus"></i> Add to Cart
+                                </button>
                             </div>
                         </div>
                     </a>
                 </div>
                 @endforeach
                 <p class="text-center mt-3">
-                    <button type="button" class="btn btn-md shop-btn btnefct-2" data-hover="Click me!"><a href="{{ route('shop') }}">Load More &nbsp;<i class="bi bi-arrow-right-circle-fill"></i></a></button>
+                    <a href="{{ route('shop') }}" class="btn btn-md shop-btn btnefct-2">Load More &nbsp;<i class="bi bi-arrow-right-circle-fill"></i></a>
                 </p>
             </div>
         </div>
@@ -198,7 +201,7 @@
                 </div>
                 <div class="col-md-2 p-0 dnbtn">
                     <p class="text-center spbtns5">
-                        <button type="button" class="btn btn-md shop-btn-s5 btnefct"><a href="{{ route('shop') }}">View All Product &nbsp;<i class="bi bi-arrow-right-circle-fill"></i></a></button>
+                        <a href="{{ route('shop') }}" class="btn btn-md shop-btn-s5 btnefct">View All Product &nbsp;<i class="bi bi-arrow-right-circle-fill"></i></a>
                     </p>
                 </div>
             </div>
@@ -222,13 +225,16 @@
                                     @endfor
                                 </div>
                             </div>
+                            <button type="button" class="btn btn-sm btn-success w-100 mt-2" onclick="addToCart(event, '{{ $product->slug }}')">
+                                <i class="bi bi-cart-plus"></i> Add to Cart
+                            </button>
                         </div>
                     </div>
                 </a>
             </div>
             @endforeach
             <p class="text-center spbtns5 spbtns5-dn mt-4">
-                <button type="button" class="btn btn-md shop-btn-s5 btnefct"><a href="{{ route('shop') }}">View All Product &nbsp;<i class="bi bi-arrow-right-circle-fill"></i></a></button>
+                <a href="{{ route('shop') }}" class="btn btn-md shop-btn-s5 btnefct">View All Product &nbsp;<i class="bi bi-arrow-right-circle-fill"></i></a>
             </p>
         </div>
     </div>
@@ -291,7 +297,7 @@
                     </div>
                     <div class="col-md-2 p-0 dnbtn">
                         <p class="text-center spbtns5">
-                            <button type="button" class="btn btn-md shops8-btns8-s8 btnefct-1"><a href="{{ route('news') }}">More News &nbsp;<i class="bi bi-arrow-right-circle-fill"></i></a></button>
+                            <a href="{{ route('news') }}" class="btn btn-md shops8-btns8-s8 btnefct-1 text-decoration-none">More News &nbsp;<i class="bi bi-arrow-right-circle-fill"></i></a>
                         </p>
                     </div>
                 </div>
@@ -328,7 +334,7 @@
                     </div>
                 </div>
                 <p class="text-center spbtns5-s8no">
-                    <button type="button" class="btn btn-md shops8-btns8-s8-none btnefct-1"><a href="{{ route('news') }}">More News &nbsp;<i class="bi bi-arrow-right-circle-fill"></i></a></button>
+                    <a href="{{ route('news') }}" class="btn btn-md shops8-btns8-s8-none btnefct-1 text-decoration-none">More News &nbsp;<i class="bi bi-arrow-right-circle-fill"></i></a>
                 </p>
             </div>
         </div>
@@ -336,3 +342,85 @@
 
     @include('partials.newsletter')
 @endsection
+
+@push('scripts')
+<script>
+function addToCart(event, slug) {
+    event.preventDefault();
+    event.stopPropagation();
+    
+    // Build the URL manually
+    const baseUrl = '{{ url("/") }}';
+    const url = baseUrl + '/cart/add/' + slug;
+    
+    // Get CSRF token
+    const csrfToken = document.querySelector('meta[name="csrf-token"]')?.getAttribute('content');
+    
+    // Build form data
+    const formData = new FormData();
+    formData.append('quantity', 1);
+    formData.append('_token', csrfToken);
+    
+    // Send AJAX request to add to cart
+    fetch(url, {
+        method: 'POST',
+        headers: {
+            'X-Requested-With': 'XMLHttpRequest',
+            'X-CSRF-TOKEN': csrfToken
+        },
+        body: formData
+    })
+    .then(response => {
+        if (!response.ok) {
+            throw new Error('Network response was not ok');
+        }
+        return response.json();
+    })
+    .then(data => {
+        if (data.success) {
+            // Show success message
+            const alert = document.createElement('div');
+            alert.className = 'alert alert-success alert-dismissible fade show';
+            alert.style.cssText = 'position: fixed; top: 100px; right: 20px; z-index: 9999; min-width: 300px; box-shadow: 0 4px 6px rgba(0,0,0,0.1);';
+            alert.innerHTML = `
+                <strong>✓ Added to Cart!</strong> ${data.product_name} has been added to your cart.
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            `;
+            document.body.appendChild(alert);
+            
+            // Auto-remove after 4 seconds
+            setTimeout(() => {
+                alert.remove();
+            }, 4000);
+            
+            // Update cart count if available
+            if (data.cart_count !== undefined) {
+                const cartBadge = document.querySelector('[data-cart-count]');
+                if (cartBadge) {
+                    cartBadge.textContent = data.cart_count;
+                }
+            }
+        } else {
+            throw new Error(data.message || 'Failed to add to cart');
+        }
+    })
+    .catch(error => {
+        console.error('Error details:', error);
+        
+        // Show error message
+        const alert = document.createElement('div');
+        alert.className = 'alert alert-danger alert-dismissible fade show';
+        alert.style.cssText = 'position: fixed; top: 100px; right: 20px; z-index: 9999; min-width: 300px; box-shadow: 0 4px 6px rgba(0,0,0,0.1);';
+        alert.innerHTML = `
+            <strong>✗ Error!</strong> Failed to add product to cart. Please try again.
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        `;
+        document.body.appendChild(alert);
+        
+        setTimeout(() => {
+            alert.remove();
+        }, 5000);
+    });
+}
+</script>
+@endpush
