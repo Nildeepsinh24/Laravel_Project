@@ -5,10 +5,31 @@
 @php $asset = asset('assets'); @endphp
 
 @section('content')
-<section id="about-hiro-section">
-    <div class="container-fluid p-0">
-        <div class="row shop-single-main-row">
-            <h1 class="abt-hiro-head">Checkout</h1>
+<!-- Checkout Hero Section -->
+<section class="checkout-hero">
+    <div class="checkout-hero-bg"></div>
+    <div class="checkout-hero-content">
+        <div class="container">
+            <div class="checkout-hero-wrapper">
+                <h1 class="checkout-hero-title">Secure Checkout</h1>
+                <p class="checkout-hero-subtitle">Complete your purchase safely and securely</p>
+                <div class="checkout-progress">
+                    <div class="progress-step active">
+                        <span class="step-number">1</span>
+                        <span class="step-label">Cart Review</span>
+                    </div>
+                    <div class="progress-connector"></div>
+                    <div class="progress-step active">
+                        <span class="step-number">2</span>
+                        <span class="step-label">Billing</span>
+                    </div>
+                    <div class="progress-connector"></div>
+                    <div class="progress-step">
+                        <span class="step-number">3</span>
+                        <span class="step-label">Payment</span>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </section>
@@ -149,6 +170,265 @@
         @endif
     </div>
 </section>
+
+<style>
+    /* Checkout Hero Section */
+    .checkout-hero {
+        position: relative;
+        padding: 4rem 0;
+        overflow: hidden;
+        background: #f8f9fa;
+    }
+
+    .checkout-hero-bg {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 400"><defs><pattern id="p" x="0" y="0" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="50" cy="50" r="30" fill="rgba(104,164,127,0.1)"/><path d="M50,20 L80,50 L50,80 L20,50 Z" stroke="rgba(255,107,107,0.1)" stroke-width="1" fill="none"/></pattern></defs><rect width="1200" height="400" fill="white"/><rect width="1200" height="400" fill="url(%23p)"/></svg>');
+        background-size: cover;
+        z-index: 0;
+    }
+
+    .checkout-hero-content {
+        position: relative;
+        z-index: 10;
+        color: #274C5B;
+    }
+
+    .checkout-hero-wrapper {
+        text-align: center;
+        animation: fadeInDown 0.8s ease-out;
+    }
+
+    .checkout-hero-title {
+        font-size: 2.5rem;
+        font-weight: 800;
+        margin-bottom: 0.5rem;
+        background: linear-gradient(135deg, #FF6B6B 0%, #FFA500 50%, #68A47F 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+    }
+
+    .checkout-hero-subtitle {
+        font-size: 1.1rem;
+        color: #666;
+        margin-bottom: 2rem;
+    }
+
+    .checkout-progress {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 2rem;
+        margin-top: 2.5rem;
+        max-width: 500px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .progress-step {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 0.5rem;
+        position: relative;
+    }
+
+    .step-number {
+        width: 40px;
+        height: 40px;
+        background: #f0f0f0;
+        border: 2px solid #ddd;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: 700;
+        color: #999;
+        transition: all 0.3s ease;
+    }
+
+    .progress-step.active .step-number {
+        background: linear-gradient(135deg, #68A47F 0%, #5a916d 100%);
+        color: white;
+        border-color: #68A47F;
+        box-shadow: 0 4px 15px rgba(104, 164, 127, 0.3);
+    }
+
+    .step-label {
+        font-size: 0.9rem;
+        color: #999;
+        font-weight: 600;
+        white-space: nowrap;
+    }
+
+    .progress-step.active .step-label {
+        color: #68A47F;
+        font-weight: 700;
+    }
+
+    .progress-connector {
+        width: 60px;
+        height: 2px;
+        background: #ddd;
+        margin: 0 1rem;
+    }
+
+    .progress-step.active ~ .progress-connector {
+        background: linear-gradient(90deg, #68A47F 0%, #5a916d 100%);
+    }
+
+    /* Checkout Form Styling */
+    .checkout-section .form-label {
+        font-weight: 700;
+        color: #274C5B;
+        margin-bottom: 0.5rem;
+        font-size: 0.95rem;
+    }
+
+    .checkout-section .form-control {
+        border: 2px solid #e0e0e0;
+        border-radius: 8px;
+        padding: 0.75rem;
+        transition: all 0.3s ease;
+    }
+
+    .checkout-section .form-control:focus {
+        border-color: #68A47F;
+        box-shadow: 0 0 0 0.2rem rgba(104, 164, 127, 0.15);
+    }
+
+    .checkout-section h3 {
+        color: #274C5B;
+        font-weight: 800;
+        position: relative;
+        padding-bottom: 1rem;
+        margin-bottom: 1.5rem;
+    }
+
+    .checkout-section h3::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 50px;
+        height: 4px;
+        background: linear-gradient(90deg, #FF6B6B 0%, #68A47F 100%);
+        border-radius: 2px;
+    }
+
+    .checkout-section h6 {
+        color: #274C5B;
+        font-weight: 700;
+    }
+
+    .checkout-section .form-check-label {
+        margin-left: 0.5rem;
+        font-weight: 500;
+        color: #555;
+        cursor: pointer;
+    }
+
+    .checkout-section .form-check-input {
+        border: 2px solid #ddd;
+        border-radius: 4px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+    }
+
+    .checkout-section .form-check-input:checked {
+        background-color: #68A47F;
+        border-color: #68A47F;
+    }
+
+    .checkout-section .card {
+        border-radius: 12px;
+        border: none;
+        position: sticky;
+        top: 20px;
+    }
+
+    .checkout-section .card-body {
+        border-radius: 12px;
+        background: linear-gradient(135deg, rgba(255, 255, 255, 0.9) 0%, rgba(240, 245, 242, 0.9) 100%);
+    }
+
+    .checkout-section .card h4 {
+        color: #274C5B;
+        font-weight: 800;
+        position: relative;
+        padding-bottom: 1rem;
+    }
+
+    .checkout-section .card h4::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 30px;
+        height: 3px;
+        background: linear-gradient(90deg, #FF6B6B 0%, #68A47F 100%);
+    }
+
+    .order-summary {
+        animation: fadeIn 0.6s ease-out 0.2s both;
+    }
+
+    .checkout-section .d-flex.justify-content-between {
+        color: #555;
+    }
+
+    .checkout-section .d-flex.justify-content-between strong {
+        color: #274C5B;
+    }
+
+    .checkout-section h5 {
+        color: #274C5B;
+    }
+
+    @keyframes fadeInDown {
+        from {
+            opacity: 0;
+            transform: translateY(-30px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    @keyframes fadeIn {
+        from {
+            opacity: 0;
+        }
+        to {
+            opacity: 1;
+        }
+    }
+
+    @media (max-width: 768px) {
+        .checkout-hero-title {
+            font-size: 1.8rem;
+        }
+
+        .checkout-progress {
+            gap: 0.5rem;
+            flex-wrap: wrap;
+        }
+
+        .progress-connector {
+            width: 30px;
+        }
+
+        .checkout-section .card {
+            position: static;
+            margin-top: 2rem;
+        }
+    }
+</style>
 @endsection
 
 @push('scripts')
