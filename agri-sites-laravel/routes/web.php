@@ -40,3 +40,10 @@ Route::post('/cart/clear', [CartController::class, 'clear'])->name('cart.clear')
 // Checkout routes
 Route::get('/checkout', [CartController::class, 'checkout'])->name('checkout');
 Route::post('/checkout/process', [CartController::class, 'processCheckout'])->name('checkout.process');
+Route::get('/order/{order}/confirmation', [CartController::class, 'showConfirmation'])->name('order.confirmation');
+Route::get('/order/{order}/print', [CartController::class, 'printBill'])->name('order.print');
+
+// Debug route
+Route::get('/debug', function() {
+    return view('pages.debug');
+})->name('debug');

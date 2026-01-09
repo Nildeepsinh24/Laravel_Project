@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Product;
+use App\Models\Order;
+use App\Models\OrderItem;
 use Illuminate\Http\Request;
 
 class CartController extends Controller
@@ -106,6 +108,8 @@ class CartController extends Controller
 
     public function processCheckout(Request $request)
     {
+        \Log::info('Checkout form submitted', $request->all());
+        
         $validated = $request->validate([
             'first_name' => 'required|string|max:255',
             'last_name' => 'required|string|max:255',
@@ -119,6 +123,8 @@ class CartController extends Controller
             'notes' => 'nullable|string',
             'payment_method' => 'required|in:cod,card',
         ]);
+        
+        \Log::info('Validation passed', $validated);
 
         $cart = $request->session()->get('cart', ['items' => [], 'total_qty' => 0, 'total_price' => 0]);
 
@@ -126,15 +132,49 @@ class CartController extends Controller
             return redirect()->route('cart.index')->with('status', 'Your cart is empty');
         }
 
-        // In a real application, you would:
-        // 1. Create an order record in the database
-        // 2. Process payment if needed
-        // 3. Send confirmation email
-        // 4. Update inventory
-        
-        // For now, we'll just clear the cart and show success
+        // Create order
+        $order = Order::create([
+            'order_number' => 'ORD-' . strtoupper(uniqid()),
+            'first_name' => $validated['first_name'],
+            'last_name' => $validated['last_name'],
+            'email' => $validated['email'],
+            'phone' => $validated['phone'],
+            'address' => $validated['address'],
+            'city' => $validated['city'],
+            'state' => $validated['state'],
+            'zip' => $validated['zip'],
+            'country' => $validated['country'],
+            'notes' => $validated['notes'],
+            'payment_method' => $validated['payment_method'],
+            'total_amount' => $cart['total_price'],
+            'status' => 'pending',
+        ]);
+
+        // Create order items
+        foreach ($cart['items'] as $item) {
+            OrderItem::create([
+                'order_id' => $order->id,
+                'product_name' => $item['name'],
+                'quantity' => $item['qty'],
+                'unit_price' => $item['price'],
+                'total_price' => $item['qty'] * $item['price'],
+            ]);
+        }
+
+        // Clear cart
         $request->session()->forget('cart');
-        
-        return redirect()->route('shop')->with('success', 'Order placed successfully! Order confirmation has been sent to ' . $validated['email']);
+
+        // Redirect to order confirmation
+        return redirect()->route('order.confirmation', $order->id);
+    }
+
+    public function showConfirmation(Order $order)
+    {
+        return view('pages.order-confirmation', compact('order'));
+    }
+
+    public function printBill(Order $order)
+    {
+        return view('pages.order-print', compact('order'));
     }
 }

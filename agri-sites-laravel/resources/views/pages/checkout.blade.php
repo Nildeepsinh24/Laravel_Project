@@ -19,9 +19,24 @@
             <div class="alert alert-success">{{ session('success') }}</div>
         @endif
 
+        @if($errors->any())
+            <div class="alert alert-danger">
+                <h5>Please fix the following errors:</h5>
+                <ul class="mb-0">
+                    @foreach($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+        @endif
+
         @if(empty($cart['items']))
-            <div class="text-center py-5">
-                <p>Your cart is empty. <a href="{{ route('shop') }}">Continue shopping</a>.</p>
+            <div class="alert alert-warning" style="max-width: 600px; margin: 30px auto;">
+                <h4>Your Cart is Empty</h4>
+                <p>You haven't added any products to your cart yet. Please add some products before proceeding to checkout.</p>
+                <a href="{{ route('shop') }}" class="btn btn-primary mt-2">
+                    <i class="bi bi-shop"></i> Go to Shop
+                </a>
             </div>
         @else
             <div class="row">
@@ -70,6 +85,21 @@
                                 <label for="notes" class="form-label">Order Notes (Optional)</label>
                                 <textarea class="form-control" id="notes" name="notes" rows="3" placeholder="Notes about your order, e.g. special delivery instructions"></textarea>
                             </div>
+                            <div class="col-12">
+                                <h6 class="mb-3">Payment Method *</h6>
+                                <div class="form-check mb-2">
+                                    <input class="form-check-input" type="radio" name="payment_method" id="cod" value="cod" checked required>
+                                    <label class="form-check-label" for="cod">
+                                        Cash on Delivery
+                                    </label>
+                                </div>
+                                <div class="form-check mb-2">
+                                    <input class="form-check-input" type="radio" name="payment_method" id="card" value="card" required>
+                                    <label class="form-check-label" for="card">
+                                        Credit/Debit Card
+                                    </label>
+                                </div>
+                            </div>
                         </div>
                     </form>
                 </div>
@@ -104,24 +134,12 @@
                                     <h5 class="text-success mb-0">${{ number_format($cart['total_price'], 2) }}</h5>
                                 </div>
 
-                                <div class="payment-methods mb-4">
-                                    <h6 class="mb-3">Payment Method</h6>
-                                    <div class="form-check mb-2">
-                                        <input class="form-check-input" type="radio" name="payment_method" id="cod" value="cod" checked>
-                                        <label class="form-check-label" for="cod">
-                                            Cash on Delivery
-                                        </label>
-                                    </div>
-                                    <div class="form-check mb-2">
-                                        <input class="form-check-input" type="radio" name="payment_method" id="card" value="card">
-                                        <label class="form-check-label" for="card">
-                                            Credit/Debit Card
-                                        </label>
-                                    </div>
-                                </div>
-
-                                <button type="submit" form="checkout-form" class="btn btn-success btn-lg w-100" style="border-radius: 50px; font-weight: 600;">
-                                    Place Order &nbsp;<i class="bi bi-check-circle-fill"></i>
+                                <button type="submit" form="checkout-form" class="btn btn-success btn-lg w-100" style="border-radius: 50px; font-weight: 600;" id="place-order-btn">
+                                    <span class="btn-text">Place Order &nbsp;<i class="bi bi-check-circle-fill"></i></span>
+                                    <span class="btn-spinner" style="display:none;">
+                                        <span class="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></span>
+                                        Processing...
+                                    </span>
                                 </button>
                             </div>
                         </div>
@@ -132,3 +150,30 @@
     </div>
 </section>
 @endsection
+
+@push('scripts')
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const form = document.getElementById('checkout-form');
+    const button = document.getElementById('place-order-btn');
+    
+    if (form) {
+        form.addEventListener('submit', function(e) {
+            console.log('Form submitted!');
+            
+            // Show loading state
+            if (button) {
+                button.disabled = true;
+                button.querySelector('.btn-text').style.display = 'none';
+                button.querySelector('.btn-spinner').style.display = 'inline';
+            }
+            
+            // Form will proceed with submission
+        });
+        console.log('Checkout form listener attached successfully');
+    } else {
+        console.log('ERROR: Checkout form not found!');
+    }
+});
+</script>
+@endpush
