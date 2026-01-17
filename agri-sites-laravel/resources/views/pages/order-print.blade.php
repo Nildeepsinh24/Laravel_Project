@@ -14,7 +14,7 @@
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             background-color: #f5f5f5;
-            padding: 20px;
+            padding: 10px;
             color: #333;
         }
 
@@ -22,7 +22,7 @@
             max-width: 900px;
             margin: 0 auto;
             background-color: white;
-            padding: 40px;
+            padding: 20px;
             box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
         }
 
@@ -30,22 +30,22 @@
             display: flex;
             justify-content: space-between;
             align-items: flex-start;
-            margin-bottom: 40px;
-            border-bottom: 3px solid #28a745;
-            padding-bottom: 20px;
+            margin-bottom: 20px;
+            border-bottom: 2px solid #28a745;
+            padding-bottom: 15px;
         }
 
         .company-info h1 {
-            font-size: 28px;
+            font-size: 22px;
             color: #28a745;
-            margin-bottom: 5px;
+            margin-bottom: 3px;
             font-weight: bold;
         }
 
         .company-info p {
             color: #666;
-            font-size: 14px;
-            line-height: 1.6;
+            font-size: 12px;
+            line-height: 1.4;
         }
 
         .invoice-title {
@@ -53,16 +53,16 @@
         }
 
         .invoice-title h2 {
-            font-size: 24px;
+            font-size: 20px;
             color: #28a745;
-            margin-bottom: 10px;
+            margin-bottom: 8px;
         }
 
         .invoice-meta {
             display: flex;
             justify-content: flex-end;
-            gap: 30px;
-            margin-bottom: 30px;
+            gap: 20px;
+            margin-bottom: 20px;
         }
 
         .meta-box {
@@ -73,72 +73,73 @@
             display: block;
             font-weight: bold;
             color: #333;
-            margin-bottom: 5px;
+            margin-bottom: 3px;
+            font-size: 13px;
         }
 
         .meta-box span {
             display: block;
             color: #666;
-            font-size: 14px;
+            font-size: 12px;
         }
 
         .invoice-body {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 40px;
-            margin-bottom: 30px;
+            gap: 20px;
+            margin-bottom: 20px;
         }
 
         .invoice-section h3 {
-            font-size: 14px;
+            font-size: 12px;
             font-weight: bold;
             color: #333;
-            margin-bottom: 15px;
+            margin-bottom: 10px;
             text-transform: uppercase;
-            border-bottom: 2px solid #28a745;
-            padding-bottom: 8px;
+            border-bottom: 1px solid #28a745;
+            padding-bottom: 5px;
         }
 
         .invoice-section p {
             color: #666;
-            font-size: 14px;
-            line-height: 1.8;
-            margin-bottom: 5px;
+            font-size: 12px;
+            line-height: 1.6;
+            margin-bottom: 3px;
         }
 
         .items-section {
             grid-column: 1 / -1;
-            margin: 30px 0;
+            margin: 15px 0;
         }
 
         .items-table {
             width: 100%;
             border-collapse: collapse;
-            margin-top: 20px;
+            margin-top: 10px;
         }
 
         .items-table thead {
             background-color: #f0f0f0;
-            border-bottom: 2px solid #28a745;
+            border-bottom: 1px solid #28a745;
         }
 
         .items-table th {
-            padding: 12px;
+            padding: 8px;
             text-align: left;
             font-weight: bold;
             color: #333;
-            font-size: 14px;
+            font-size: 12px;
         }
 
         .items-table td {
-            padding: 12px;
+            padding: 6px 8px;
             border-bottom: 1px solid #ddd;
             color: #666;
-            font-size: 14px;
+            font-size: 12px;
         }
 
         .items-table tr:last-child td {
-            border-bottom: 2px solid #28a745;
+            border-bottom: 1px solid #28a745;
         }
 
         .text-right {
@@ -146,29 +147,29 @@
         }
 
         .totals-section {
-            margin-top: 30px;
+            margin-top: 15px;
             display: flex;
             justify-content: flex-end;
         }
 
         .totals-box {
-            width: 300px;
+            width: 250px;
         }
 
         .total-row {
             display: flex;
             justify-content: space-between;
-            padding: 10px 0;
-            font-size: 14px;
+            padding: 6px 0;
+            font-size: 12px;
             border-bottom: 1px solid #ddd;
         }
 
         .total-row.final {
-            padding: 15px 0;
-            font-size: 18px;
+            padding: 10px 0;
+            font-size: 15px;
             font-weight: bold;
             border-bottom: none;
-            border-top: 2px solid #28a745;
+            border-top: 1px solid #28a745;
         }
 
         .total-row.final span:last-child {
@@ -176,30 +177,32 @@
         }
 
         .notes-section {
-            margin-top: 30px;
-            padding: 20px;
+            margin-top: 15px;
+            padding: 12px;
             background-color: #f9f9f9;
-            border-left: 4px solid #28a745;
+            border-left: 3px solid #28a745;
             grid-column: 1 / -1;
         }
 
         .notes-section h3 {
-            margin-bottom: 10px;
+            margin-bottom: 8px;
             border: none;
             padding: 0;
+            font-size: 12px;
         }
 
         .notes-section p {
             margin: 0;
+            font-size: 11px;
         }
 
         .footer {
-            margin-top: 40px;
-            padding-top: 20px;
+            margin-top: 20px;
+            padding-top: 10px;
             border-top: 1px solid #ddd;
             text-align: center;
             color: #666;
-            font-size: 12px;
+            font-size: 11px;
         }
 
         .print-button {
@@ -211,8 +214,8 @@
             background-color: #28a745;
             color: white;
             border: none;
-            padding: 10px 30px;
-            font-size: 14px;
+            padding: 8px 20px;
+            font-size: 13px;
             border-radius: 4px;
             cursor: pointer;
             font-weight: bold;
@@ -222,17 +225,18 @@
             background-color: #218838;
         }
 
-        /* Print Styles for Microsoft Print and browser print dialog */
+        /* Print Styles for single page */
         @media print {
             body {
                 background-color: white;
                 padding: 0;
+                margin: 0;
             }
 
             .invoice-container {
                 box-shadow: none;
                 max-width: 100%;
-                padding: 20px;
+                padding: 15px;
                 margin: 0;
             }
 
@@ -240,95 +244,40 @@
                 display: none;
             }
 
-            /* Optimize for A4 paper */
+            /* Optimize for A4 paper - single page */
             @page {
                 size: A4;
-                margin: 0.5in;
+                margin: 0.4in;
+                @bottom-center {
+                    content: "";
+                }
+                @top-center {
+                    content: "";
+                }
             }
 
-            /* Prevent page breaks within sections */
-            .invoice-section,
-            .items-table,
-            .totals-section {
+            /* Prevent page breaks */
+            .invoice-header,
+            .invoice-meta,
+            .invoice-body,
+            .items-section,
+            .totals-section,
+            .notes-section,
+            .footer {
                 page-break-inside: avoid;
+                break-inside: avoid;
             }
 
-            /* Ensure colors print correctly */
-            * {
-                -webkit-print-color-adjust: exact !important;
-                print-color-adjust: exact !important;
+            html, body {
+                height: 100%;
+                margin: 0;
+                padding: 0;
             }
 
-            /* Hide navigation and footer */
-            header, nav, footer, .navigation {
-                display: none !important;
-            }
-
-            /* Ensure all text is visible */
-            body, p, td, th, h1, h2, h3 {
-                background: white;
-                color: black;
-            }
-
-            .invoice-header {
-                border-bottom: 3px solid #000;
-            }
-
-            .meta-box span,
-            .invoice-section p {
-                color: #000;
-            }
-
-            .items-table thead {
-                background-color: #ddd;
-                border-bottom: 2px solid #000;
-            }
-
-            .items-table tr:last-child td {
-                border-bottom: 2px solid #000;
-            }
-
-            .totals-box .total-row.final {
-                border-top: 2px solid #000;
-            }
-
-            .total-row.final span:last-child {
-                color: #000;
-            }
-
-            .notes-section {
-                border-left: 4px solid #000;
-                background-color: #f9f9f9;
-            }
-        }
-
-        /* Additional print styles for Microsoft Edge and Chrome */
-        @media print {
-            /* Ensure margins are respected */
-            @page {
-                margin-top: 0.5cm;
-                margin-right: 0.5cm;
-                margin-bottom: 0.5cm;
-                margin-left: 0.5cm;
-            }
-
-            /* Prevent orphaned lines */
-            body {
-                orphans: 3;
-                widows: 3;
-            }
-
-            /* Ensure table doesn't break mid-row */
-            tr {
-                page-break-inside: avoid;
-            }
-        }
-
-        /* Screen-only styles */
-        @media screen {
             .invoice-container {
-                margin-top: 20px;
-                margin-bottom: 20px;
+                height: 100%;
+                display: flex;
+                flex-direction: column;
             }
         }
     </style>
@@ -359,11 +308,11 @@
             </div>
             <div class="meta-box">
                 <label>Invoice Date</label>
-                <span>{{ $order->created_at->format('F d, Y') }}</span>
+                <span>{{ now()->format('F d, Y g:i A') }}</span>
             </div>
             <div class="meta-box">
-                <label>Status</label>
-                <span>{{ ucfirst($order->status) }}</span>
+                <label>Note</label>
+                <span style="font-size: 11px; color: #666;">Returns are accepted<br>only within 7 days.</span>
             </div>
         </div>
 
@@ -420,15 +369,15 @@
                 <div class="totals-box">
                     <div class="total-row">
                         <span>Subtotal:</span>
-                        <span>₹{{ number_format($order->total_amount, 2) }}</span>
+                        <span>₹{{ number_format($order->total_amount / 1.10, 2) }}</span>
+                    </div>
+                    <div class="total-row">
+                        <span>Tax (10%):</span>
+                        <span>₹{{ number_format($order->total_amount / 1.10 * 0.10, 2) }}</span>
                     </div>
                     <div class="total-row">
                         <span>Shipping:</span>
                         <span>Free</span>
-                    </div>
-                    <div class="total-row">
-                        <span>Tax:</span>
-                        <span>Included</span>
                     </div>
                     <div class="total-row final">
                         <span>Total Amount:</span>
@@ -446,8 +395,8 @@
         </div>
 
         <div class="footer">
-            <p>Thank you for your business! If you have any questions, please contact us at info@agrisites.com</p>
-            <p>Generated on {{ now()->format('F d, Y H:i A') }} | Invoice for Order {{ $order->order_number }}</p>
+            <p>Thank you for choosing us! If you have any questions, please contact us at info@agrisites.com</p>
+            <p>Generated on {{ now()->format('F d, Y g:i A') }} | Invoice for Order {{ $order->order_number }}</p>
         </div>
     </div>
 

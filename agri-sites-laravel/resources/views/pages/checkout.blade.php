@@ -120,6 +120,12 @@
                                         Credit/Debit Card
                                     </label>
                                 </div>
+                                <div class="form-check mb-2">
+                                    <input class="form-check-input" type="radio" name="payment_method" id="netbanking" value="netbanking" required>
+                                    <label class="form-check-label" for="netbanking">
+                                        Net Banking
+                                    </label>
+                                </div>
                             </div>
                         </div>
                     </form>
@@ -141,10 +147,13 @@
                                     <span>₹{{ number_format($item['qty'] * $item['price'], 2) }}</span>
                                 </div>
                                 @endforeach
-
                                 <div class="d-flex justify-content-between mb-2">
                                     <span>Subtotal</span>
                                     <strong>₹{{ number_format($cart['total_price'], 2) }}</strong>
+                                </div>
+                                <div class="d-flex justify-content-between mb-2">
+                                    <span>Tax (10%)</span>
+                                    <strong>₹{{ number_format($cart['total_price'] * 0.10, 2) }}</strong>
                                 </div>
                                 <div class="d-flex justify-content-between mb-3 pb-3 border-bottom">
                                     <span>Shipping</span>
@@ -152,7 +161,7 @@
                                 </div>
                                 <div class="d-flex justify-content-between mb-4">
                                     <h5 class="mb-0">Total</h5>
-                                    <h5 class="text-success mb-0">₹{{ number_format($cart['total_price'], 2) }}</h5>
+                                    <h5 class="text-success mb-0">₹{{ number_format($cart['total_price'] * 1.10, 2) }}</h5>
                                 </div>
 
                                 <button type="submit" form="checkout-form" class="btn btn-success btn-lg w-100" style="border-radius: 50px; font-weight: 600;" id="place-order-btn">

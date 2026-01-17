@@ -35,9 +35,6 @@
                                     <h5 class="mb-3">Order Information</h5>
                                     <p><strong>Order Number:</strong> <span class="badge bg-success">{{ $order->order_number }}</span></p>
                                     <p><strong>Order Date:</strong> {{ $order->created_at->format('F d, Y H:i A') }}</p>
-                                    <p><strong>Status:</strong> 
-                                        <span class="badge bg-warning text-dark">{{ ucfirst($order->status) }}</span>
-                                    </p>
                                     <p><strong>Payment Method:</strong> 
                                         @if($order->payment_method === 'cod')
                                             Cash on Delivery
@@ -91,7 +88,11 @@
                                     <div class="border-top pt-3">
                                         <div class="d-flex justify-content-between mb-2">
                                             <span>Subtotal:</span>
-                                            <strong>₹{{ number_format($order->total_amount, 2) }}</strong>
+                                            <strong>₹{{ number_format($order->total_amount / 1.10, 2) }}</strong>
+                                        </div>
+                                        <div class="d-flex justify-content-between mb-2">
+                                            <span>Tax (10%):</span>
+                                            <strong>₹{{ number_format($order->total_amount / 1.10 * 0.10, 2) }}</strong>
                                         </div>
                                         <div class="d-flex justify-content-between mb-2">
                                             <span>Shipping:</span>
@@ -107,9 +108,13 @@
 
                             @if($order->notes)
                             <div class="alert alert-info mt-4">
-                                <strong>Order Notes:</strong> {{ $order->notes }}
+                                <strong>Note:</strong> {{ $order->notes }}
                             </div>
                             @endif
+
+                            <div class="alert alert-light mt-4 border border-secondary">
+                                <strong>Note:</strong> Returns are accepted only within 7 days.
+                            </div>
                         </div>
 
                         <hr class="my-4">
