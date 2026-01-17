@@ -86,7 +86,7 @@
                                 </div>
                             </div>
                         </div>
-                        <a href="{{ route('shop') }}" class="btn btn-md shop-btn btnefct-2">Shop Now &nbsp;<i class="bi bi-arrow-right-circle-fill"></i></a>
+                        <a href="{{ route('shop') }}" class="btn btn-md shop-btn btnefct-2" style="color: #fff;">Shop Now &nbsp;<i class="bi bi-arrow-right-circle-fill"></i></a>
                     </div>
                 </div>
             </div>
@@ -100,8 +100,18 @@
                 <h1 class="oupd" data-aos="fade-up" data-aos-duration="2000">Our Products</h1>
                 @foreach($products as $product)
                 <div class="col-md-3 card-cl-one card-cl-mt" data-aos="fade-up" data-aos-duration="1000">
-                    <a href="{{ route('shop.single', $product->slug) }}">
-                        <div class="card section-3-card-main">
+                    <div class="card section-3-card-main position-relative">
+                        @auth
+                            @php
+                                $inWishlist = \App\Models\Wishlist::where('user_id', auth()->id())->where('product_id', $product->id)->exists();
+                            @endphp
+                            <div class="position-absolute" style="top: 10px; right: 10px; z-index: 10;">
+                                <button type="button" onclick="toggleWishlist(event, '{{ $product->slug }}', this)" class="btn btn-sm {{ $inWishlist ? 'btn-danger' : 'btn-outline-danger' }} rounded-circle wishlist-btn" style="width: 35px; height: 35px;" data-slug="{{ $product->slug }}" data-in-wishlist="{{ $inWishlist ? 'true' : 'false' }}" title="{{ $inWishlist ? 'Remove from Wishlist' : 'Add to Wishlist' }}">
+                                    <i class="bi {{ $inWishlist ? 'bi-heart-fill' : 'bi-heart' }}"></i>
+                                </button>
+                            </div>
+                        @endauth
+                        <a href="{{ route('shop.single', $product->slug) }}">
                             <div class="card-body">
                                 <span class="card-title ctone">{{ $product->category }}</span>
                                 <img src="{{ $asset }}/{{ $product->image }}" class="img-fluid c-i-7" alt="{{ $product->name }}">
@@ -122,12 +132,12 @@
                                     <i class="bi bi-cart-plus"></i> Add to Cart
                                 </button>
                             </div>
-                        </div>
-                    </a>
+                        </a>
+                    </div>
                 </div>
                 @endforeach
                 <p class="text-center mt-3">
-                    <a href="{{ route('shop') }}" class="btn btn-md shop-btn btnefct-2">Load More &nbsp;<i class="bi bi-arrow-right-circle-fill"></i></a>
+                    <a href="{{ route('shop') }}" class="btn btn-md shop-btn btnefct-2" style="color: #fff;">Load More &nbsp;<i class="bi bi-arrow-right-circle-fill"></i></a>
                 </p>
             </div>
         </div>
@@ -207,8 +217,18 @@
             </div>
             @foreach($products->take(4) as $product)
             <div class="col-md-3 set-cl-1" data-aos="fade-up" data-aos-duration="1000">
-                <a href="{{ route('shop.single', $product->slug) }}">
-                    <div class="card section-3-card-main">
+                <div class="card section-3-card-main position-relative">
+                    @auth
+                        @php
+                            $inWishlist = \App\Models\Wishlist::where('user_id', auth()->id())->where('product_id', $product->id)->exists();
+                        @endphp
+                        <div class="position-absolute" style="top: 10px; right: 10px; z-index: 10;">
+                            <button type="button" onclick="toggleWishlist(event, '{{ $product->slug }}', this)" class="btn btn-sm {{ $inWishlist ? 'btn-danger' : 'btn-outline-danger' }} rounded-circle wishlist-btn" style="width: 35px; height: 35px;" data-slug="{{ $product->slug }}" data-in-wishlist="{{ $inWishlist ? 'true' : 'false' }}" title="{{ $inWishlist ? 'Remove from Wishlist' : 'Add to Wishlist' }}">
+                                <i class="bi {{ $inWishlist ? 'bi-heart-fill' : 'bi-heart' }}"></i>
+                            </button>
+                        </div>
+                    @endauth
+                    <a href="{{ route('shop.single', $product->slug) }}">
                         <div class="card-body">
                             <span class="card-title ctone">{{ $product->category }}</span>
                             <img src="{{ $asset }}/{{ $product->image }}" class="img-fluid crd-8-1" alt="{{ $product->name }}">
@@ -229,8 +249,8 @@
                                 <i class="bi bi-cart-plus"></i> Add to Cart
                             </button>
                         </div>
-                    </div>
-                </a>
+                    </a>
+                </div>
             </div>
             @endforeach
             <p class="text-center spbtns5 spbtns5-dn mt-4">
@@ -393,11 +413,13 @@ function addToCart(event, slug) {
                 alert.remove();
             }, 4000);
             
-            // Update cart count if available
+            // Update cart count badge if available
             if (data.cart_count !== undefined) {
                 const cartBadge = document.querySelector('[data-cart-count]');
                 if (cartBadge) {
-                    cartBadge.textContent = data.cart_count;
+                    const count = Number(data.cart_count) || 0;
+                    cartBadge.textContent = count;
+                    cartBadge.style.display = count > 0 ? 'flex' : 'none';
                 }
             }
         } else {
@@ -420,6 +442,95 @@ function addToCart(event, slug) {
         setTimeout(() => {
             alert.remove();
         }, 5000);
+    });
+}
+
+function toggleWishlist(event, slug, button) {
+    event.preventDefault();
+    event.stopPropagation();
+
+    const isInWishlist = button.getAttribute('data-in-wishlist') === 'true';
+    const action = isInWishlist ? 'remove' : 'add';
+
+    const baseUrl = '{{ url("/") }}';
+    const url = baseUrl + '/wishlist/' + action + '/' + slug;
+    const csrfToken = document.querySelector('meta[name="csrf-token"]')?.getAttribute('content');
+
+    fetch(url, {
+        method: 'POST',
+        headers: {
+            'X-Requested-With': 'XMLHttpRequest',
+            'X-CSRF-TOKEN': csrfToken,
+            'Content-Type': 'application/json'
+        }
+    })
+    .then(response => {
+        if (!response.ok) {
+            throw new Error('Network response was not ok');
+        }
+        return response.json();
+    })
+    .then(data => {
+        if (data.success) {
+            // Toggle button style
+            if (data.in_wishlist) {
+                button.classList.remove('btn-outline-danger');
+                button.classList.add('btn-danger');
+                button.setAttribute('data-in-wishlist', 'true');
+                button.title = 'Remove from Wishlist';
+            } else {
+                button.classList.remove('btn-danger');
+                button.classList.add('btn-outline-danger');
+                button.setAttribute('data-in-wishlist', 'false');
+                button.title = 'Add to Wishlist';
+            }
+
+            // Update heart icon
+            const icon = button.querySelector('i');
+            if (data.in_wishlist) {
+                icon.classList.remove('bi-heart');
+                icon.classList.add('bi-heart-fill');
+            } else {
+                icon.classList.remove('bi-heart-fill');
+                icon.classList.add('bi-heart');
+            }
+
+            // Update wishlist badge in navbar
+            const wishlistBadge = document.querySelector('[data-wishlist-count]');
+            if (wishlistBadge && data.wishlist_count !== undefined) {
+                const count = Number(data.wishlist_count) || 0;
+                wishlistBadge.textContent = count;
+                wishlistBadge.style.display = count > 0 ? 'flex' : 'none';
+            }
+
+            // Success toast
+            const alert = document.createElement('div');
+            alert.className = 'alert alert-success alert-dismissible fade show';
+            alert.style.cssText = 'position: fixed; top: 100px; right: 20px; z-index: 9999; min-width: 300px; box-shadow: 0 4px 6px rgba(0,0,0,0.1);';
+            alert.innerHTML = `
+                <strong>✓ Success!</strong> ${data.product_name} ${data.in_wishlist ? 'added to' : 'removed from'} wishlist.
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            `;
+            document.body.appendChild(alert);
+
+            setTimeout(() => alert.remove(), 3000);
+        } else {
+            throw new Error(data.message || 'Failed to update wishlist');
+        }
+    })
+    .catch(error => {
+        console.error('Error:', error);
+
+        const alert = document.createElement('div');
+        alert.className = 'alert alert-danger alert-dismissible fade show';
+        alert.style.cssText = 'position: fixed; top: 100px; right: 20px; z-index: 9999; min-width: 300px; box-shadow: 0 4px 6px rgba(0,0,0,0.1);';
+        alert.innerHTML = `
+            <strong>✗ Error!</strong> Failed to update wishlist. Please try again.
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        `;
+        document.body.appendChild(alert);
+
+        setTimeout(() => alert.remove(), 5000);
     });
 }
 </script>
