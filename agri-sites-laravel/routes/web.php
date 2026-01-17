@@ -4,6 +4,7 @@ use App\Http\Controllers\PagesController;
 use App\Http\Controllers\PortfolioController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\WishlistController;
 use Illuminate\Support\Facades\Route;
 
 Route::controller(PagesController::class)->group(function () {
@@ -49,6 +50,11 @@ Route::post('/cart/add/{slug}', [CartController::class, 'add'])->middleware('aut
 Route::post('/cart/update/{slug}', [CartController::class, 'update'])->middleware('auth')->name('cart.update');
 Route::post('/cart/remove/{slug}', [CartController::class, 'remove'])->middleware('auth')->name('cart.remove');
 Route::post('/cart/clear', [CartController::class, 'clear'])->middleware('auth')->name('cart.clear');
+
+// Wishlist routes
+Route::get('/wishlist', [WishlistController::class, 'index'])->middleware('auth')->name('wishlist.index');
+Route::post('/wishlist/add/{slug}', [WishlistController::class, 'add'])->middleware('auth')->name('wishlist.add');
+Route::post('/wishlist/remove/{slug}', [WishlistController::class, 'remove'])->middleware('auth')->name('wishlist.remove');
 
 // Checkout routes
 Route::get('/checkout', [CartController::class, 'checkout'])->middleware('auth')->name('checkout');
