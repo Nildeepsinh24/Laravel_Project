@@ -1,3 +1,9 @@
+@php
+    use Illuminate\Support\Facades\Auth;
+    use Illuminate\Support\Str;
+    $user = Auth::user();
+    $initial = $user ? strtoupper(Str::substr($user->name, 0, 1)) : '';
+@endphp
 <nav class="navbar navbar-expand-md sticky-top navbar-light mnnvbr">
     <div class="container-fluid">
         <a class="navbar-brand" href="{{ route('home') }}">
@@ -41,6 +47,42 @@
                     <input type="text" name="q" value="{{ request('q') }}" class="form-control brds-impt" placeholder="Search products">
                     <button class="input-group-text search-bar-head" id="addon-wrapping" type="submit"><i class="bi bi-search"></i></button>
                 </form>
+
+                @auth
+                    <div class="dropdown ms-3">
+                        <button class="btn btn-light border d-flex align-items-center" type="button" id="profileDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                            <div class="rounded-circle bg-success text-white d-flex align-items-center justify-content-center" style="width: 40px; height: 40px; font-weight: 700;">
+                                {{ $initial }}
+                            </div>
+                            <span class="ms-2 fw-semibold">{{ Str::limit($user->name, 12) }}</span>
+                            <i class="bi bi-caret-down-fill ms-1"></i>
+                        </button>
+                        <div class="dropdown-menu dropdown-menu-end p-3 shadow" aria-labelledby="profileDropdown" style="min-width: 240px;">
+                            <div class="d-flex align-items-center mb-2">
+                                <div class="rounded-circle bg-success text-white d-flex align-items-center justify-content-center" style="width: 42px; height: 42px; font-weight: 700;">
+                                    {{ $initial }}
+                                </div>
+                                <div class="ms-2">
+                                    <div class="fw-semibold">{{ $user->name }}</div>
+                                    <div class="text-muted small">{{ $user->email }}</div>
+                                </div>
+                            </div>
+                            <div class="dropdown-divider"></div>
+                            <div class="d-grid gap-2">
+                                <a href="{{ route('profile') }}" class="btn btn-outline-secondary btn-sm">View Profile</a>
+                                <form method="POST" action="{{ route('logout') }}">
+                                    @csrf
+                                    <button type="submit" class="btn btn-danger btn-sm">Logout</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                @else
+                    <div class="d-flex align-items-center ms-3">
+                        <a href="{{ route('login') }}" class="text-decoration-none fw-semibold">Login</a>
+                        <a href="{{ route('register') }}" class="btn btn-success btn-sm ms-2">Register</a>
+                    </div>
+                @endauth
 
                 <a href="{{ route('cart.index') }}" class="cart text-decoration-none ms-3">
                     <div class="icn-crt"><i class="bi bi-cart3"></i></div>

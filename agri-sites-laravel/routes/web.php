@@ -3,6 +3,7 @@
 use App\Http\Controllers\PagesController;
 use App\Http\Controllers\PortfolioController;
 use App\Http\Controllers\CartController;
+use App\Http\Controllers\AuthController;
 use Illuminate\Support\Facades\Route;
 
 Route::controller(PagesController::class)->group(function () {
@@ -27,22 +28,33 @@ Route::controller(PagesController::class)->group(function () {
     Route::post('/newsletter/subscribe', 'newsletterSubscribe')->name('newsletter.subscribe');
 });
 
+// Authentication
+Route::get('/login', [AuthController::class, 'showLogin'])->name('login');
+Route::post('/login', [AuthController::class, 'login'])->name('login.submit');
+Route::get('/register', [AuthController::class, 'showRegister'])->name('register');
+Route::post('/register', [AuthController::class, 'register'])->name('register.submit');
+Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
+Route::get('/profile', [AuthController::class, 'profile'])->middleware('auth')->name('profile');
+Route::post('/profile/password', [AuthController::class, 'updatePassword'])->middleware('auth')->name('profile.password');
+Route::get('/password/forgot', [AuthController::class, 'showForgotPassword'])->name('password.forgot');
+Route::post('/password/forgot', [AuthController::class, 'resetPassword'])->name('password.reset');
+
 // Dynamic portfolio routes
 Route::get('/portfolio', [PortfolioController::class, 'index'])->name('portfolio');
 Route::get('/portfolio/{slug}', [PortfolioController::class, 'show'])->name('portfolio.show');
 
 // Cart routes
 Route::get('/cart', [CartController::class, 'index'])->name('cart.index');
-Route::post('/cart/add/{slug}', [CartController::class, 'add'])->name('cart.add');
-Route::post('/cart/update/{slug}', [CartController::class, 'update'])->name('cart.update');
-Route::post('/cart/remove/{slug}', [CartController::class, 'remove'])->name('cart.remove');
-Route::post('/cart/clear', [CartController::class, 'clear'])->name('cart.clear');
+Route::post('/cart/add/{slug}', [CartController::class, 'add'])->middleware('auth')->name('cart.add');
+Route::post('/cart/update/{slug}', [CartController::class, 'update'])->middleware('auth')->name('cart.update');
+Route::post('/cart/remove/{slug}', [CartController::class, 'remove'])->middleware('auth')->name('cart.remove');
+Route::post('/cart/clear', [CartController::class, 'clear'])->middleware('auth')->name('cart.clear');
 
 // Checkout routes
-Route::get('/checkout', [CartController::class, 'checkout'])->name('checkout');
-Route::post('/checkout/process', [CartController::class, 'processCheckout'])->name('checkout.process');
-Route::get('/order/{order}/confirmation', [CartController::class, 'showConfirmation'])->name('order.confirmation');
-Route::get('/order/{order}/print', [CartController::class, 'printBill'])->name('order.print');
+Route::get('/checkout', [CartController::class, 'checkout'])->middleware('auth')->name('checkout');
+Route::post('/checkout/process', [CartController::class, 'processCheckout'])->middleware('auth')->name('checkout.process');
+Route::get('/order/{order}/confirmation', [CartController::class, 'showConfirmation'])->middleware('auth')->name('order.confirmation');
+Route::get('/order/{order}/print', [CartController::class, 'printBill'])->middleware('auth')->name('order.print');
 
 // Debug route
 Route::get('/debug', function() {
