@@ -49,13 +49,13 @@ $(document).ready(function () {
     $(window).scroll(function () {
         var scroll = $(window).scrollTop();
         if (scroll > 700) {
-            $(".mnnvbr").css("background", "#00000091",);
-            $(".nav-link").css("color", "white");
+            $(".mnnvbr").css("background", "#FDF8F0");
+            $(".nav-link").css("color", "#5e3023");
         }
 
         else {
-            $(".mnnvbr").css("background", "#FFFFFF");
-            $(".nav-link").css("color", "#274C5B");
+            $(".mnnvbr").css("background", "#FDF8F0");
+            $(".nav-link").css("color", "#5e3023");
 
         }
     })
