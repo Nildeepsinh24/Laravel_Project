@@ -8,12 +8,16 @@
 
 /* ===== header start =====  */
 
+#shop-single-main-section {
+    background-color: #FDF8F0;
+}
+
 .header {
     position: fixed;
     top: 0;
     z-index: 2;
     width: 100%;
-    background-color: #f1f1f1;
+    background-color: #FDF8F0;
 }
 
 /* The progress container (grey background) */
@@ -26,12 +30,12 @@
 /* The progress bar (scroll indicator) */
 .progress-bar {
     height: 8px;
-    background: #274C5B !important;
+    background: #5e3023 !important;
     width: 0%;
 }
 
 .mnnvbr {
-    background: #FFFFFF;
+    background: #FDF8F0;
     top: 8px !important;
 }
 
@@ -46,21 +50,31 @@
     align-items: center;
     padding: 2px;
     gap: 5px;
-    margin-right: 4%;
+    margin-right: 12px; /* reduce gap so Cart/Wishlist are closer */
     border: 1px solid #E0E0E0;
     cursor: pointer;
 }
 
 .icn-crt {
-    background: #274C5B;
-    width: 36px;
-    height: 36px;
+    background: #5e3023;
+    width: 34px;
+    height: 34px;
     color: white;
-    font-size: 21px;
-    border-radius: 25px;
+    font-size: 16px;
+    border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
+}
+
+/* Ensure icons are perfectly centered inside nav circles and wishlist buttons */
+.icn-crt i,
+.wishlist-btn i {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    line-height: 1 !important;
+    vertical-align: middle !important; /* override Bootstrap Icons default */
 }
 
 .logoimg {
@@ -74,7 +88,7 @@
 .nav-link {
     font-family: "Roboto", sans-serif !important;
     font-weight: 500;
-    color: #274C5B;
+    color: #5e3023;
 }
 
 .nav-link:hover {
@@ -85,12 +99,17 @@
     color: #68A47F !important;
 }
 
+.dropdown-menu {
+    background-color: #FDF8F0 !important;
+    border: 1px solid #E0E0E0 !important;
+}
+
 .active {
     color: #68A47F !important;
 }
 
 .cart-head {
-    color: #274C5B;
+    color: #5e3023;
     font-family: "Roboto", sans-serif;
     font-weight: 500;
     padding-right: 7px;
@@ -113,7 +132,7 @@
     margin-left: -41px !important;
     z-index: 3;
     border-radius: 25px !important;
-    background: #7EB693 !important;
+    background: #198754 !important; /* Match Profile circle bg-success green */
     color: white !important;
 }
 
@@ -125,7 +144,19 @@
 .dropdown-item {
     font-family: "Roboto", sans-serif !important;
     font-weight: 500 !important;
-    color: #274C5B !important;
+    color: #5e3023 !important;
+}
+
+/* Center heart icon inside circular wishlist button */
+.wishlist-btn {
+    display: inline-flex !important;
+    align-items: center;
+    justify-content: center;
+    padding: 0 !important;
+    line-height: 1 !important;
+}
+.wishlist-btn i {
+    line-height: 1 !important;
 }
 
 /* ===== header End =====  */
@@ -170,7 +201,7 @@
 
 .hiro-head-one {
     font-family: "Roboto", sans-serif;
-    color: #274C5B;
+    color: #5e3023;
     width: 100%;
     font-weight: 600;
     font-size: 50px;
@@ -184,7 +215,7 @@
 
 .hiro-btn a {
     text-decoration: none;
-    color: #274C5B;
+    color: #5e3023;
     font-family: "Roboto", sans-serif;
     font-weight: 500;
     font-size: 12px;
@@ -259,7 +290,7 @@
 
 .cnct-cl2-head-one {
     /* width: 44%; */
-    color: #274C5B;
+    color: #5e3023;
     font-family: "Roboto", sans-serif;
     font-weight: 600;
 }
@@ -270,7 +301,7 @@
 
 .cntnr-rw-2 {
     padding: 1%;
-    background: #F9F8F8;
+    background: #FDF8F0;
     width: 100%;
     margin: auto !important;
 }
@@ -294,7 +325,7 @@
 }
 
 .cnct-one-1head {
-    color: #274C5B;
+    color: #5e3023;
     font-family: "Roboto", sans-serif;
     font-weight: 600;
     width: 55%;
@@ -336,7 +367,7 @@
 }
 
 .ct-tl {
-    color: #274C5B;
+    color: #5e3023;
     font-family: "Roboto", sans-serif;
     font-weight: 600;
 }
@@ -349,7 +380,7 @@
 }
 
 .shop-btn {
-    background: #274C5B !important;
+    background: #5e3023 !important;
     padding: 16px 24px !important;
     line-height: 0 !important;
     margin-top: 4%;
@@ -436,7 +467,7 @@
 
 .section-3-card-main {
     border: none !important;
-    background: #F9F8F8 !important;
+    background: #FDF8F0 !important;
     border-radius: 1.25rem !important;
     transition: 1s;
 }
@@ -449,14 +480,14 @@
 .ctone {
     font-family: "Open Sans", sans-serif;
     color: white;
-    background-color: #274C5B;
+    background-color: #5e3023;
     font-size: 12px;
     padding: 6px 12px;
     border-radius: 6px;
 }
 
 .crd-hsix {
-    color: #274C5B;
+    color: #5e3023;
     font-family: "Roboto", sans-serif;
     font-weight: 700;
 }
@@ -471,7 +502,7 @@
 }
 
 .r-text {
-    color: #274C5B;
+    color: #5e3023;
     font-family: "Roboto", sans-serif;
     font-weight: 800;
 }
@@ -515,7 +546,7 @@
 }
 
 .oupd {
-    color: #274C5B;
+    color: #5e3023;
     font-weight: 700;
     text-align: center;
     line-height: 2;
@@ -621,7 +652,7 @@
 }
 
 .crcl-main {
-    background: #F1F1F1;
+    background: #FDF8F0;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -636,12 +667,12 @@
 }
 
 .crcl-head {
-    color: #274C5B;
+    color: #5e3023;
     font-weight: 700;
 }
 
 .crcl-pera {
-    color: #274C5B !important;
+    color: #5e3023 !important;
     font-family: "Open Sans", sans-serif;
     font-size: 12px;
 }
@@ -661,7 +692,7 @@
 /* ===== content section 5 start ====== */
 
 .sec-5-cnctnr-main {
-    background: #274C5B;
+    background: #5e3023;
     padding: 2%;
 }
 
@@ -687,6 +718,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    padding: 12px 0 !important; /* override Bootstrap p-0 */
 }
 
 .rsec {
@@ -702,13 +734,14 @@
 
 .shop-btn-s5 a {
     text-decoration: none;
-    color: #274C5B;
+    color: #5e3023;
     font-family: "Roboto", sans-serif;
     font-weight: 500;
     font-size: 12px;
 }
 
 .spbtns5 {
+    margin-top: 10px !important;
     margin-bottom: 0% !important;
 }
 
@@ -768,7 +801,7 @@
 }
 
 .sec-6-cnct-m {
-    background-color: #FFFFFF;
+    background-color: #FDF8F0;
     padding: 7% 9% 7% 10% !important;
     border-radius: 20px;
     position: relative;
@@ -776,14 +809,14 @@
 }
 
 .sec-6-h1-head {
-    color: #274C5B;
+    color: #5e3023;
     font-weight: 700;
     font-family: "Roboto", sans-serif;
     width: 65%;
 }
 
 .cnct-one-h {
-    color: #274C5B;
+    color: #5e3023;
     font-family: "Roboto", sans-serif;
     font-weight: 500;
     width: fit-content;
@@ -849,7 +882,7 @@
 }
 
 .s7-btn {
-    background: #FFFFFF !important;
+    background: #FDF8F0 !important;
     padding: 20px 30px !important;
     line-height: 0 !important;
     border-radius: 10px !important;
@@ -859,7 +892,7 @@
 
 .s7-btn a {
     text-decoration: none;
-    color: #274C5B;
+    color: #5e3023;
     font-family: "Roboto", sans-serif;
     font-weight: 500;
     font-size: 12px;
@@ -880,7 +913,7 @@
 }
 
 .s8m-s8 {
-    color: #274C5B;
+    color: #5e3023;
     font-weight: 700;
     font-family: "Roboto", sans-serif;
     width: 48%;
@@ -891,12 +924,12 @@
     padding: 16px 24px !important;
     line-height: 0 !important;
     border-radius: 10px !important;
-    border: 2px solid #274C5B !important;
+    border: 2px solid #5e3023 !important;
 }
 
 .shops8-btns8-s8 a {
     text-decoration: none;
-    color: #274C5B;
+    color: #5e3023;
     font-family: "Roboto", sans-serif;
     font-weight: 500;
     font-size: 12px;
@@ -930,7 +963,7 @@
 
 .bg-s8-count {
     line-height: 1;
-    color: #274C5B;
+    color: #5e3023;
     font-family: "Roboto", sans-serif;
     font-weight: 600;
     margin-bottom: 0% !important;
@@ -980,7 +1013,7 @@
 }
 
 .s8-pm-pera {
-    color: #274C5B;
+    color: #5e3023;
     font-family: "Roboto", sans-serif;
 
 }
@@ -1004,12 +1037,12 @@
     padding: 16px 24px !important;
     line-height: 0 !important;
     border-radius: 10px !important;
-    border: 2px solid #274C5B !important;
+    border: 2px solid #5e3023 !important;
 }
 
 .shops8-btns8-s8-none a {
     text-decoration: none;
-    color: #274C5B;
+    color: #5e3023;
     font-family: "Roboto", sans-serif;
     font-weight: 500;
     font-size: 12px;
@@ -1025,8 +1058,13 @@
 /* ===== content section 9 start ===== */
 
 .content-section-9-main {
-    padding: 2%;
-    /* background: yellow; */
+    padding: 0;
+    background-color: #FDF8F0;
+    width: 100%;
+}
+
+.c-s-9-main {
+    margin-top: 30px;
 }
 
 .c-s-9-main {
@@ -1053,7 +1091,7 @@
 }
 
 .s-9-h-one {
-    color: #FFFFFF;
+    color: #FDF8F0;
     font-family: "Roboto", sans-serif;
     font-weight: 600;
     width: 45%;
@@ -1061,7 +1099,7 @@
 }
 
 .s-9btn {
-    background: #274C5B !important;
+    background: #5e3023 !important;
     color: white !important;
     font-family: "Roboto", sans-serif;
     font-size: 12px !important;
@@ -1088,7 +1126,9 @@
 /* ==== Footer Left Side Start ==== */
 
 .main-footer-section-ed {
-    padding: 5%;
+    padding: 5% 0;
+    background-color: #FDF8F0;
+    width: 100%;
 }
 
 .footer-main-row-mn {
@@ -1100,13 +1140,13 @@
 .footer-one-clm {
     padding: 3% !important;
     text-align: end;
-    border-right: 2px solid #D4D4D4 !important;
+    border-right: 2px solid #5e3023 !important;
 }
 
 .ftr-mn-ul {
     line-height: 0;
     font-family: "Roboto", sans-serif;
-    color: #274C5B;
+    color: #5e3023;
     font-weight: 700;
     padding: 0% !important;
 }
@@ -1122,7 +1162,7 @@
 
 .ftr-mcnt {
     line-height: 0;
-    color: #525C60;
+    color: #5e3023;
     font-family: "Open Sans", sans-serif;
     font-weight: 600;
 }
@@ -1130,7 +1170,7 @@
 .ftr-msct {
     line-height: 14px;
     font-family: "Open Sans", sans-serif;
-    color: #525C60;
+    color: #5e3023;
     font-weight: normal;
     font-size: 14px;
 }
@@ -1166,7 +1206,7 @@
 
 .main-icn-social {
     display: inline-block;
-    background: #EFF6F1;
+    background: #FFFFFF;
     border-radius: 50%;
     width: 50px;
     height: 50px;
@@ -1174,6 +1214,7 @@
     margin-left: 2%;
     margin-right: 2%;
     text-align: center;
+    color: #5e3023;
 }
 
 /* ===== Footer Center End ====  */
@@ -1182,14 +1223,14 @@
 
 .footer-three-clm {
     padding: 3% !important;
-    border-left: 2px solid #D4D4D4 !important;
+    border-left: 2px solid #5e3023 !important;
 }
 
 .ftr-msct-right-side a {
     text-decoration: none;
     line-height: 0;
     font-family: "Open Sans", sans-serif;
-    color: #525C60;
+    color: #5e3023;
     font-weight: normal;
     font-size: 14px;
 }
@@ -1211,12 +1252,13 @@
 
 
 .footer-copy-right {
-    color: #525C60;
+    color: #5e3023;
     font-family: "Open Sans", sans-serif;
     padding: 3px;
-    border-top: 2px solid #D4D4D4;
+    border-top: 2px solid #5e3023;
     font-size: 0.80rem;
     text-align: center;
+    background-color: #FDF8F0;
 }
 
 .blt-ftr {
@@ -1240,7 +1282,7 @@
 }
 
 #about-section-two {
-    background-color: #F9F8F8;
+    background-color: #FDF8F0;
     padding: 5%;
 }
 
@@ -1256,7 +1298,7 @@
 }
 
 .abt-hiro-head {
-    color: #274C5B;
+    color: #5e3023;
     font-family: "Roboto", sans-serif;
     text-align: center;
     font-weight: 700;
@@ -1316,7 +1358,7 @@
 }
 
 .cnct-one-1head-oactmd {
-    color: #274C5B;
+    color: #5e3023;
     font-family: "Roboto", sans-serif;
     font-weight: 600;
     width: 50%;
@@ -1375,7 +1417,7 @@
 /* ========== about section two Start  ========== */
 
 .cnct-one-1head-abt-two-head {
-    color: #274C5B;
+    color: #5e3023;
     font-family: "Roboto", sans-serif;
     font-weight: 600;
     width: 56%;
@@ -1383,7 +1425,7 @@
 
 .border-r-onediv {
     font-family: "Roboto", sans-serif;
-    color: #274C5B;
+    color: #5e3023;
     background: #ECECEC;
     font-weight: 500;
     display: flex;
@@ -1413,7 +1455,7 @@
 .c-b-abt-icn-main {
     width: 80px;
     height: 80px;
-    background: #F9F8F8;
+    background: #FDF8F0;
     margin: auto;
     display: flex;
     justify-content: center;
@@ -1444,7 +1486,7 @@
 
 .cl-s-gsec {
     padding: 1%;
-    color: #274C5B;
+    color: #5e3023;
     font-family: "Roboto", sans-serif;
 }
 
@@ -1494,7 +1536,7 @@
 }
 
 .oupd-abt-h-one-team {
-    color: #274C5B;
+    color: #5e3023;
     font-weight: 700;
     text-align: center;
     line-height: 1;
@@ -1502,7 +1544,7 @@
 
 .main-teancard-brdrdis {
     border-radius: 1.25rem !important;
-    background-color: #F9F8F8 !important;
+    background-color: #FDF8F0 !important;
     border: none !important;
 }
 
@@ -1530,7 +1572,7 @@
 /* <!-- ========== About Offer Section Start ==========  --> */
 
 .abt-offer-cnctr {
-    background-color: #274C5B;
+    background-color: #5e3023;
     padding: 8%;
 }
 
@@ -1558,7 +1600,7 @@
 
 .ftr-offer-crd {
     border-radius: 1.25rem !important;
-    background-color: #274C5B !important;
+    background-color: #5e3023 !important;
     border: none !important;
     margin: auto;
 }
@@ -1568,13 +1610,13 @@
 }
 
 .b-crd-ftr {
-    background-color: #274C5B !important;
+    background-color: #5e3023 !important;
     border-bottom-left-radius: 1.25rem !important;
     border-bottom-right-radius: 1.25rem !important;
 }
 
 .image-crd-brd {
-    background: #F9F8F8;
+    background: #FDF8F0;
     border-radius: 1.25rem;
 }
 
@@ -1658,7 +1700,7 @@
 }
 
 .buy-img-ss {
-    background-color: #F9F8F8;
+    background-color: #FDF8F0;
     border-radius: 1.25rem;
 }
 
@@ -1669,7 +1711,7 @@
 
 
 .shop-single-btn {
-    background: #274C5B !important;
+    background: #5e3023 !important;
     padding: 16px 24px !important;
     line-height: 0 !important;
     border-radius: 10px !important;
@@ -1698,7 +1740,7 @@
 
 .quntity-buy {
     background: transparent !important;
-    border-color: #274C5B !important;
+    border-color: #5e3023 !important;
     border-radius: 10px !important;
     box-shadow: none !important;
     padding: 14px !important;
@@ -1723,7 +1765,7 @@
 
 .add-infobtn a {
     text-decoration: none;
-    color: #274C5B;
+    color: #5e3023;
     font-family: "Roboto", sans-serif;
     font-weight: 600;
     font-size: 12px;
@@ -1803,7 +1845,7 @@
 }
 
 .srvc-h-li {
-    color: #274C5B;
+    color: #5e3023;
     font-family: "Roboto", sans-serif;
     font-weight: 500;
 }
@@ -1850,7 +1892,7 @@
 }
 
 .clean-video-pera-tm {
-    color: #274C5B;
+    color: #5e3023;
     width: 39%;
     font-family: "Open Sans", sans-serif;
     font-size: 14px;
@@ -1893,7 +1935,7 @@
 }
 
 .service-single-main-head-one-hiro-head {
-    color: #274C5B;
+    color: #5e3023;
     font-family: "Roboto", sans-serif;
     text-align: center;
     font-weight: 700;
@@ -1907,7 +1949,7 @@
 }
 
 .service-single-hedcnct-one-1head-oactmd {
-    color: #274C5B;
+    color: #5e3023;
     font-family: "Roboto", sans-serif;
     font-weight: 600;
     width: 50%;
@@ -1937,7 +1979,7 @@
 }
 
 .cnct-and-pera-srvc-pera {
-    background-color: #F9F8F8;
+    background-color: #FDF8F0;
     border-radius: 20px;
     display: flex;
     flex-direction: column;
@@ -1950,7 +1992,7 @@
 }
 
 .srvc-h-n-e-w-li {
-    color: #274C5B;
+    color: #5e3023;
     font-family: "Roboto", sans-serif;
     font-weight: 500;
     font-size: 22px;
@@ -1970,8 +2012,8 @@
 
 .brdr-sec-chld-two {
     font-family: "Roboto", sans-serif;
-    color: #274C5B;
-    background: #F9F8F8;
+    color: #5e3023;
+    background: #FDF8F0;
     font-weight: 600;
     display: flex;
     align-items: center;
@@ -2010,7 +2052,7 @@
 }
 
 #about-section-two {
-    background-color: #F9F8F8;
+    background-color: #FDF8F0;
     padding: 5%;
 }
 
@@ -2095,7 +2137,7 @@
 }
 
 .wht-bg-mn {
-    background: #ffffffa6;
+    background: #FDF8F0a6;
     padding: 40%;
     border-radius: 30px;
     margin-top: 3%;
@@ -2125,7 +2167,7 @@
 
 
 .p-c-s-one {
-    color: #274C5B;
+    color: #5e3023;
     font-family: "Roboto", sans-serif;
     font-weight: 600;
 }
@@ -2157,7 +2199,7 @@
 
 
 .portfolio-single-hiro-head {
-    color: #274C5B;
+    color: #5e3023;
     font-family: "Roboto", sans-serif;
     text-align: center;
     font-weight: 700;
@@ -2181,7 +2223,7 @@
 
 .cl-mn-s-p-one {
     padding: 5% !important;
-    background: #FFFFFF;
+    background: #FDF8F0;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -2210,7 +2252,7 @@
 .d-m {
     font-family: "Roboto", sans-serif;
     font-weight: 500;
-    color: #274C5B;
+    color: #5e3023;
 }
 
 .d-emn {
@@ -2258,7 +2300,7 @@
 }
 
 #about-section-two {
-    background-color: #F9F8F8;
+    background-color: #FDF8F0;
     padding: 5%;
 }
 
@@ -2288,7 +2330,7 @@
 }
 
 #about-section-two {
-    background-color: #F9F8F8;
+    background-color: #FDF8F0;
     padding: 5%;
 }
 
@@ -2364,7 +2406,7 @@
 }
 
 .blg-sngle-hiro-head {
-    color: #274C5B;
+    color: #5e3023;
     font-family: "Roboto", sans-serif;
     text-align: center;
     font-weight: 700;
@@ -2382,7 +2424,7 @@
 }
 
 .blog-sngl-hedcnct-one-1head-oactmd {
-    color: #274C5B;
+    color: #5e3023;
     font-family: "Roboto", sans-serif;
     font-weight: 600;
 }
@@ -2396,7 +2438,7 @@
 }
 
 .dtls {
-    color: #274C5B;
+    color: #5e3023;
     font-family: "Roboto", sans-serif;
 }
 
@@ -2418,14 +2460,14 @@
 
 .ccs-pera-one {
     font-family: "Open Sans", sans-serif;
-    color: #274C5B;
+    color: #5e3023;
     font-weight: 700;
     font-size: 18px;
     margin-bottom: 0% !important;
 }
 
 .service-single-hedcnct-one-blg-hed {
-    color: #274C5B;
+    color: #5e3023;
     font-family: "Roboto", sans-serif;
     font-weight: 600;
 }
@@ -2482,7 +2524,7 @@
 }
 
 .cnct-one-contct-pg-head {
-    color: #274C5B;
+    color: #5e3023;
     font-family: "Roboto", sans-serif;
     font-weight: 600;
     width: 100%;
@@ -2506,7 +2548,7 @@
 }
 
 .farm-contant-main {
-    background-color: #ffffffd1;
+    background-color: #FDF8F0d1;
     width: 34%;
     padding: 3% !important;
     border-radius: 18px;
@@ -2520,7 +2562,7 @@
 }
 
 .ct-tl-farm-m-head {
-    color: #274C5B;
+    color: #5e3023;
     font-family: "Roboto", sans-serif;
     font-weight: 800;
     width: fit-content;
@@ -2579,7 +2621,7 @@
 }
 
 .lable-text {
-    color: #274C5B;
+    color: #5e3023;
     font-family: "Roboto", sans-serif;
     font-weight: 500;
 }
@@ -2617,7 +2659,7 @@
 }
 
 .s-9btn-cnct-snd {
-    background: #274C5B !important;
+    background: #5e3023 !important;
     color: white !important;
     font-family: "Roboto", sans-serif;
     font-size: 12px !important;
@@ -2683,7 +2725,7 @@
 }
 
 .shop-btn-error {
-    background: #274C5B !important;
+    background: #5e3023 !important;
     padding: 16px 24px !important;
     line-height: 0 !important;
     margin-top: 4%;
@@ -2745,7 +2787,7 @@
 }
 
 .licenses-head-right {
-    color: #274C5B;
+    color: #5e3023;
     font-family: "Roboto", sans-serif;
     font-weight: 600;
     width: 100%;
@@ -2754,13 +2796,13 @@
 }
 
 .lsn-h6 {
-    color: #274C5B;
+    color: #5e3023;
     font-family: "Roboto", sans-serif;
     font-weight: 600;
 }
 
 .fand-cand-blt {
-    color: #274C5B;
+    color: #5e3023;
     font-weight: 700;
 }
 
@@ -2795,7 +2837,7 @@
 }
 
 .fmly-clr {
-    color: #274C5B;
+    color: #5e3023;
     font-family: "Roboto", sans-serif;
     font-weight: 800;
     font-size: 24px;
@@ -2810,7 +2852,7 @@
 /* ===========  password protect start ========== */
 
 .passprot-hiro-head {
-    color: #274C5B;
+    color: #5e3023;
     font-family: "Roboto", sans-serif;
     text-align: center;
     font-weight: 700;
@@ -2864,7 +2906,7 @@
 }
 
 .colormncode {
-    background-color: #274C5B;
+    background-color: #5e3023;
     width: 90px;
     height: 90px;
     border-radius: 8px;
@@ -2881,7 +2923,7 @@
 
 .clr-code {
     font-family: "Roboto", sans-serif;
-    color: #274C5B;
+    color: #5e3023;
     font-size: 14px;
     font-weight: 500;
     margin-top: 3%;
@@ -2904,7 +2946,7 @@
 }
 
 .colormncode-five {
-    background-color: #F9F8F8;
+    background-color: #FDF8F0;
     width: 90px;
     height: 90px;
     border-radius: 8px;
@@ -2941,7 +2983,7 @@
 }
 
 .style-guide-defoult-btn {
-    background: #274C5B !important;
+    background: #5e3023 !important;
     padding: 16px 24px !important;
     line-height: 0 !important;
     border-radius: 10px !important;
@@ -3339,7 +3381,7 @@
     }
 
     .s8-pcnct {
-        background: #ffffffb3;
+        background: #FDF8F0b3;
         box-shadow: none;
     }
 
@@ -3371,7 +3413,7 @@
 
     .farm-contant-main {
         margin-right: 0%;
-        background-color: #ffffffb0;
+        background-color: #FDF8F0b0;
     }
 
     /* ======================== contact us - page End ======================  */
@@ -3551,7 +3593,7 @@
 .btnefct-2 {
     position: relative;
     overflow: hidden;
-    background: #274C5B !important;
+    background: #5e3023 !important;
     transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     box-shadow: 0 4px 15px rgba(39, 76, 91, 0.2);
 }
@@ -3640,7 +3682,7 @@
 .button {
     width: 40px;
     height: 40px;
-    background: #274C5B;
+    background: #5e3023;
     padding: 8px;
     display: inline-block;
     cursor: pointer;
@@ -3656,7 +3698,7 @@
 }
 
 .button:hover {
-    background: #274C5B;
+    background: #5e3023;
 }
 
 .button span {
@@ -3718,7 +3760,7 @@
     display: none;
     cursor: pointer;
     -webkit-font-smoothing: antialiased;
-    background: #274C5B;
+    background: #5e3023;
     color: white;
     border-radius: 25px;
     width: 35px;
