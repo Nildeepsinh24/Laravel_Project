@@ -389,7 +389,7 @@
                     @endif
                 </p>
                 <p><strong>Total Amount:</strong></p>
-                <p style="font-size: 18px; color: #28a745; font-weight: bold;">${{ number_format($order->total_amount, 2) }}</p>
+                <p style="font-size: 18px; color: #28a745; font-weight: bold;">₹{{ number_format($order->total_amount, 2) }}</p>
             </div>
 
             <div class="items-section">
@@ -408,8 +408,8 @@
                         <tr>
                             <td>{{ $item->product_name }}</td>
                             <td class="text-right">{{ $item->quantity }}</td>
-                            <td class="text-right">${{ number_format($item->unit_price, 2) }}</td>
-                            <td class="text-right"><strong>${{ number_format($item->total_price, 2) }}</strong></td>
+                            <td class="text-right">₹{{ number_format($item->unit_price, 2) }}</td>
+                            <td class="text-right"><strong>₹{{ number_format($item->total_price, 2) }}</strong></td>
                         </tr>
                         @endforeach
                     </tbody>
@@ -420,7 +420,7 @@
                 <div class="totals-box">
                     <div class="total-row">
                         <span>Subtotal:</span>
-                        <span>${{ number_format($order->total_amount, 2) }}</span>
+                        <span>₹{{ number_format($order->total_amount, 2) }}</span>
                     </div>
                     <div class="total-row">
                         <span>Shipping:</span>
@@ -432,7 +432,7 @@
                     </div>
                     <div class="total-row final">
                         <span>Total Amount:</span>
-                        <span>${{ number_format($order->total_amount, 2) }}</span>
+                        <span>₹{{ number_format($order->total_amount, 2) }}</span>
                     </div>
                 </div>
             </div>

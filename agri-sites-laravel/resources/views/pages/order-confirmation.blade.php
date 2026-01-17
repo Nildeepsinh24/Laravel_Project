@@ -77,8 +77,8 @@
                                         <tr class="border-bottom">
                                             <td>{{ $item->product_name }}</td>
                                             <td class="text-end">{{ $item->quantity }}</td>
-                                            <td class="text-end">${{ number_format($item->unit_price, 2) }}</td>
-                                            <td class="text-end"><strong>${{ number_format($item->total_price, 2) }}</strong></td>
+                                            <td class="text-end">₹{{ number_format($item->unit_price, 2) }}</td>
+                                            <td class="text-end"><strong>₹{{ number_format($item->total_price, 2) }}</strong></td>
                                         </tr>
                                         @endforeach
                                     </tbody>
@@ -91,7 +91,7 @@
                                     <div class="border-top pt-3">
                                         <div class="d-flex justify-content-between mb-2">
                                             <span>Subtotal:</span>
-                                            <strong>${{ number_format($order->total_amount, 2) }}</strong>
+                                            <strong>₹{{ number_format($order->total_amount, 2) }}</strong>
                                         </div>
                                         <div class="d-flex justify-content-between mb-2">
                                             <span>Shipping:</span>
@@ -99,7 +99,7 @@
                                         </div>
                                         <div class="d-flex justify-content-between pt-2 border-top">
                                             <h5 class="mb-0">Total Amount:</h5>
-                                            <h5 class="text-success mb-0">${{ number_format($order->total_amount, 2) }}</h5>
+                                            <h5 class="text-success mb-0">₹{{ number_format($order->total_amount, 2) }}</h5>
                                         </div>
                                     </div>
                                 </div>

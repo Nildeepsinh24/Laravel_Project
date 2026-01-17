@@ -34,8 +34,8 @@
                             @endfor
                         </div>
                         <div class="cf-h mt-3">
-                            <h6 class="card-text d-text"><del>${{ number_format($product->original_price, 2) }}</del></h6>
-                            <h6 class="card-text r-text">${{ number_format($product->sale_price, 2) }}</h6>
+                            <h6 class="card-text d-text"><del>₹{{ number_format($product->original_price, 2) }}</del></h6>
+                            <h6 class="card-text r-text">₹{{ number_format($product->sale_price, 2) }}</h6>
                         </div>
                         <p class="cnct-one-1-pera mt-2">{{ $product->description ?? 'Simply dummy text of the printing and typesetting industry. Lorem had ceased to been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley.' }}</p>
                         <div class="main-b">
