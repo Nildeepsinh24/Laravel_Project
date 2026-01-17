@@ -46,7 +46,7 @@
                                 <form method="POST" action="{{ route('cart.add', $product->slug) }}" class="input-group gp-iand-b">
                                     @csrf
                                     <input type="number" name="quantity" value="1" min="1" class="form-control quntity-buy" required>
-                                    <button type="submit" class="btn btn-md shop-single-btn btnefct-2" data-hover="Click me!">Add To Cart &nbsp;<i class="bi bi-arrow-right-circle-fill"></i></button>
+                                    <button type="submit" class="btn btn-md shop-single-btn btnefct-2" style="color: #fff;" data-hover="Click me!">Add To Cart &nbsp;<i class="bi bi-arrow-right-circle-fill"></i></button>
                                 </form>
                             </div>
                         </div>
