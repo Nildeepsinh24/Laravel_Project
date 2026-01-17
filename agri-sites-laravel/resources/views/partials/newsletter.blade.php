@@ -1,5 +1,6 @@
-<div class="container content-section-9-main">
-    <div class="row c-s-9-main">
+<div class="content-section-9-main">
+    <div class="container">
+        <div class="row c-s-9-main">
         <div class="col-md-6 s-9-head-main">
             <h1 class="s-9-h-one">Subscribe to our Newsletter</h1>
         </div>
@@ -15,3 +16,4 @@
         </div>
     </div>
 </div>
+

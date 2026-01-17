@@ -1,5 +1,6 @@
-<div class="container main-footer-section-ed">
-    <div class="row footer-main-row-mn">
+<div class="main-footer-section-ed">
+    <div class="container">
+        <div class="row footer-main-row-mn">
         <div class="col-md-3 footer-one-clm">
             <ul class="ftr-mn-ul">
                 <h4 data-aos="fade-up" data-aos-duration="1000">Contact Us</h4>
@@ -67,6 +68,7 @@
                 </li>
             </ul>
         </div>
+    </div>
     </div>
 </div>
 <div class="footer-copy-right">
