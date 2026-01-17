@@ -74,7 +74,7 @@
                                     </a>
                                 </h6>
                                 <div class="cart-item-meta">
-                                    <span class="cart-item-price">${{ number_format($item['price'], 2) }}</span>
+                                    <span class="cart-item-price">₹{{ number_format($item['price'], 2) }}</span>
                                     <span class="cart-item-stock">In Stock</span>
                                 </div>
                             </div>
@@ -96,7 +96,7 @@
 
                             <div class="cart-item-subtotal">
                                 <span class="subtotal-label">Subtotal</span>
-                                <span class="subtotal-price">${{ number_format($item['qty'] * $item['price'], 2) }}</span>
+                                <span class="subtotal-price">₹{{ number_format($item['qty'] * $item['price'], 2) }}</span>
                             </div>
 
                             <div class="cart-item-actions">
@@ -134,7 +134,7 @@
                         <div class="summary-content">
                             <div class="summary-item">
                                 <span class="summary-label">Subtotal</span>
-                                <span class="summary-value">${{ number_format($cart['total_price'], 2) }}</span>
+                                <span class="summary-value">₹{{ number_format($cart['total_price'], 2) }}</span>
                             </div>
                             <div class="summary-item">
                                 <span class="summary-label">Shipping</span>
@@ -142,14 +142,14 @@
                             </div>
                             <div class="summary-item">
                                 <span class="summary-label">Tax</span>
-                                <span class="summary-value">${{ number_format($cart['total_price'] * 0.1, 2) }}</span>
+                                <span class="summary-value">₹{{ number_format($cart['total_price'] * 0.1, 2) }}</span>
                             </div>
 
                             <div class="summary-divider"></div>
 
                             <div class="summary-total">
                                 <span class="total-label">Total</span>
-                                <span class="total-price">${{ number_format($cart['total_price'] * 1.1, 2) }}</span>
+                                <span class="total-price">₹{{ number_format($cart['total_price'] * 1.1, 2) }}</span>
                             </div>
 
                             <p class="summary-note">
