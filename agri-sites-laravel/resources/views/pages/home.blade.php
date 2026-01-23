@@ -103,7 +103,7 @@
                     <div class="card section-3-card-main position-relative">
                         @auth
                             @php
-                                $inWishlist = \App\Models\Wishlist::where('user_id', auth()->id())->where('product_id', $product->id)->exists();
+                                $inWishlist = in_array($product->id, $wishlistIds ?? [], true);
                             @endphp
                             <div class="position-absolute" style="top: 10px; right: 10px; z-index: 10;">
                                 <button type="button" onclick="toggleWishlist(event, '{{ $product->slug }}', this)" class="btn btn-sm {{ $inWishlist ? 'btn-danger' : 'btn-outline-danger' }} rounded-circle wishlist-btn" style="width: 35px; height: 35px;" data-slug="{{ $product->slug }}" data-in-wishlist="{{ $inWishlist ? 'true' : 'false' }}" title="{{ $inWishlist ? 'Remove from Wishlist' : 'Add to Wishlist' }}">
@@ -220,7 +220,7 @@
                 <div class="card section-3-card-main position-relative">
                     @auth
                         @php
-                            $inWishlist = \App\Models\Wishlist::where('user_id', auth()->id())->where('product_id', $product->id)->exists();
+                            $inWishlist = in_array($product->id, $wishlistIds ?? [], true);
                         @endphp
                         <div class="position-absolute" style="top: 10px; right: 10px; z-index: 10;">
                             <button type="button" onclick="toggleWishlist(event, '{{ $product->slug }}', this)" class="btn btn-sm {{ $inWishlist ? 'btn-danger' : 'btn-outline-danger' }} rounded-circle wishlist-btn" style="width: 35px; height: 35px;" data-slug="{{ $product->slug }}" data-in-wishlist="{{ $inWishlist ? 'true' : 'false' }}" title="{{ $inWishlist ? 'Remove from Wishlist' : 'Add to Wishlist' }}">
