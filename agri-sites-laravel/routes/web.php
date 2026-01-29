@@ -5,6 +5,10 @@ use App\Http\Controllers\PortfolioController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\WishlistController;
+use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\Admin\ProductController as AdminProductController;
+use App\Http\Controllers\Admin\OrderController;
+use App\Http\Controllers\Admin\CustomerController;
 use Illuminate\Support\Facades\Route;
 
 Route::controller(PagesController::class)->group(function () {
@@ -66,3 +70,11 @@ Route::get('/order/{order}/print', [CartController::class, 'printBill'])->middle
 Route::get('/debug', function() {
     return view('pages.debug');
 })->name('debug');
+
+// Admin panel routes (single separate admin panel)
+Route::prefix('admin')->middleware(['auth', \App\Http\Middleware\AdminMiddleware::class])->group(function () {
+    Route::get('/', [DashboardController::class, 'index'])->name('admin.dashboard');
+    Route::resource('products', AdminProductController::class, ['as' => 'admin']);
+    Route::resource('orders', OrderController::class, ['as' => 'admin', 'only' => ['index', 'show']]);
+    Route::resource('customers', CustomerController::class, ['as' => 'admin', 'only' => ['index', 'show']]);
+});
