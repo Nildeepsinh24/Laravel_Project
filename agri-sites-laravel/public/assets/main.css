@@ -479,17 +479,24 @@
 
 .ctone {
     font-family: "Open Sans", sans-serif;
-    color: white;
-    background-color: #5e3023;
+    color: #5e3023;
+    background-color: transparent;
     font-size: 12px;
-    padding: 6px 12px;
-    border-radius: 6px;
+    padding: 0;
+    border-radius: 0;
 }
 
 .crd-hsix {
     color: #5e3023;
     font-family: "Roboto", sans-serif;
     font-weight: 700;
+    /* make product name stand out with dark brown background and white text */
+    background-color: #5e3023;
+    color: #ffffff !important;
+    display: inline-block;
+    padding: 8px 12px;
+    border-radius: 8px;
+    margin-top: 8px;
 }
 
 .hrsprt {
@@ -517,6 +524,60 @@
 .cf-h {
     display: flex;
     gap: 10px;
+}
+
+/* Ensure product cards align evenly and buttons stay at the bottom */
+.card-cl-one {
+    display: flex;
+    flex-direction: column;
+}
+.card-cl-one > .section-3-card-main,
+.card-cl-two > .section-3-card-main,
+.card-cl-three > .section-3-card-main,
+.card-cl-four > .section-3-card-main {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    justify-content: space-between;
+}
+.section-3-card-main .card-body {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+}
+.section-3-card-main .card-body img {
+    max-height: 240px;
+    width: auto;
+    margin: 1rem auto;
+    object-fit: contain;
+    display: block;
+}
+/* Desktop: give cards a consistent minimum height */
+@media (min-width: 768px) {
+    .card-cl-one,
+    .card-cl-two,
+    .card-cl-three,
+    .card-cl-four {
+        min-height: 520px;
+    }
+}
+@media (max-width: 767px) {
+    .section-3-card-main .card-body img {
+        max-height: 180px;
+    }
+    .card-cl-one,
+    .card-cl-two,
+    .card-cl-three,
+    .card-cl-four {
+        min-height: auto;
+    }
+}
+
+/* Hide footer on pages that set body.no-footer */
+body.no-footer .main-footer-section-ed,
+body.no-footer .footer-copy-right {
+    display: none !important;
 }
 
 .star {
