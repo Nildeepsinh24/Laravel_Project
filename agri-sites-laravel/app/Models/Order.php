@@ -25,6 +25,8 @@ class Order extends Model
         'notes',
         'payment_method',
         'total_amount',
+        'subtotal',
+        'tax_amount',
         'status',
     ];
 

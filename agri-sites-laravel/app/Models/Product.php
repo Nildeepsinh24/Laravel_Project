@@ -9,6 +9,7 @@ class Product extends Model
     protected $fillable = [
         'name',
         'category',
+        'category_id',
         'image',
         'original_price',
         'sale_price',
@@ -17,4 +18,9 @@ class Product extends Model
         'additional_info',
         'slug',
     ];
+
+    public function categoryRelation()
+    {
+        return $this->belongsTo(\App\Models\Category::class, 'category_id');
+    }
 }
