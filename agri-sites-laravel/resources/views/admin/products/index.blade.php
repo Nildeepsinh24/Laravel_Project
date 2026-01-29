@@ -89,6 +89,7 @@
         transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         animation: fadeInUp 0.6s ease;
         animation-fill-mode: both;
+        border-top: 4px solid #667eea;
     }
     .category-section:nth-child(2) { animation-delay: 0.1s; }
     .category-section:nth-child(3) { animation-delay: 0.2s; }
@@ -100,45 +101,34 @@
         box-shadow: 0 8px 25px rgba(0,0,0,0.12);
     }
     .category-header {
-        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-        color: white;
+        background: linear-gradient(135deg, #f8f9fb 0%, #ffffff 100%);
+        border-bottom: 3px solid #667eea;
+        color: #1a202c;
         padding: 20px 24px;
         display: flex;
         justify-content: space-between;
         align-items: center;
         cursor: pointer;
         transition: all 0.3s ease;
-        position: relative;
-        overflow: hidden;
     }
-    .category-header::before {
-        content: '';
-        position: absolute;
-        top: 0;
-        left: -100%;
-        width: 100%;
-        height: 100%;
-        background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
-        transition: left 0.5s ease;
-    }
-    .category-header:hover::before {
-        left: 100%;
+    .category-header:hover {
+        border-bottom-color: #5568d3;
+        background: linear-gradient(135deg, #f0f4ff 0%, #ffffff 100%);
     }
     .category-header h4 {
         margin: 0;
-        font-size: 18px;
+        font-size: 20px;
         font-weight: 700;
-        position: relative;
-        z-index: 1;
+        color: #667eea;
+        letter-spacing: 0.3px;
     }
     .category-count {
-        background: rgba(255,255,255,0.3);
-        padding: 6px 14px;
-        border-radius: 20px;
-        font-size: 13px;
+        background: #e2e8f0;
+        color: #2d3748;
+        padding: 6px 12px;
+        border-radius: 6px;
+        font-size: 12px;
         font-weight: 700;
-        position: relative;
-        z-index: 1;
     }
     .category-content {
         padding: 20px;
