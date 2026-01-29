@@ -157,8 +157,14 @@ class CartController extends Controller
             return redirect()->route('cart.index')->with('status', 'Your cart is empty');
         }
 
-        // Create order
-        $order = Order::create([
+        // Compute subtotal, tax and total
+        $subtotal = $cart['total_price'];
+        $taxRate = config('cart.tax_rate', 0);
+        $taxAmount = round(($subtotal * $taxRate) / 100, 2);
+        $totalAmount = round($subtotal + $taxAmount, 2);
+
+        // Create order with tax/subtotal breakdown (attach user if authenticated)
+        $orderData = [
             'order_number' => 'ORD-' . strtoupper(uniqid()),
             'first_name' => $validated['first_name'],
             'last_name' => $validated['last_name'],
@@ -171,11 +177,19 @@ class CartController extends Controller
             'country' => $validated['country'],
             'notes' => $validated['notes'],
             'payment_method' => $validated['payment_method'],
-            'total_amount' => $cart['total_price'],
+            'subtotal' => $subtotal,
+            'tax_amount' => $taxAmount,
+            'total_amount' => $totalAmount,
             'status' => 'pending',
-        ]);
+        ];
 
-        // Create order items
+        if ($request->user()) {
+            $orderData['user_id'] = $request->user()->id;
+        }
+
+        $order = Order::create($orderData);
+
+        // Create order items (store unit_price and total_price)
         foreach ($cart['items'] as $item) {
             OrderItem::create([
                 'order_id' => $order->id,
