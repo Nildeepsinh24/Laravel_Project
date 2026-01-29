@@ -77,18 +77,18 @@
             <div class="mainloc">
                 <div class="icn-lkc"><img src="{{ $asset }}/bifsLocation.png" class="img-fluid image-grnlkc" alt="Location"></div>
                 <div class="lkc-add">
-                    <span class="blt-fw">New York, USA:</span> <br>
-                    299 Park Avenue New York, <br>
-                    New York 10171
+                    <span class="blt-fw">Rajkot, Gujarat:</span> <br>
+                    Rajkot, Gujarat<br>
+                    India
                 </div>
             </div>
 
             <div class="mainloc">
                 <div class="icn-lkc"><img src="{{ $asset }}/bifsLocation.png" class="img-fluid image-grnlkc" alt="Location"></div>
                 <div class="lkc-add">
-                    <span class="blt-fw">London, UK:</span> <br>
-                    30 Stamford Street, <br>
-                    London SE1 9LQ
+                    <span class="blt-fw">Ahmedabad, Gujarat:</span> <br>
+                    Ahmedabad, Gujarat<br>
+                    India
                 </div>
             </div>
         </div>
@@ -106,16 +106,16 @@
                     <input type="text" placeholder="example@yourmail.com" class="form-control allbt-none" required>
                 </div>
                 <div class="col-md-6 clm-one-us">
-                    <label class="lable-text">Company*</label>
-                    <input type="text" placeholder="yourcompany name here" class="form-control allbt-none" required>
+                    <label class="lable-text">Phone Number*</label>
+                    <input type="tel" name="phone" placeholder="+91 98765 43210" class="form-control allbt-none" required>
                 </div>
                 <div class="col-md-6 clm-us-two">
                     <label class="lable-text">Subject*</label>
                     <input type="text" placeholder="how can we help" class="form-control allbt-none" required>
                 </div>
                 <div class="textaria">
-                    <label class="lable-text">Subject*</label>
-                    <textarea placeholder="hello there,i would like to talk about how to..." class="allbt-none-one"></textarea>
+                    <label class="lable-text">Message*</label>
+                    <textarea name="message" placeholder="Hello there, I would like to talk about how to..." class="allbt-none-one" required></textarea>
                 </div>
                 <button type="submit" class="btn btn-lg s-9btn-cnct-snd s-9btn">Send Message</button>
             </div>

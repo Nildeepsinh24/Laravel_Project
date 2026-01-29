@@ -96,6 +96,12 @@
                 </a>
 
                 @auth
+                    @if($user->is_admin)
+                        <a href="{{ route('admin.dashboard') }}" class="cart text-decoration-none" style="display: flex; flex-direction: column; align-items: center; color: #dc3545; text-align: center; background: none; border: none; gap: 4px;">
+                            <div class="icn-crt" style="font-size: 18px;"><i class="bi bi-speedometer2"></i></div>
+                            <div class="cart-head" style="font-size: 11px; white-space: nowrap; font-weight: 600;">Admin</div>
+                        </a>
+                    @endif
                     <a href="{{ route('wishlist.index') }}" class="cart text-decoration-none" style="display: flex; flex-direction: column; align-items: center; color: #5e3023; text-align: center; background: none; border: none; position: relative; gap: 4px;">
                         <div class="icn-crt" style="font-size: 18px;"><i class="bi bi-heart"></i></div>
                         <span class="badge bg-danger" data-wishlist-count style="position: absolute; top: -8px; right: -8px; border-radius: 50%; width: 20px; height: 20px; display: {{ $wishlistCount > 0 ? 'flex' : 'none' }}; align-items: center; justify-content: center; font-size: 11px;">{{ $wishlistCount }}</span>

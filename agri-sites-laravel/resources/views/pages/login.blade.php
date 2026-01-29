@@ -1,4 +1,5 @@
 @extends('layouts.app')
+@section('body-class', 'no-footer')
 
 @section('title', 'Login')
 

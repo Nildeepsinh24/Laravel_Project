@@ -253,8 +253,8 @@
                                 <hr class="hr hrsprt">
                                 <div class="ftr-dv">
                                     <div class="cf-h">
-                                        <h6 class="card-text d-text"><del>${{ number_format($related->original_price, 2) }}</del></h6>
-                                        <h6 class="card-text r-text">${{ number_format($related->sale_price, 2) }}</h6>
+                                        <h6 class="card-text d-text"><del>₹{{ number_format($related->original_price, 2) }}</del></h6>
+                                        <h6 class="card-text r-text">₹{{ number_format($related->sale_price, 2) }}</h6>
                                     </div>
                                     <div class="star">
                                         @for($i = 0; $i < $related->rating; $i++)
