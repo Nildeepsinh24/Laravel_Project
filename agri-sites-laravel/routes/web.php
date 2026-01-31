@@ -74,6 +74,10 @@ Route::get('/debug', function() {
 // Admin panel routes (single separate admin panel)
 Route::prefix('admin')->middleware(['auth', \App\Http\Middleware\AdminMiddleware::class])->group(function () {
     Route::get('/', [DashboardController::class, 'index'])->name('admin.dashboard');
+	// Simple admin profile page
+	Route::get('/profile', function () {
+		return view('admin.profile');
+	})->name('admin.profile');
     Route::resource('products', AdminProductController::class, ['as' => 'admin']);
     Route::resource('orders', OrderController::class, ['as' => 'admin', 'only' => ['index', 'show']]);
     Route::resource('customers', CustomerController::class, ['as' => 'admin', 'only' => ['index', 'show']]);
