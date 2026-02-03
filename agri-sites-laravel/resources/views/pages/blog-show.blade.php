@@ -98,9 +98,9 @@
                     </div>
 
                     <!-- Article Info -->
-                    <div class="blog-sidebar-widget">
+                    <div class="blog-sidebar-widget article-info-widget">
                         <div class="widget-header">
-                            <h5>Article Information</h5>
+                            <h5><i class="bi bi-info-circle-fill"></i> Article Information</h5>
                         </div>
                         <div class="widget-content info-list">
                             <div class="info-item">
@@ -113,7 +113,7 @@
                             </div>
                             <div class="info-item">
                                 <span class="info-label"><i class="bi bi-clock"></i> Read Time</span>
-                                <span class="info-value">{{ ceil(str_word_count(strip_tags($blog->content)) / 200) }} minutes</span>
+                                <span class="info-value">{{ ceil(str_word_count(strip_tags($blog->content)) / 200) }} minute{{ ceil(str_word_count(strip_tags($blog->content)) / 200) > 1 ? 's' : '' }} read</span>
                             </div>
                         </div>
                     </div>
@@ -763,16 +763,53 @@
             margin: 0;
         }
 
+        /* ===== Article Info Widget ===== */
+        .article-info-widget {
+            background: linear-gradient(135deg, #f9fbfa 0%, #f0f6f4 100%);
+            border: 2px solid rgba(104, 164, 127, 0.2);
+        }
+
+        .widget-header {
+            border-bottom: 2px solid rgba(104, 164, 127, 0.2);
+            padding-bottom: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .widget-header h5 {
+            color: #274C5B;
+            font-weight: 900;
+            font-size: 1.05rem;
+            margin: 0;
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .widget-header h5 i {
+            color: #FF6B6B;
+            font-size: 1.2rem;
+        }
+
         .info-list {
             padding: 0;
+            margin: 0;
         }
 
         .info-item {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 0.75rem 0;
-            border-bottom: 1px solid #e0e0e0;
+            padding: 1.1rem 0;
+            border-bottom: 1px solid rgba(104, 164, 127, 0.15);
+            transition: all 0.3s ease;
+        }
+
+        .info-item:hover {
+            background: rgba(104, 164, 127, 0.05);
+            padding-left: 0.5rem;
+            border-radius: 4px;
         }
 
         .info-item:last-child {
@@ -780,31 +817,41 @@
         }
 
         .info-label {
-            color: #666;
-            font-size: 0.9rem;
+            color: #555;
+            font-size: 0.95rem;
             display: flex;
             align-items: center;
-            gap: 0.5rem;
+            gap: 0.7rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
         }
 
         .info-label i {
-            color: #68A47F;
+            color: #FF6B6B;
+            font-size: 1.1rem;
+            width: 20px;
+            text-align: center;
         }
 
         .info-value {
             color: #274C5B;
-            font-weight: 600;
-            font-size: 0.95rem;
+            font-weight: 800;
+            font-size: 1rem;
+            text-align: right;
         }
 
         .badge-inline {
             display: inline-block;
-            background-color: #68A47F;
+            background: linear-gradient(135deg, #68A47F 0%, #5a916d 100%);
             color: white;
-            padding: 0.25rem 0.75rem;
-            border-radius: 20px;
+            padding: 0.4rem 1rem;
+            border-radius: 50px;
             font-size: 0.85rem;
-            font-weight: 600;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            box-shadow: 0 4px 12px rgba(104, 164, 127, 0.25);
         }
 
         .toc-list {
