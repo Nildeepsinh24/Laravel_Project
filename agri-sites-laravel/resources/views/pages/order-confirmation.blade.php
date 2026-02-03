@@ -38,6 +38,8 @@
                                     <p><strong>Payment Method:</strong> 
                                         @if($order->payment_method === 'cod')
                                             Cash on Delivery
+                                        @elseif($order->payment_method === 'netbanking')
+                                            Net Banking
                                         @else
                                             Credit/Debit Card
                                         @endif

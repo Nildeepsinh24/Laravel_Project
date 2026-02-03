@@ -61,19 +61,20 @@
         .invoice-meta {
             display: flex;
             justify-content: flex-end;
-            gap: 20px;
+            gap: 30px;
             margin-bottom: 20px;
         }
 
         .meta-box {
             text-align: right;
+            min-width: 100px;
         }
 
         .meta-box label {
             display: block;
             font-weight: bold;
             color: #333;
-            margin-bottom: 3px;
+            margin-bottom: 5px;
             font-size: 13px;
         }
 
@@ -81,6 +82,7 @@
             display: block;
             color: #666;
             font-size: 12px;
+            line-height: 1.4;
         }
 
         .invoice-body {
@@ -131,11 +133,25 @@
             font-size: 12px;
         }
 
+        .items-table th:nth-child(2),
+        .items-table th:nth-child(3),
+        .items-table th:nth-child(4) {
+            text-align: right;
+            padding-right: 12px;
+        }
+
         .items-table td {
             padding: 6px 8px;
             border-bottom: 1px solid #ddd;
             color: #666;
             font-size: 12px;
+        }
+
+        .items-table td:nth-child(2),
+        .items-table td:nth-child(3),
+        .items-table td:nth-child(4) {
+            text-align: right;
+            padding-right: 12px;
         }
 
         .items-table tr:last-child td {
@@ -149,11 +165,15 @@
         .totals-section {
             margin-top: 15px;
             display: flex;
-            justify-content: flex-end;
+            justify-content: flex-start;
         }
 
         .totals-box {
             width: 250px;
+            background-color: #f9f9f9;
+            padding: 10px 12px;
+            border: 1px solid #e0e0e0;
+            border-radius: 3px;
         }
 
         .total-row {
@@ -162,6 +182,7 @@
             padding: 6px 0;
             font-size: 12px;
             border-bottom: 1px solid #ddd;
+            align-items: center;
         }
 
         .total-row.final {
@@ -169,11 +190,14 @@
             font-size: 15px;
             font-weight: bold;
             border-bottom: none;
-            border-top: 1px solid #28a745;
+            border-top: 2px solid #28a745;
+            margin-top: 5px;
+            padding-top: 8px;
         }
 
         .total-row.final span:last-child {
             color: #28a745;
+            font-weight: bold;
         }
 
         .notes-section {
@@ -333,6 +357,8 @@
                 <p>
                     @if($order->payment_method === 'cod')
                         Cash on Delivery (COD)
+                    @elseif($order->payment_method === 'netbanking')
+                        Net Banking
                     @else
                         Credit/Debit Card
                     @endif
