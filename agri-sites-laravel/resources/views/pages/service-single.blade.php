@@ -62,5 +62,4 @@
         </div>
     </section>
 
-    @include('partials.newsletter')
 @endsection
