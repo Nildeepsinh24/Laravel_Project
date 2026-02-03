@@ -17,6 +17,20 @@ class CartController extends Controller
 
     public function add(Request $request, string $slug)
     {
+        // Check if user is authenticated
+        if (!auth()->check()) {
+            if ($request->wantsJson() || $request->header('X-Requested-With') === 'XMLHttpRequest') {
+                return response()->json([
+                    'success' => false,
+                    'authenticated' => false,
+                    'message' => 'Please login or register to add products to cart',
+                    'login_url' => route('login'),
+                    'register_url' => route('register')
+                ], 401);
+            }
+            return redirect()->route('login')->with('message', 'Please login to add products to cart');
+        }
+
         try {
             $product = Product::where('slug', $slug)->firstOrFail();
             $qty = max(1, (int) $request->input('quantity', 1));
@@ -146,7 +160,7 @@ class CartController extends Controller
             'zip' => 'required|string',
             'country' => 'required|string',
             'notes' => 'nullable|string',
-            'payment_method' => 'required|in:cod,card',
+            'payment_method' => 'required|in:cod,card,netbanking',
         ]);
         
         \Log::info('Validation passed', $validated);
@@ -159,7 +173,7 @@ class CartController extends Controller
 
         // Compute subtotal, tax and total
         $subtotal = $cart['total_price'];
-        $taxRate = config('cart.tax_rate', 0);
+        $taxRate = config('cart.tax_rate', 10);
         $taxAmount = round(($subtotal * $taxRate) / 100, 2);
         $totalAmount = round($subtotal + $taxAmount, 2);
 

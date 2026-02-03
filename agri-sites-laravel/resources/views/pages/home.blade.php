@@ -55,7 +55,7 @@
                     <div class="cl-cnct-one-1">
                         <h4 class="cnct-one-1-abt">About Us</h4>
                         <h2 class="cnct-one-1head">We Believe in Working Accredited Farmers</h2>
-                        <p class="cnct-one-1-pera">Simply dummy text of the printing and typesetting industry. Lorem had ceased to been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley.</p>
+                        <p class="cnct-one-1-pera">Welcome to Organick, your trusted source for 100% certified organic products. We bring nature's finest produce directly from farm to your table, ensuring freshness, quality, and sustainability in every harvest.</p>
                         <div class="card main-crd" data-aos="fade-up" data-aos-duration="1000">
                             <div class="row no-gutters crd-row">
                                 <div class="col-md-2 dfjsal-org">
@@ -162,7 +162,7 @@
                                 <i class="bi bi-star-fill"></i>
                                 <i class="bi bi-star-fill"></i>
                             </div>
-                            <p class="s4-pera mt-3" data-aos="fade-up" data-aos-duration="1000">Simply dummy text of the printing and typesetting industry. Lorem Ipsum simply dummy text of the printing and typesetting industry. Lorem Ipsum has been.</p>
+                            <p class="s4-pera mt-3" data-aos="fade-up" data-aos-duration="1000">We are dedicated to sustainable farming practices that protect our environment while producing the highest quality organic products. Our mission is to connect conscious consumers with pure, wholesome food that nourishes both body and planet.</p>
                             <h6 class="card-text crd-hsix mt-3">Sara Taylor</h6>
                             <p class="s4-pera">Consumer</p>
                         </div>
@@ -321,38 +321,85 @@
                         </p>
                     </div>
                 </div>
-                <div class="col-md-6 s8-cl-hf-one">
-                    <div class="s8-bg-first" data-aos="fade-up" data-aos-duration="1000">
-                        <div class="crcl-s8cnont">
-                            <p class="bg-s8-count">25</p>
-                            <p class="bg-s8-count">Nov</p>
+                @forelse($latestBlogs as $index => $blog)
+                <div class="col-md-6 s8-blog-card-wrapper" data-aos="fade-up" data-aos-duration="{{ 1000 + ($index * 200) }}">
+                    <div class="s8-blog-card s8-bg-{{ $index === 0 ? 'first' : 'sec' }}">
+                        <!-- Date Badge -->
+                        <div class="s8-date-badge">
+                            <span class="date-day">{{ $blog->published_at->format('d') }}</span>
+                            <span class="date-month">{{ $blog->published_at->format('M') }}</span>
                         </div>
-                        <div class="s8-pcnct">
-                            <p class="s8-pm-pera"><span class="people-s8icn"><i class="bi bi-person-fill"></i></span> &nbsp; By Rachi Card</p>
-                            <div class="sec-8-cnct-one-pss8">
-                                <h5 class="cnct-one-h"><a href="{{ route('blog.single') }}" class="text-decoration-none text-dark">The Benefits of Vitamin D & How to Get It</a></h5>
-                                <p class="cnct-one-pss8">Simply dummy text of the printing and typesetting industry. Lorem Ipsum</p>
+                        
+                        <!-- Card Content -->
+                        <div class="s8-card-content">
+                            <!-- Author -->
+                            <div class="blog-author-section">
+                                <span class="author-icon"><i class="bi bi-pen-fill"></i></span>
+                                <span class="author-name">By {{ $blog->author }}</span>
+                                <span class="blog-category-badge">{{ $blog->category ?? 'General' }}</span>
                             </div>
-                            <button type="button" class="btn btn-md shop-btn-s5 btnefct"><a href="{{ route('blog.single') }}">Read More &nbsp;<i class="bi bi-arrow-right-circle-fill"></i></a></button>
+                            
+                            <!-- Title -->
+                            <h4 class="blog-card-title">
+                                <a href="{{ route('blog.show', $blog->slug) }}">{{ $blog->title }}</a>
+                            </h4>
+                            
+                            <!-- Excerpt -->
+                            <p class="blog-card-excerpt">{{ $blog->excerpt ?? substr(strip_tags($blog->content), 0, 150) . '...' }}</p>
+                            
+                            <!-- Read More Button -->
+                            <a href="{{ route('blog.show', $blog->slug) }}" class="blog-read-more-btn">
+                                Read Full Article <i class="bi bi-arrow-right-circle-fill"></i>
+                            </a>
                         </div>
                     </div>
                 </div>
-                <div class="col-md-6 s8-cl-hf-two">
-                    <div class="s8-bg-sec" data-aos="fade-up" data-aos-duration="1000">
-                        <div class="crcl-s8cnont">
-                            <p class="bg-s8-count">25</p>
-                            <p class="bg-s8-count">Nov</p>
+                @empty
+                <div class="col-md-6 s8-blog-card-wrapper" data-aos="fade-up" data-aos-duration="1000">
+                    <div class="s8-blog-card s8-bg-first">
+                        <div class="s8-date-badge">
+                            <span class="date-day">25</span>
+                            <span class="date-month">Nov</span>
                         </div>
-                        <div class="s8-pcnct">
-                            <p class="s8-pm-pera"><span class="people-s8icn"><i class="bi bi-person-fill"></i></span> &nbsp; By Rachi Card</p>
-                            <div class="sec-8-cnct-one-pss8">
-                                <h5 class="cnct-one-h"><a href="{{ route('blog.single') }}" class="text-decoration-none text-dark">Our Favourite Summertime Tommeto</a></h5>
-                                <p class="cnct-one-pss8">Simply dummy text of the printing and typesetting industry. Lorem Ipsum</p>
+                        <div class="s8-card-content">
+                            <div class="blog-author-section">
+                                <span class="author-icon"><i class="bi bi-pen-fill"></i></span>
+                                <span class="author-name">By Rachi Card</span>
+                                <span class="blog-category-badge">Health</span>
                             </div>
-                            <button type="button" class="btn btn-md shop-btn-s5 btnefct"><a href="{{ route('blog.single') }}">Read More &nbsp;<i class="bi bi-arrow-right-circle-fill"></i></a></button>
+                            <h4 class="blog-card-title">
+                                <a href="{{ route('blog.single') }}">The Benefits of Vitamin D & How to Get It</a>
+                            </h4>
+                            <p class="blog-card-excerpt">Learn about the essential role of Vitamin D in bone health and immune function. Discover how organic sources and natural sunlight can boost your wellness naturally.</p>
+                            <a href="{{ route('blog.single') }}" class="blog-read-more-btn">
+                                Read Full Article <i class="bi bi-arrow-right-circle-fill"></i>
+                            </a>
                         </div>
                     </div>
                 </div>
+                <div class="col-md-6 s8-blog-card-wrapper" data-aos="fade-up" data-aos-duration="1200">
+                    <div class="s8-blog-card s8-bg-sec">
+                        <div class="s8-date-badge">
+                            <span class="date-day">22</span>
+                            <span class="date-month">Nov</span>
+                        </div>
+                        <div class="s8-card-content">
+                            <div class="blog-author-section">
+                                <span class="author-icon"><i class="bi bi-pen-fill"></i></span>
+                                <span class="author-name">By Rachi Card</span>
+                                <span class="blog-category-badge">Farm Produce</span>
+                            </div>
+                            <h4 class="blog-card-title">
+                                <a href="{{ route('blog.single') }}">Our Favourite Summertime Tomatoes</a>
+                            </h4>
+                            <p class="blog-card-excerpt">Explore the finest organic tomato varieties perfect for summer salads and fresh salsas. Find out why heirloom tomatoes grown without pesticides taste better and are healthier.</p>
+                            <a href="{{ route('blog.single') }}" class="blog-read-more-btn">
+                                Read Full Article <i class="bi bi-arrow-right-circle-fill"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                @endforelse
                 <p class="text-center spbtns5-s8no">
                     <a href="{{ route('news') }}" class="btn btn-md shops8-btns8-s8-none btnefct-1 text-decoration-none">More News &nbsp;<i class="bi bi-arrow-right-circle-fill"></i></a>
                 </p>
@@ -360,7 +407,6 @@
         </div>
     </section>
 
-    @include('partials.newsletter')
 @endsection
 
 @push('scripts')
@@ -390,14 +436,26 @@ function addToCart(event, slug) {
         },
         body: formData
     })
-    .then(response => {
-        if (!response.ok) {
-            throw new Error('Network response was not ok');
-        }
-        return response.json();
-    })
-    .then(data => {
-        if (data.success) {
+    .then(response => response.json().then(data => ({ status: response.status, data })))
+    .then(({ status, data }) => {
+        if (status === 401 && !data.authenticated) {
+            // User not authenticated - show login/register prompt
+            const alert = document.createElement('div');
+            alert.className = 'alert alert-warning alert-dismissible fade show';
+            alert.style.cssText = 'position: fixed; top: 100px; right: 20px; z-index: 9999; min-width: 350px; box-shadow: 0 4px 6px rgba(0,0,0,0.1);';
+            alert.innerHTML = `
+                <strong>⚠ Login Required</strong><br>
+                ${data.message}<br><br>
+                <a href="${data.login_url}" class="btn btn-sm btn-primary me-2">Login</a>
+                <a href="${data.register_url}" class="btn btn-sm btn-success">Register</a>
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            `;
+            document.body.appendChild(alert);
+            
+            setTimeout(() => {
+                alert.remove();
+            }, 8000);
+        } else if (data.success) {
             // Show success message
             const alert = document.createElement('div');
             alert.className = 'alert alert-success alert-dismissible fade show';
