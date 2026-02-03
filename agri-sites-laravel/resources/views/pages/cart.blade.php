@@ -817,12 +817,64 @@
     function increaseQty(btn) {
         const input = btn.parentElement.querySelector('.qty-input');
         input.value = parseInt(input.value) + 1;
+        updateCartTotals();
+        submitQuantityUpdate(btn);
     }
 
     function decreaseQty(btn) {
         const input = btn.parentElement.querySelector('.qty-input');
         if (parseInt(input.value) > 1) {
             input.value = parseInt(input.value) - 1;
+        }
+        updateCartTotals();
+        submitQuantityUpdate(btn);
+    }
+
+    function submitQuantityUpdate(btn) {
+        const form = btn.closest('form');
+        if (!form) {
+            return;
+        }
+
+        if (form._submitTimer) {
+            clearTimeout(form._submitTimer);
+        }
+
+        form._submitTimer = setTimeout(() => {
+            form.submit();
+        }, 300);
+    }
+
+    function updateCartTotals() {
+        let subtotal = 0;
+
+        // Calculate subtotal from all cart items
+        document.querySelectorAll('.cart-item').forEach(item => {
+            const priceText = item.querySelector('.cart-item-price').textContent;
+            const price = parseFloat(priceText.replace('₹', '').replace(/,/g, ''));
+            const qty = parseInt(item.querySelector('.qty-input').value);
+
+            const itemSubtotal = price * qty;
+            subtotal += itemSubtotal;
+
+            // Update individual item subtotal
+            item.querySelector('.subtotal-price').textContent = '₹' + itemSubtotal.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+        });
+
+        // Update summary totals
+        const tax = subtotal * 0.1;
+        const total = subtotal + tax;
+
+        const summaryValues = document.querySelectorAll('.summary-value');
+        if (summaryValues.length >= 3) {
+            summaryValues[0].textContent = '₹' + subtotal.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+            summaryValues[2].textContent = '₹' + tax.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+        }
+
+        // Update total
+        const totalEl = document.querySelector('.total-price');
+        if (totalEl) {
+            totalEl.textContent = '₹' + total.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ',');
         }
     }
 </script>
