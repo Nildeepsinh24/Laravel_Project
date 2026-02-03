@@ -27,7 +27,7 @@
                                 <p class="s8-pm-pera"><span class="people-s8icn"><i class="bi bi-person-fill"></i></span> &nbsp; By Rachi Card</p>
                                 <div class="sec-8-cnct-one-pss8">
                                     <h5 class="cnct-one-h"><a href="{{ route('blog.single') }}" class="text-decoration-none text-dark">The Benefits of Vitamin D &amp; How to Get It</a></h5>
-                                    <p class="cnct-one-pss8">Simply dummy text of the printing and typesetting industry. Lorem Ipsum</p>
+                                    <p class="cnct-one-pss8">Discover how sunlight and organic foods rich in Vitamin D can boost your immune system and overall health naturally.</p>
                                 </div>
                                 <button type="button" class="btn btn-md shop-btn-s5 rcnt-btn-smpl"><a href="{{ route('blog.single') }}">Read More &nbsp;<i class="bi bi-arrow-right-circle-fill"></i></a></button>
                             </div>
@@ -44,7 +44,7 @@
                                 <p class="s8-pm-pera"><span class="people-s8icn"><i class="bi bi-person-fill"></i></span> &nbsp; By Rachi Card</p>
                                 <div class="sec-8-cnct-one-pss8">
                                     <h5 class="cnct-one-h"><a href="{{ route('blog.single') }}" class="text-decoration-none text-dark">Our Favourite Summertime Tommeto</a></h5>
-                                    <p class="cnct-one-pss8">Simply dummy text of the printing and typesetting industry. Lorem Ipsum</p>
+                                    <p class="cnct-one-pss8">Explore the best organic tomato varieties perfect for summer salads, sauces, and fresh eating straight from the vine.</p>
                                 </div>
                                 <button type="button" class="btn btn-md shop-btn-s5 rcnt-btn-smpl"><a href="{{ route('blog.single') }}">Read More &nbsp;<i class="bi bi-arrow-right-circle-fill"></i></a></button>
                             </div>
@@ -61,7 +61,7 @@
                                 <p class="s8-pm-pera"><span class="people-s8icn"><i class="bi bi-person-fill"></i></span> &nbsp; By Rachi Card</p>
                                 <div class="sec-8-cnct-one-pss8">
                                     <h5 class="cnct-one-h"><a href="{{ route('blog.single') }}" class="text-decoration-none text-dark">The Benefits of Vitamin C &amp; How to Get It</a></h5>
-                                    <p class="cnct-one-pss8">Simply dummy text of the printing and typesetting industry. Lorem Ipsum</p>
+                                    <p class="cnct-one-pss8">Learn about citrus fruits and organic vegetables that provide essential Vitamin C for a stronger immune system.</p>
                                 </div>
                                 <button type="button" class="btn btn-md shop-btn-s5 rcnt-btn-smpl"><a href="{{ route('blog.single') }}">Read More &nbsp;<i class="bi bi-arrow-right-circle-fill"></i></a></button>
                             </div>
@@ -78,7 +78,7 @@
                                 <p class="s8-pm-pera"><span class="people-s8icn"><i class="bi bi-person-fill"></i></span> &nbsp; By Rachi Card</p>
                                 <div class="sec-8-cnct-one-pss8">
                                     <h5 class="cnct-one-h"><a href="{{ route('blog.single') }}" class="text-decoration-none text-dark">Research More Organic Foods</a></h5>
-                                    <p class="cnct-one-pss8">Simply dummy text of the printing and typesetting industry. Lorem Ipsum</p>
+                                    <p class="cnct-one-pss8">Deep dive into scientific studies showing the health benefits and environmental advantages of choosing organic produce.</p>
                                 </div>
                                 <button type="button" class="btn btn-md shop-btn-s5 rcnt-btn-smpl"><a href="{{ route('blog.single') }}">Read More &nbsp;<i class="bi bi-arrow-right-circle-fill"></i></a></button>
                             </div>
@@ -95,7 +95,7 @@
                                 <p class="s8-pm-pera"><span class="people-s8icn"><i class="bi bi-person-fill"></i></span> &nbsp; By Rachi Card</p>
                                 <div class="sec-8-cnct-one-pss8">
                                     <h5 class="cnct-one-h"><a href="{{ route('blog.single') }}" class="text-decoration-none text-dark">Everyday Fresh Fruites</a></h5>
-                                    <p class="cnct-one-pss8">Simply dummy text of the printing and typesetting industry. Lorem Ipsum</p>
+                                    <p class="cnct-one-pss8">Why eating seasonal organic fruits daily can transform your health and support local organic farmers in your community.</p>
                                 </div>
                                 <button type="button" class="btn btn-md shop-btn-s5 rcnt-btn-smpl"><a href="{{ route('blog.single') }}">Read More &nbsp;<i class="bi bi-arrow-right-circle-fill"></i></a></button>
                             </div>
@@ -112,7 +112,7 @@
                                 <p class="s8-pm-pera"><span class="people-s8icn"><i class="bi bi-person-fill"></i></span> &nbsp; By Rachi Card</p>
                                 <div class="sec-8-cnct-one-pss8">
                                     <h5 class="cnct-one-h"><a href="{{ route('blog.single') }}" class="text-decoration-none text-dark">Don’t Use Plastic Product! it’s Kill Nature</a></h5>
-                                    <p class="cnct-one-pss8">Simply dummy text of the printing and typesetting industry. Lorem Ipsum</p>
+                                    <p class="cnct-one-pss8">Understanding the environmental impact of plastic packaging and how choosing eco-friendly alternatives helps preserve our planet.</p>
                                 </div>
                                 <button type="button" class="btn btn-md shop-btn-s5 rcnt-btn-smpl"><a href="{{ route('blog.single') }}">Read More &nbsp;<i class="bi bi-arrow-right-circle-fill"></i></a></button>
                             </div>
@@ -123,5 +123,4 @@
         </div>
     </section>
 
-    @include('partials.newsletter')
 @endsection
