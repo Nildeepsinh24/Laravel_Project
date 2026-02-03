@@ -13,6 +13,12 @@ class PagesController extends Controller
     public function home(): View
     {
         $products = Product::take(8)->get(['*']);
+        
+        // Fetch latest 2 published blogs for news section
+        $latestBlogs = Blog::where('published_at', '<=', now())
+            ->latest('published_at')
+            ->take(2)
+            ->get(['id', 'title', 'slug', 'excerpt', 'author', 'category', 'published_at']);
 
         $wishlistIds = [];
         if (auth()->check()) {
@@ -21,22 +27,12 @@ class PagesController extends Controller
                 ->all();
         }
 
-        return view('pages.home', compact('products', 'wishlistIds'));
+        return view('pages.home', compact('products', 'wishlistIds', 'latestBlogs'));
     }
 
     public function about(): View
     {
         return view('pages.about');
-    }
-
-    public function portfolio(): View
-    {
-        return view('pages.portfolio');
-    }
-
-    public function portfolioSingle(): View
-    {
-        return view('pages.portfolio-single');
     }
 
     public function services(): View
@@ -110,35 +106,9 @@ class PagesController extends Controller
         return view('pages.team');
     }
 
-    public function styleGuide(): View
-    {
-        return view('pages.style-guide');
-    }
-
     public function errorPage(): View
     {
         return view('pages.error');
-    }
-
-    public function password(): View
-    {
-        return view('pages.password-protect');
-    }
-
-    public function passwordSubmit(Request $request)
-    {
-        $request->validate(['password' => 'required|string']);
-        return redirect()->route('password')->with('status', 'Password submitted (demo)');
-    }
-
-    public function licenses(): View
-    {
-        return view('pages.licenses');
-    }
-
-    public function changelog(): View
-    {
-        return view('pages.changelog');
     }
 
     public function newsletterSubscribe(Request $request)
