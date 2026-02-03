@@ -26,7 +26,7 @@
                 <div class="col-md-6 clm-one-ss-two">
                     <div class="ss-buy-content-one">
                         <h3 class="cnct-one-contct-pg-head" data-aos="fade-up" data-aos-duration="1000">We'd love to talk about how we can work together.</h3>
-                        <p class="cnct-one-1-pera mt-2">Simply dummy text of the printing and typesetting industry. Lorem had ceased to been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley.</p>
+                        <p class="cnct-one-1-pera mt-2">Have questions about our organic products or services? We're here to help! Our customer support team is ready to assist you with orders, product information, or any inquiries you may have.</p>
 
                         <div class="msgandcnct">
                             <div class="massage-cnct" data-aos="fade-up" data-aos-duration="1000">
@@ -48,18 +48,21 @@
                             </div>
                         </div>
 
-                        <div class="social-cnctrmain-cnct">
-                            <div class="main-icn-social" data-aos="fade-up" data-aos-duration="1000">
-                                <a href="#"><img src="{{ $asset }}/Insta.png" class="img-fluid" alt="Instagram"></a>
-                            </div>
-                            <div class="main-icn-social" data-aos="fade-up" data-aos-duration="1400">
-                                <a href="#"><img src="{{ $asset }}/Fb.png" class="img-fluid" alt="Facebook"></a>
-                            </div>
-                            <div class="main-icn-social" data-aos="fade-up" data-aos-duration="1800">
-                                <a href="#"><img src="{{ $asset }}/Twiter.png" class="img-fluid" alt="Twitter"></a>
-                            </div>
-                            <div class="main-icn-social" data-aos="fade-up" data-aos-duration="2200">
-                                <a href="#"><img src="{{ $asset }}/Pintrest.png" class="img-fluid" alt="Pinterest"></a>
+                        <div class="social-section-contact mt-4" data-aos="fade-up" data-aos-duration="1000">
+                            <h6 class="social-heading-contact">Follow Us</h6>
+                            <div class="social-cnctrmain-cnct">
+                                <div class="main-icn-social" data-aos="zoom-in" data-aos-duration="1000">
+                                    <a href="#" aria-label="Instagram"><img src="{{ $asset }}/Insta.png" class="img-fluid" alt="Instagram"></a>
+                                </div>
+                                <div class="main-icn-social" data-aos="zoom-in" data-aos-duration="1200">
+                                    <a href="#" aria-label="Facebook"><img src="{{ $asset }}/Fb.png" class="img-fluid" alt="Facebook"></a>
+                                </div>
+                                <div class="main-icn-social" data-aos="zoom-in" data-aos-duration="1400">
+                                    <a href="#" aria-label="Twitter"><img src="{{ $asset }}/Twiter.png" class="img-fluid" alt="Twitter"></a>
+                                </div>
+                                <div class="main-icn-social" data-aos="zoom-in" data-aos-duration="1600">
+                                    <a href="#" aria-label="Pinterest"><img src="{{ $asset }}/Pintrest.png" class="img-fluid" alt="Pinterest"></a>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -122,5 +125,4 @@
         </form>
     </div>
 
-    @include('partials.newsletter')
 @endsection
