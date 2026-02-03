@@ -17,7 +17,7 @@
         <div class="container about-team-cnctrn-main">
             <h2 class="ctcgry-head-abt-t-m" data-aos="fade-up" data-aos-duration="1000">Team</h2>
             <h1 class="oupd-abt-h-one-team" data-aos="fade-up" data-aos-duration="1100">Our Organic Experts</h1>
-            <p class="s4-pera s4-pera-ab-tm mt-3">Simply dummy text of the printing and typesetting industry. Lorem had ceased to been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley.</p>
+            <p class="s4-pera s4-pera-ab-tm mt-3">Meet the passionate individuals behind Organick who work tirelessly to bring you the finest organic products while championing sustainable agriculture and environmental conservation.</p>
 
             <div class="row abt-main-team">
                 <div class="col-md-4 clm-tean-main-one hover-card-mn" data-aos="fade-up" data-aos-duration="1000">
