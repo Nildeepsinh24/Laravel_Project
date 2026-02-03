@@ -23,8 +23,8 @@
                     <div class="main-abt-cnct-clm">
                         <h4 class="cnct-one-1-abt" data-aos="fade-up" data-aos-duration="1000">About Us</h4>
                         <h2 class="cnct-one-1head-oactmd" data-aos="fade-up" data-aos-duration="1100">We do Creative Things for Success</h2>
-                        <p class="cnct-one-1-pera">Simply dummy text of the printing and typesetting industry. Lorem had ceased to been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley.</p>
-                        <p class="cnct-one-1-pera">Simply dummy text of the printing and typesetting industry. Lorem had ceased to been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley.</p>
+                        <p class="cnct-one-1-pera">Organick was founded on the principle that everyone deserves access to fresh, healthy, and sustainably grown food. We work directly with certified organic farmers who share our commitment to environmental stewardship and quality.</p>
+                        <p class="cnct-one-1-pera">Our journey began with a simple mission: to bridge the gap between small-scale organic farmers and health-conscious consumers. Today, we proudly serve thousands of families with premium organic products while supporting local agriculture.</p>
                         <div class="row abt-t-and-s">
                             <div class="col-md-6 abt-tractors-one" data-aos="fade-up" data-aos-duration="1000">
                                 <div class="row iand-rw">
@@ -141,7 +141,7 @@
         <div class="container about-team-cnctrn-main">
             <h2 class="ctcgry-head-abt-t-m" data-aos="fade-up" data-aos-duration="1000">Team</h2>
             <h1 class="oupd-abt-h-one-team" data-aos="fade-up" data-aos-duration="1100">Our Organic Experts</h1>
-            <p class="s4-pera s4-pera-ab-tm mt-3">Simply dummy text of the printing and typesetting industry. Lorem had ceased to been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley.</p>
+            <p class="s4-pera s4-pera-ab-tm mt-3">Our dedicated team of agricultural experts, nutritionists, and logistics professionals work together to ensure every product meets our strict organic standards and reaches you in perfect condition.</p>
             <div class="row abt-main-team">
                 <div class="col-md-4 clm-tean-main-one hover-card-mn">
                     <div class="card main-teancard-brdrdis" data-aos="fade-up" data-aos-duration="1000">
@@ -251,5 +251,4 @@
         </div>
     </section>
 
-    @include('partials.newsletter')
 @endsection
