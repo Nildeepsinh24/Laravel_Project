@@ -49,18 +49,6 @@
                                     <label class="form-label fw-bold">Phone</label>
                                     <p class="mb-0">{{ $order->phone ?? 'N/A' }}</p>
                                 </div>
-                                <div class="mb-3">
-                                    <label class="form-label fw-bold">Order Status</label>
-                                    <p class="mb-0">
-                                        @if($order->status === 'completed')
-                                            <span class="badge bg-success">Completed</span>
-                                        @elseif($order->status === 'processing')
-                                            <span class="badge bg-primary">Processing</span>
-                                        @else
-                                            <span class="badge bg-warning">{{ ucfirst($order->status ?? 'Pending') }}</span>
-                                        @endif
-                                    </p>
-                                </div>
                             </div>
                         </div>
                         <div class="mb-3">

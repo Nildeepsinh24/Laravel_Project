@@ -63,19 +63,6 @@
     <div class="row g-4 mt-2">
         <div class="col-md-6">
             <div class="card p-3">
-                <h5 class="mb-3">Order Status</h5>
-                <div class="d-flex justify-content-between align-items-center mb-2">
-                    <span>Pending Orders</span>
-                    <span class="badge bg-warning">{{ $pendingOrders }}</span>
-                </div>
-                <div class="d-flex justify-content-between align-items-center">
-                    <span>Completed Orders</span>
-                    <span class="badge bg-success">{{ $completedOrders }}</span>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-6">
-            <div class="card p-3">
                 <h5 class="mb-3">Quick Actions</h5>
                 <div class="d-grid gap-2">
                     <a href="{{ route('admin.products.create') }}" class="btn btn-primary btn-sm">
@@ -107,7 +94,6 @@
                                 <th>Order ID</th>
                                 <th>Customer</th>
                                 <th>Total</th>
-                                <th>Status</th>
                                 <th>Date</th>
                             </tr>
                         </thead>
@@ -117,20 +103,11 @@
                                 <td>#{{ $order->id }}</td>
                                 <td>{{ $order->user->name ?? 'N/A' }}</td>
                                 <td>₹{{ number_format($order->total_amount, 2) }}</td>
-                                <td>
-                                    @if($order->status == 'completed')
-                                        <span class="badge bg-success">Completed</span>
-                                    @elseif($order->status == 'pending')
-                                        <span class="badge bg-warning">Pending</span>
-                                    @else
-                                        <span class="badge bg-secondary">{{ ucfirst($order->status) }}</span>
-                                    @endif
-                                </td>
                                 <td>{{ $order->created_at->format('M d, Y') }}</td>
                             </tr>
                             @empty
                             <tr>
-                                <td colspan="5" class="text-center">No recent orders</td>
+                                <td colspan="4" class="text-center">No recent orders</td>
                             </tr>
                             @endforelse
                         </tbody>

@@ -132,7 +132,6 @@
                                             <th>Order ID</th>
                                             <th>Date</th>
                                             <th class="text-end">Amount</th>
-                                            <th>Status</th>
                                             <th class="text-center">Action</th>
                                         </tr>
                                     </thead>
@@ -142,15 +141,6 @@
                                             <td class="fw-semibold">#{{ str_pad($order->id, 6, '0', STR_PAD_LEFT) }}</td>
                                             <td>{{ $order->created_at->format('M d, Y') }}</td>
                                             <td class="text-end fw-bold">₹{{ number_format($order->total_amount, 2) }}</td>
-                                            <td>
-                                                @if($order->status === 'completed')
-                                                    <span class="badge bg-success">Completed</span>
-                                                @elseif($order->status === 'processing')
-                                                    <span class="badge bg-primary">Processing</span>
-                                                @else
-                                                    <span class="badge bg-warning">{{ ucfirst($order->status ?? 'Pending') }}</span>
-                                                @endif
-                                            </td>
                                             <td class="text-center">
                                                 <a href="{{ route('admin.orders.show', $order) }}" class="btn btn-sm btn-primary">
                                                     <i class="fas fa-eye"></i>
