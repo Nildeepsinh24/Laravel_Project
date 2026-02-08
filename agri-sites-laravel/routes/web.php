@@ -8,6 +8,7 @@ use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\ProductController as AdminProductController;
 use App\Http\Controllers\Admin\OrderController;
 use App\Http\Controllers\Admin\CustomerController;
+use App\Http\Controllers\Admin\CategoryController;
 use Illuminate\Support\Facades\Route;
 
 Route::controller(PagesController::class)->group(function () {
@@ -70,4 +71,5 @@ Route::prefix('admin')->middleware(['auth', \App\Http\Middleware\AdminMiddleware
     Route::resource('products', AdminProductController::class, ['as' => 'admin']);
     Route::resource('orders', OrderController::class, ['as' => 'admin', 'only' => ['index', 'show']]);
     Route::resource('customers', CustomerController::class, ['as' => 'admin', 'only' => ['index', 'show']]);
+    Route::resource('categories', CategoryController::class, ['as' => 'admin']);
 });

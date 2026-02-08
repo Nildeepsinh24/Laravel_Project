@@ -48,7 +48,18 @@ class PagesController extends Controller
     public function shop(Request $request): View
     {
         $q = trim((string) $request->input('q', ''));
+        $categorySlug = trim((string) $request->input('category', ''));
+        
         $query = Product::query();
+        
+        // Filter by category if provided
+        if ($categorySlug !== '') {
+            $query->whereHas('category', function($q) use ($categorySlug) {
+                $q->where('slug', $categorySlug);
+            });
+        }
+        
+        // Filter by search query if provided
         if ($q !== '') {
             $like = "%$q%";
             $query->whereRaw(
@@ -57,6 +68,7 @@ class PagesController extends Controller
                 'and'
             );
         }
+        
         $products = $query->get(['*']);
         return view('pages.shop', compact('products'));
     }

@@ -290,17 +290,17 @@
             <div class="row s7-row">
                 <div class="col-md-4 cl-s7-one">
                     <div class="s7-bg-1" data-aos="fade-up" data-aos-duration="1000">
-                        <button type="button" class="btn btn-md s7-btn"><a href="{{ route('shop') }}">Organic Juice</a></button>
+                        <button type="button" class="btn btn-md s7-btn"><a href="{{ route('shop', ['category' => 'juices']) }}">Organic Juice</a></button>
                     </div>
                 </div>
                 <div class="col-md-4 cl-s7-two">
                     <div class="s7-bg-2" data-aos="fade-up" data-aos-duration="1500">
-                        <button type="button" class="btn btn-md s7-btn"><a href="{{ route('shop') }}">Organic Food</a></button>
+                        <button type="button" class="btn btn-md s7-btn"><a href="{{ route('shop', ['category' => 'fruits']) }}">Organic Food</a></button>
                     </div>
                 </div>
                 <div class="col-md-4 cl-s7-three">
                     <div class="s7-bg-3" data-aos="fade-up" data-aos-duration="2000">
-                        <button type="button" class="btn btn-md s7-btn"><a href="{{ route('shop') }}">Nuts Cookis</a></button>
+                        <button type="button" class="btn btn-md s7-btn"><a href="{{ route('shop', ['category' => 'nuts-seeds']) }}">Nuts Cookis</a></button>
                     </div>
                 </div>
             </div>
