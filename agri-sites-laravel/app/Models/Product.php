@@ -17,7 +17,13 @@ class Product extends Model
         'description',
         'additional_info',
         'slug',
+        'stock',
     ];
+
+    public function category()
+    {
+        return $this->belongsTo(\App\Models\Category::class, 'category_id');
+    }
 
     public function categoryRelation()
     {
