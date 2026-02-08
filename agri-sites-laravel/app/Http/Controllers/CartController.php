@@ -32,7 +32,7 @@ class CartController extends Controller
         }
 
         try {
-            $product = Product::where('slug', $slug)->firstOrFail();
+            $product = Product::where('slug', '=', $slug)->firstOrFail();
             $qty = max(1, (int) $request->input('quantity', 1));
 
             $cart = $request->session()->get('cart', ['items' => [], 'total_qty' => 0, 'total_price' => 0]);
@@ -89,7 +89,7 @@ class CartController extends Controller
 
     public function update(Request $request, string $slug)
     {
-        $product = Product::where('slug', $slug)->firstOrFail();
+        $product = Product::where('slug', '=', $slug)->firstOrFail();
         $qty = max(0, (int) $request->input('quantity', 1));
 
         $cart = $request->session()->get('cart', ['items' => [], 'total_qty' => 0, 'total_price' => 0]);
@@ -115,7 +115,7 @@ class CartController extends Controller
 
     public function remove(Request $request, string $slug)
     {
-        $product = Product::where('slug', $slug)->firstOrFail();
+        $product = Product::where('slug', '=', $slug)->firstOrFail();
         $cart = $request->session()->get('cart', ['items' => [], 'total_qty' => 0, 'total_price' => 0]);
         $key = (string) $product->id;
         if (isset($cart['items'][$key])) {
